@@ -1,16 +1,12 @@
 import { Appearance, useAppearance } from '@/hooks/use-appearance';
 import { LucideIcon, Monitor, Moon, Sun } from 'lucide-react';
-import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/hooks/use-language';
+import { t } from 'i18next';
 
 const App = () => {
-    const [isDark, setIsDark] = useState(false);
-
-    const toggleTheme = () => {
-        setIsDark(!isDark);
-    };
-
     const { appearance, updateAppearance } = useAppearance();
+    const { language, setLanguage } = useLanguage();
 
     const tabs: { value: Appearance; icon: LucideIcon; label: string }[] = [
         { value: 'light', icon: Sun, label: 'Light' },
@@ -19,28 +15,35 @@ const App = () => {
     ];
 
     return (
-        <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'dark' : ''}`}>
+        <div className={`min-h-screen transition-colors duration-300`}>
             <div className="bg-surface min-h-screen">
                 {/* Header with Theme Toggle */}
                 <header className="bg-surface-elevated border-b border-light p-6">
                     <div className="max-w-6xl mx-auto flex justify-between items-center">
-                        <h1 className="text-primary text-3xl font-bold">Claude Theme Showcase</h1>
-                        <div className={cn('inline-flex gap-1 rounded-lg bg-neutral-100 p-1 dark:bg-neutral-800')}>
-                            {tabs.map(({ value, icon: Icon, label }) => (
-                                <button
-                                    key={value}
-                                    onClick={() => updateAppearance(value)}
-                                    className={cn(
-                                        'flex items-center rounded-md px-3.5 py-1.5 transition-colors',
-                                        appearance === value
-                                            ? 'bg-white shadow-xs dark:bg-neutral-700 dark:text-neutral-100'
-                                            : 'text-neutral-500 hover:bg-neutral-200/60 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-700/60',
-                                    )}
-                                >
-                                    <Icon className="-ml-1 h-4 w-4" />
-                                    <span className="ml-1.5 text-sm">{label}</span>
+                        <h1 className="text-primary text-3xl font-bold">{t('Manage all employees')}</h1>
+                        <div className='flex justify-between items-center gap-4'>
+                            <div className={cn('inline-flex gap-1 rounded-lg bg-neutral-100 p-1 dark:bg-neutral-800')}>
+                                {tabs.map(({ value, icon: Icon, label }) => (
+                                    <button
+                                        key={value}
+                                        onClick={() => updateAppearance(value)}
+                                        className={cn(
+                                            'flex items-center rounded-md px-3.5 py-1.5 transition-colors',
+                                            appearance === value
+                                                ? 'bg-white shadow-xs dark:bg-neutral-700 dark:text-neutral-100'
+                                                : 'text-neutral-500 hover:bg-neutral-200/60 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-700/60',
+                                        )}
+                                    >
+                                        <Icon className="-ml-1 h-4 w-4" />
+                                        <span className="ml-1.5 text-sm">{label}</span>
+                                    </button>
+                                ))}
+                            </div>
+                            <div>
+                                <button onClick={() => {setLanguage()}} className="btn-primary">
+                                    {language === 'en' ? 'English' : 'العربية'}
                                 </button>
-                            ))}
+                            </div>
                         </div>
                     </div>
                 </header>
