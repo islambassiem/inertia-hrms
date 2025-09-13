@@ -1,0 +1,82 @@
+/* ================ Fustat =======================*/
+
+@font-face {
+    font-family: 'Fustat';
+    src: url('/resources/js/assets/fonts/Fustat/static/Fustat-ExtraLight.ttf');
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Fustat';
+    src: url('/resources/js/assets/fonts/Fustat/static/Fustat-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Fustat';
+    src: url('/resources/js/assets/fonts/Fustat/static/Fustat-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Fustat';
+    src: url('/resources/js/assets/fonts/Fustat/static/Fustat-Medium.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Fustat';
+    src: url('/resources/js/assets/fonts/Fustat/static/Fustat-SemiBold.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Fustat';
+    src: url('/resources/js/assets/fonts/Fustat/static/Fustat-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Fustat';
+    src: url('/resources/js/assets/fonts/Fustat/static/Fustat-ExtraBold.ttf');
+    font-weight: 800;
+}
+
+/* ================ Playfair_Display =======================*/
+
+@font-face {
+    font-family: 'playfair';
+    src: url('/resources/js/assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'playfair';
+    src: url('/resources/js/assets/fonts/Playfair_Display/static/PlayfairDisplay-Medium.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'playfair';
+    src: url('/resources/js/assets/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'playfair';
+    src: url('/resources/js/assets/fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'playfair';
+    src: url('/resources/js/assets/fonts/Playfair_Display/static/PlayfairDisplay-ExtraBold.ttf');
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'playfair';
+    src: url('/resources/js/assets/fonts/Playfair_Display/static/PlayfairDisplay-Black.ttf');
+    font-weight: 900;
+}
+

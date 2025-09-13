@@ -40,7 +40,7 @@
     @inertiaHead
 </head>
 
-<body class="antialiased">
+<body class="font-playfair rtl:font-fustat antialiased">
     @inertia
 </body>
 
