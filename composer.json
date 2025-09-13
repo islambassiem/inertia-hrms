@@ -12,10 +12,15 @@
         "php": "^8.2",
         "inertiajs/inertia-laravel": "^2.0",
         "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1"
+        "laravel/tinker": "^2.10.1",
+        "nunomaduro/essentials": "^0.1.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.16",
+        "barryvdh/laravel-ide-helper": "^3.6",
+        "driftingly/rector-laravel": "^2.0",
         "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^3.0",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
         "laravel/sail": "^1.41",
@@ -59,6 +64,12 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
+        ],
+        "pint": [
+            "./vendor/bin/pint"
+        ],
+        "phpstan": [
+            "./vendor/bin/phpstan analyse"
         ]
     },
     "extra": {
