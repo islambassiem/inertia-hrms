@@ -1,11 +1,351 @@
-@import 'tailwindcss';
-
+@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+/* Claude-inspired theme for Tailwind CSS v4 */
+
+/* Define custom properties in :root for light mode */
+:root {
+    /* Surface Colors - Main backgrounds */
+    --color-surface-50: #ffffff;
+    --color-surface-100: #fefefe;
+    --color-surface-200: #f8f9fa;
+    --color-surface-300: #f1f3f4;
+    --color-surface-400: #e8eaed;
+    --color-surface-500: #dadce0;
+
+    /* Text Colors */
+    --color-text-primary: #1f1f1f;
+    --color-text-secondary: #5f6368;
+    --color-text-tertiary: #80868b;
+    --color-text-muted: #9aa0a6;
+
+    /* Accent Colors */
+    --color-accent-50: #fff8f1;
+    --color-accent-100: #feecdc;
+    --color-accent-200: #fed7aa;
+    --color-accent-300: #fdba74;
+    --color-accent-400: #fb923c;
+    --color-accent-500: #f97316;
+    --color-accent-600: #ea580c;
+    --color-accent-700: #c2410c;
+    --color-accent-800: #9a3412;
+    --color-accent-900: #7c2d12;
+
+    /* Border Colors */
+    --color-border-light: #e8eaed;
+    --color-border-medium: #dadce0;
+    --color-border-strong: #bdc1c6;
+
+    /* Interactive States */
+    --color-hover-surface: #f8f9fa;
+    --color-active-surface: #f1f3f4;
+
+    /* Status Colors */
+    --color-success: #1e7e34;
+    --color-error: #dc2626;
+    --color-warning: #d97706;
+    --color-info: #2563eb;
+
+    /* Code/Syntax Colors */
+    --color-code-bg: #f8f9fa;
+    --color-code-border: #e1e5e9;
+    --color-code-text: #24292f;
+}
+
+/* Dark mode overrides */
+.dark {
+    /* Dark Surface Colors */
+    --color-surface-50: #0a0a0a;
+    --color-surface-100: #111111;
+    --color-surface-200: #1a1a1a;
+    --color-surface-300: #242424;
+    --color-surface-400: #2d2d2d;
+    --color-surface-500: #383838;
+
+    /* Dark Text Colors */
+    --color-text-primary: #f0f0f0;
+    --color-text-secondary: #a8a8a8;
+    --color-text-tertiary: #707070;
+    --color-text-muted: #5a5a5a;
+
+    /* Dark Accent Colors (lighter for better contrast) */
+    --color-accent-50: #1a0f08;
+    --color-accent-100: #2d1810;
+    --color-accent-200: #4a2c1a;
+    --color-accent-300: #6b3e24;
+    --color-accent-400: #fb923c;
+    --color-accent-500: #f97316;
+    --color-accent-600: #ea580c;
+    --color-accent-700: #c2410c;
+    --color-accent-800: #9a3412;
+    --color-accent-900: #7c2d12;
+
+    /* Dark Border Colors */
+    --color-border-light: #333333;
+    --color-border-medium: #404040;
+    --color-border-strong: #555555;
+
+    /* Dark Interactive States */
+    --color-hover-surface: #1e1e1e;
+    --color-active-surface: #252525;
+
+    /* Dark Status Colors */
+    --color-success: #22c55e;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+    --color-info: #3b82f6;
+
+    /* Dark Code Colors */
+    --color-code-bg: #1a1a1a;
+    --color-code-border: #333333;
+    --color-code-text: #e6edf3;
+}
+
+/* Semantic Utility Classes */
+@layer utilities {
+    /* Surface utilities */
+    .bg-surface {
+        background-color: var(--color-surface-100);
+    }
+
+    .bg-surface-elevated {
+        background-color: var(--color-surface-50);
+    }
+
+    .bg-surface-subtle {
+        background-color: var(--color-surface-200);
+    }
+
+    .bg-surface-muted {
+        background-color: var(--color-surface-300);
+    }
+
+    /* Text utilities */
+    .text-primary {
+        color: var(--color-text-primary);
+    }
+
+    .text-secondary {
+        color: var(--color-text-secondary);
+    }
+
+    .text-tertiary {
+        color: var(--color-text-tertiary);
+    }
+
+    .text-muted {
+        color: var(--color-text-muted);
+    }
+
+    /* Border utilities */
+    .border-light {
+        border-color: var(--color-border-light);
+    }
+
+    .border-medium {
+        border-color: var(--color-border-medium);
+    }
+
+    .border-strong {
+        border-color: var(--color-border-strong);
+    }
+
+    /* Interactive utilities */
+    .hover-surface:hover {
+        background-color: var(--color-hover-surface);
+    }
+
+    .active-surface:active {
+        background-color: var(--color-active-surface);
+    }
+
+    /* Accent utilities */
+    .bg-accent {
+        background-color: var(--color-accent-500);
+    }
+
+    .text-accent {
+        color: var(--color-accent-500);
+    }
+
+    .border-accent {
+        border-color: var(--color-accent-500);
+    }
+}
+
+/* Component Classes */
+@layer components {
+    /* Card component */
+    .card {
+        background-color: var(--color-surface-100);
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border-light);
+        @apply rounded-lg p-6 shadow-sm;
+    }
+
+    .card-elevated {
+        background-color: var(--color-surface-50);
+        color: var(--color-text-primary);
+        border: 1px solid var(--color-border-light);
+        @apply rounded-lg p-6 shadow-lg;
+    }
+
+    .card-subtle {
+        background-color: var(--color-surface-200);
+        color: var(--color-text-primary);
+        @apply rounded-lg p-6;
+    }
+
+    /* Button components */
+    .btn-primary {
+        background-color: var(--color-accent-500);
+        color: white;
+        @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--color-accent-600);
+    }
+
+    .btn-primary:active {
+        background-color: var(--color-accent-700);
+    }
+
+    .btn-secondary {
+        background-color: var(--color-surface-100);
+        border: 1px solid var(--color-border-medium);
+        color: var(--color-text-primary);
+        @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--color-hover-surface);
+    }
+
+    .btn-ghost {
+        color: var(--color-text-primary);
+        @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+    }
+
+    .btn-ghost:hover {
+        background-color: var(--color-hover-surface);
+    }
+
+    /* Input components */
+    .input {
+        background-color: var(--color-surface-50);
+        border: 1px solid var(--color-border-light);
+        color: var(--color-text-primary);
+        @apply px-3 py-2 rounded-md transition-all duration-200 focus:outline-none focus:ring-2;
+    }
+
+    .input:focus {
+        border-color: var(--color-accent-500);
+        box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+    }
+
+    .input-error {
+        border-color: var(--color-error);
+    }
+
+    .input-error:focus {
+        border-color: var(--color-error);
+        box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+    }
+
+    /* Navigation */
+    .nav-item {
+        color: var(--color-text-secondary);
+        @apply px-3 py-2 rounded-md font-medium transition-all duration-200;
+    }
+
+    .nav-item:hover {
+        color: var(--color-text-primary);
+        background-color: var(--color-hover-surface);
+    }
+
+    .nav-item-active {
+        color: var(--color-text-primary);
+        background-color: var(--color-surface-300);
+    }
+
+    /* Message/Chat components */
+    .message {
+        background-color: var(--color-surface-100);
+        border: 1px solid var(--color-border-light);
+        @apply rounded-lg p-4 mb-4;
+    }
+
+    .message-user {
+        background-color: var(--color-accent-50);
+        border: 1px solid var(--color-accent-200);
+    }
+
+    .message-assistant {
+        background-color: var(--color-surface-200);
+        border: 1px solid var(--color-border-light);
+    }
+
+    /* Status components */
+    .alert-success {
+        background-color: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        color: #166534;
+        @apply p-4 rounded-lg;
+    }
+
+    .dark .alert-success {
+        background-color: #0f1f0f;
+        border-color: #166534;
+        color: #86efac;
+    }
+
+    .alert-error {
+        background-color: #fef2f2;
+        border: 1px solid #fecaca;
+        color: #7f1d1d;
+        @apply p-4 rounded-lg;
+    }
+
+    .dark .alert-error {
+        background-color: #1f0f0f;
+        border-color: #7f1d1d;
+        color: #fca5a5;
+    }
+
+    .alert-warning {
+        background-color: #fffbeb;
+        border: 1px solid #fde68a;
+        color: #92400e;
+        @apply p-4 rounded-lg;
+    }
+
+    .dark .alert-warning {
+        background-color: #1f1b0f;
+        border-color: #92400e;
+        color: #fcd34d;
+    }
+
+    .alert-info {
+        background-color: #eff6ff;
+        border: 1px solid #93c5fd;
+        color: #1e40af;
+        @apply p-4 rounded-lg;
+    }
+
+    .dark .alert-info {
+        background-color: #0f1419;
+        border-color: #1e40af;
+        color: #93c5fd;
+    }
 }

@@ -5,6 +5,7 @@ import '@ant-design/v5-patch-for-react-19';
 import { createInertiaApp  } from '@inertiajs/react'
 import { createRoot } from 'react-dom/client'
 import '../css/app.css'
+import { initializeTheme } from './hooks/use-appearance';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -18,3 +19,5 @@ createInertiaApp({
         createRoot(el).render(<App {...props} />)
     },
 })
+
+initializeTheme();
