@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Enums\AcademicRank;
@@ -9,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AcademicRank>
  */
-class AcademicRankFactory extends Factory
+final class AcademicRankFactory extends Factory
 {
     /**
      * Define the model's default state.

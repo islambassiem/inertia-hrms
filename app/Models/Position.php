@@ -1,15 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\PositionType;
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Position extends BaseModel
+final class Position extends Model
 {
     /** @use HasFactory<\Database\Factories\PositionFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $table = '_positions';
 

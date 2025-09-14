@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\CourseType;
 use App\Models\Country;
 use App\Models\Employee;

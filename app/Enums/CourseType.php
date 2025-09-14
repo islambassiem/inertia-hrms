@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum CourseType: string
@@ -9,6 +11,19 @@ enum CourseType: string
     case SYMPOSIUM = '3';
     case WORKSHOP = '4';
     case OTHER = '5';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -22,18 +37,5 @@ enum CourseType: string
             self::WORKSHOP => ['id' => '4', 'course_type_en' => 'Workshop', 'course_type_ar' => 'ورشة تدريبية'],
             self::OTHER => ['id' => '5', 'course_type_en' => 'Other', 'course_type_ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

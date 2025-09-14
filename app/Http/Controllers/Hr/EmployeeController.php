@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Hr;
 
-use App\Dtos\EmployeeFilterDTO;
+use App\Dtos\EmployeeFilterDto;
 use App\Enums\Gender;
 use App\Enums\JobStatus;
 use App\Enums\Qualification;
-use App\Exports\EmployeesExport;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryListResource;
 use App\Http\Resources\CountryListResource;
@@ -19,16 +20,14 @@ use App\Http\Resources\SponsorshipListResource;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\Department;
+use App\Models\Employee;
 use App\Models\Sponsorship;
 use App\Queries\Hr\EmployeeListQuery;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Inertia\Inertia;
-use Maatwebsite\Excel\Facades\Excel;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-class EmployeeController extends Controller
+final class EmployeeController extends Controller
 {
     public function index(EmployeeListQuery $query, Request $request): \Inertia\Response
     {
@@ -46,13 +45,11 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function export(Request $request, EmployeeListQuery $query): BinaryFileResponse
+    public function export(Request $request, EmployeeListQuery $query): void
     {
-        // dd($request->all());
-        $employees = $this->filter($query, $request);
+        // $employees = $this->filter($query, $request);
 
-
-        return (new EmployeesExport($employees->get()))->download('employees.xlsx');
+        // return (new EmployeesExport($employees->get()))->download('employees.xlsx');
     }
 
     /**
@@ -61,7 +58,7 @@ class EmployeeController extends Controller
     private function filter(EmployeeListQuery $query, Request $request): Builder
     {
         $builder = $query->handle(
-            new EmployeeFilterDTO(
+            new EmployeeFilterDto(
                 $request->input('gender', []),
                 $request->input('status', []),
                 $request->input('identificaiton'),
@@ -79,6 +76,7 @@ class EmployeeController extends Controller
                 $request->input('resignation_date_to'),
             )
         );
+
         return $builder;
     }
 }

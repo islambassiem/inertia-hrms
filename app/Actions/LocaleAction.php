@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions;
 
-class LocaleAction
+final class LocaleAction
 {
     public function handle(string $locale): void
     {

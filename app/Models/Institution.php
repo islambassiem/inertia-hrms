@@ -1,13 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Institution extends BaseModel
+final class Institution extends Model
 {
     /** @use HasFactory<\Database\Factories\InstitutionFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $table = '_institutions';
 

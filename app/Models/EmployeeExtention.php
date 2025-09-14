@@ -1,9 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-class EmployeeExtention extends BaseModel
+use App\Traits\TracksUser;
+use Illuminate\Database\Eloquent\Model;
+
+final class EmployeeExtention extends Model
 {
+    use TracksUser;
+
     protected $table = 'employee_extention';
 
     protected $fillable = [

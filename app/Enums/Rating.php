@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum Rating: string
@@ -14,6 +16,19 @@ enum Rating: string
     case PASS = '7';
     case NA = '8';
     case OTHER = '9';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -32,18 +47,5 @@ enum Rating: string
             self::NA => ['id' => '8', 'rating_en' => 'N/A', 'rating_ar' => 'لا ينطبق'],
             self::OTHER => ['id' => '9', 'rating_en' => 'Other', 'rating_ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

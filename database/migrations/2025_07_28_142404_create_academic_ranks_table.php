@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\AcademicRank;
 use App\Models\Employee;
 use App\Models\User;

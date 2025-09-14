@@ -1,22 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum JobStatus: string
 {
     case ACTIVE = '1';
     case INACTIVE = '2';
-
-    /**
-     * @return array<string, string>
-     */
-    public function label(): array
-    {
-        return match ($this) {
-            self::ACTIVE => ['id' => '1', 'name' => app()->getLocale() == 'en' ? 'Active' : 'نشط'],
-            self::INACTIVE => ['id' => '0', 'name' => app()->getLocale() == 'en' ? 'Inactive' : 'غير نشط'],
-        };
-    }
 
     /**
      * @return array<string>
@@ -29,5 +20,16 @@ enum JobStatus: string
         }
 
         return $array;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function label(): array
+    {
+        return match ($this) {
+            self::ACTIVE => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Active' : 'نشط'],
+            self::INACTIVE => ['id' => '0', 'name' => app()->getLocale() === 'en' ? 'Inactive' : 'غير نشط'],
+        };
     }
 }

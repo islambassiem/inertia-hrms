@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\ResearchCitation;
 use App\Enums\ResearchDomain;
 use App\Enums\ResearchLanguage;

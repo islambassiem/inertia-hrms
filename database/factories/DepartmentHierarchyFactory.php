@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Models\Branch;
@@ -11,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DepartmentHierarchy>
  */
-class DepartmentHierarchyFactory extends Factory
+final class DepartmentHierarchyFactory extends Factory
 {
     /**
      * Define the model's default state.

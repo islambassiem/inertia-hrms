@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Auth;
 
 use App\Models\User;
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-class LoginRequest extends FormRequest
+final class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,7 +39,7 @@ class LoginRequest extends FormRequest
     /**
      * Attempt to authenticate the request's credentials.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function authenticate(): void
     {
@@ -55,7 +57,7 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        if (! Hash::check(request()->string('password'), $user->password)) {
+        if (! Hash::check(request()->string('password')->toString(), $user->password)) {
             throw ValidationException::withMessages([
                 'empid' => __('auth.failed'),
             ]);
@@ -69,7 +71,7 @@ class LoginRequest extends FormRequest
     /**
      * Ensure the login request is not rate limited.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function ensureIsNotRateLimited(): void
     {
@@ -94,6 +96,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower(request()->string('empid')).'|'.request()->ip());
+        return Str::transliterate(Str::lower(request()->string('empid')->toString()).'|'.request()->ip());
     }
 }

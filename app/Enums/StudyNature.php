@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum StudyNature: string
@@ -7,18 +9,6 @@ enum StudyNature: string
     case RESEARCH = '1';
     case SUBJECT = '2';
     case BOTH = '3';
-
-    /**
-     * @return array<string, string>
-     */
-    public function lable(): array
-    {
-        return match ($this) {
-            self::RESEARCH => ['id' => '1', 'name_en' => 'Research Only', 'name_ar' => 'بحث فقط'],
-            self::SUBJECT => ['id' => '2', 'name_en' => 'Subjects Only', 'name_ar' => 'مواد فقط'],
-            self::BOTH => ['id' => '3', 'name_en' => 'Research and Subjects', 'name_ar' => 'بحث ومواد'],
-        };
-    }
 
     /**
      * @return array<string>
@@ -31,5 +21,17 @@ enum StudyNature: string
         }
 
         return $array;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function lable(): array
+    {
+        return match ($this) {
+            self::RESEARCH => ['id' => '1', 'name_en' => 'Research Only', 'name_ar' => 'بحث فقط'],
+            self::SUBJECT => ['id' => '2', 'name_en' => 'Subjects Only', 'name_ar' => 'مواد فقط'],
+            self::BOTH => ['id' => '3', 'name_en' => 'Research and Subjects', 'name_ar' => 'بحث ومواد'],
+        };
     }
 }

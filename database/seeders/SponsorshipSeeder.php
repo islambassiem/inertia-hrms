@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Sponsorship;
 use Illuminate\Database\Seeder;
 
-class SponsorshipSeeder extends Seeder
+final class SponsorshipSeeder extends Seeder
 {
     /**
      * Run the database seeds.

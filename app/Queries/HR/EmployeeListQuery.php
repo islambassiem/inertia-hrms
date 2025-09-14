@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Queries\Hr;
 
-use App\Dtos\EmployeeFilterDTO;
+use App\Dtos\EmployeeFilterDto;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Builder;
 
-class EmployeeListQuery
+final class EmployeeListQuery
 {
-
     /**
      * @return Builder<Employee>
      */
-    public function handle(EmployeeFilterDTO $dto): Builder
+    public function handle(EmployeeFilterDto $dto): Builder
     {
         return Employee::with([
             'user',

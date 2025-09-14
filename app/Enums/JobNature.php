@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum JobNature: string
@@ -12,6 +14,19 @@ enum JobNature: string
     case RESEARCH_AND_ADMINSTRATIVE = '6';
     case TEACHING_RESEARCH_AND_ADMINSTRATIVE = '7';
     case OTHER = '8';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -28,18 +43,5 @@ enum JobNature: string
             self::TEACHING_RESEARCH_AND_ADMINSTRATIVE => ['id' => '7', 'job_nature_en' => 'Teaching, Research and Adminstrative', 'job_nature_ar' => 'تدريسية وبحثية وإدارية'],
             self::OTHER => ['id' => '8', 'job_nature_en' => 'Other', 'job_nature_ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

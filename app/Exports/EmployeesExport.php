@@ -1,28 +1,33 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Exports;
 
 use App\Models\Employee;
+use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
 // @phpstan-ignore missingType.generics
-class EmployeesExport implements FromCollection, WithHeadings, WithMapping
+final class EmployeesExport implements FromCollection, WithHeadings, WithMapping
 {
-
     use Exportable;
 
+    /**
+     * @param  Collection<int, Employee>  $employeesData
+     */
     public function __construct(public Collection $employeesData) {}
 
+    /**
+     * @return Collection<int, Employee>
+     */
     public function collection(): Collection
     {
         return $this->employeesData;
     }
-
 
     /**
      * @return array<int, string>

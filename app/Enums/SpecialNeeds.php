@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum SpecialNeeds: string
@@ -18,6 +20,19 @@ enum SpecialNeeds: string
     case SPEECH_LANGUAGE_DIFFICULTIES = '12';
     case SLOW_LEARNERNING = '13';
     case OTHER = '14';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -40,18 +55,5 @@ enum SpecialNeeds: string
             self::SLOW_LEARNERNING => ['id' => '13', 'special_needs_en' => 'Slow Learning', 'special_needs_ar' => 'بطئ تعلم'],
             self::OTHER => ['id' => '14', 'special_needs_en' => 'Other', 'special_needs_ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

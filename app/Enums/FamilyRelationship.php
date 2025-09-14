@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum FamilyRelationship: string
@@ -9,6 +11,19 @@ enum FamilyRelationship: string
     case MOTHER = '3';
     case FATHER = '4';
     case OTHER = '5';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -22,18 +37,5 @@ enum FamilyRelationship: string
             self::FATHER => ['id' => '4', 'family_relationship_en' => 'Father', 'family_relationship_ar' => 'اب'],
             self::OTHER => ['id' => '5', 'family_relationship_en' => 'Other', 'family_relationship_ar' => 'اخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

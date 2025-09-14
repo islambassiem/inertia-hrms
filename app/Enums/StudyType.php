@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum StudyType: string
@@ -15,6 +17,19 @@ enum StudyType: string
     case UNREGISTERED = '8';
     case BLENDED_LEARNING = '10';
     case OTHER = '9';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -34,18 +49,5 @@ enum StudyType: string
             self::BLENDED_LEARNING => ['id' => '10', 'name_en' => 'Blended learning', 'name_ar' => 'تعليم مدمج'],
             self::OTHER => ['id' => '9', 'name_en' => 'Other', 'name_ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

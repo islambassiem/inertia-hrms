@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\Gender;
 use App\Enums\MaritalStatus;
 use App\Enums\Religion;

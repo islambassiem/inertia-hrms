@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
@@ -8,7 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @mixin \App\Enums\JobStatus
  */
-class JobStatusListResource extends JsonResource
+final class JobStatusListResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

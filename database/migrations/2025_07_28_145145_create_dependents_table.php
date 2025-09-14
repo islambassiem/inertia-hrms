@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\FamilyRelationship;
 use App\Enums\Gender;
 use App\Models\Employee;

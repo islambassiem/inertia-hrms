@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum Qualification: string
@@ -27,6 +29,19 @@ enum Qualification: string
     case TECHNICAL_HIGH_SCHOOL = '21';
     case LICENCE = '22';
     case ADVANCED_DIPLOMA = '23';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -58,18 +73,5 @@ enum Qualification: string
             self::LICENCE => ['id' => '22', 'name' => app()->getLocale() === 'en' ? 'Licence' : 'ليسانس '],
             self::ADVANCED_DIPLOMA => ['id' => '23', 'name' => app()->getLocale() === 'en' ? 'Advanced Diploma' : 'دبلوم متقدم'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

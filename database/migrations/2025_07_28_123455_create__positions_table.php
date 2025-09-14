@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\PositionType;
 use App\Models\Entity;
 use App\Models\User;

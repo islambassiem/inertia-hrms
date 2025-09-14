@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\Gender;
@@ -8,18 +10,20 @@ use App\Enums\MaritalStatus;
 use App\Enums\Religion;
 use App\Enums\SpecialNeeds;
 use App\Enums\VacationClass;
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Employee extends BaseModel
+final class Employee extends Model
 {
     /** @use HasFactory<\Database\Factories\EmployeeFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $fillable = [
         'first_name_en',
@@ -124,15 +128,6 @@ class Employee extends BaseModel
     }
 
     /**
-     * @param  Builder<Employee>  $query
-     */
-    #[Scope]
-    protected function active(Builder $query): void
-    {
-        $query->where('is_active', 1);
-    }
-
-    /**
      * @return BelongsTo<Country, $this>
      */
     public function nationality(): BelongsTo
@@ -153,7 +148,7 @@ class Employee extends BaseModel
      */
     public function head(): BelongsTo
     {
-        return $this->belongsTo(Employee::class, 'head_id');
+        return $this->belongsTo(self::class, 'head_id');
     }
 
     /**
@@ -237,5 +232,14 @@ class Employee extends BaseModel
     public function qualifications(): HasMany
     {
         return $this->hasMany(Qualification::class);
+    }
+
+    /**
+     * @param  Builder<Employee>  $query
+     */
+    #[Scope]
+    protected function active(Builder $query): void
+    {
+        $query->where('is_active', 1);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum ProfessionalRank: string
@@ -54,6 +56,19 @@ enum ProfessionalRank: string
     /**
      * @return array<string>
      */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
+
+    /**
+     * @return array<string>
+     */
     public function label(): array
     {
         return match ($this) {
@@ -104,18 +119,5 @@ enum ProfessionalRank: string
             self::NA => ['id' => '98', 'en' => 'Not Applicable', 'ar' => 'لاينطبق'],
             self::OTHERS => ['id' => '99', 'en' => 'Other', 'ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

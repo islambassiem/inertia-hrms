@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\Employee;
 use App\Models\Extention;
 use Illuminate\Database\Seeder;
 
-class ExtentionSeeder extends Seeder
+final class ExtentionSeeder extends Seeder
 {
     /**
      * Run the database seeds.

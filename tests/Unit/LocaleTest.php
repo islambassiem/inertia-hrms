@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Actions\LocaleAction;
 
 test('can change locale successfully', function (string $locale) {

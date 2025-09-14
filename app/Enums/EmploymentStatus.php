@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum EmploymentStatus: string
@@ -15,6 +17,19 @@ enum EmploymentStatus: string
     case DISMISSED = '27';
     case ENDED_CONTRACT = '28';
     case OTHERS = '99';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -34,18 +49,5 @@ enum EmploymentStatus: string
             self::ENDED_CONTRACT => ['id' => '28', 'employment_status_en' => 'Contract ended', 'employment_status_ar' => 'عقد منتهي'],
             self::OTHERS => ['id' => '99', 'employment_status_en' => 'Others', 'employment_status_ar' => 'اخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

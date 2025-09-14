@@ -1,15 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\AcademicRank as AcademicRankEnum;
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class AcademicRank extends BaseModel
+final class AcademicRank extends Model
 {
     /** @use HasFactory<\Database\Factories\AcademicRankFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $fillable = [
         'employee_id',

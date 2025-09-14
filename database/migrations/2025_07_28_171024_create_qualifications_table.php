@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Enums\GPAType;
 use App\Enums\Qualification;
 use App\Enums\Rating;

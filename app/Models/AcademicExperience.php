@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\AcademicRank;
@@ -8,12 +10,14 @@ use App\Enums\AppointmentType;
 use App\Enums\EmploymentStatus;
 use App\Enums\JobNature;
 use App\Enums\ProfessionalRank;
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class AcademicExperience extends BaseModel
+final class AcademicExperience extends Model
 {
     /** @use HasFactory<\Database\Factories\AcademicExperienceFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $fillable = [
         'employee_id',

@@ -1,22 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum ResearchCitation: string
 {
     case SCOUPS = '1';
     case ISI = '2';
-
-    /**
-     * @return array<string, string>
-     */
-    public function lable(): array
-    {
-        return match ($this) {
-            self::SCOUPS => ['id' => '1', 'name_en' => 'SCOPUS', 'name_ar' => 'SCOPUS'],
-            self::ISI => ['id' => '2', 'name_en' => 'ISI', 'name_ar' => 'ISI'],
-        };
-    }
 
     /**
      * @return array<string>
@@ -29,5 +20,16 @@ enum ResearchCitation: string
         }
 
         return $array;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function lable(): array
+    {
+        return match ($this) {
+            self::SCOUPS => ['id' => '1', 'name_en' => 'SCOPUS', 'name_ar' => 'SCOPUS'],
+            self::ISI => ['id' => '2', 'name_en' => 'ISI', 'name_ar' => 'ISI'],
+        };
     }
 }

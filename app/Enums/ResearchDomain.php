@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum ResearchDomain: string
@@ -12,6 +14,19 @@ enum ResearchDomain: string
     case ARTS = '6';
     case ISLAMIC = '7';
     case MULTIDISCIPULINARY = '8';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -28,18 +43,5 @@ enum ResearchDomain: string
             self::ISLAMIC => ['id' => '7', 'name_en' => 'Islamic studies', 'name_ar' => 'الدراسات الإسلامية'],
             self::MULTIDISCIPULINARY => ['id' => '8', 'name_en' => 'Multidisciplinary services', 'name_ar' => 'الخدمات متعدد التخصصات'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

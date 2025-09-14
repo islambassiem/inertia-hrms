@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum ResearchType: string
@@ -7,18 +9,6 @@ enum ResearchType: string
     case BOOK = '1';
     case RESEARCH = '2';
     case PAPER = '3';
-
-    /**
-     * @return array<string, string>
-     */
-    public function lable(): array
-    {
-        return match ($this) {
-            self::BOOK => ['id' => '1', 'name_en' => 'Book', 'name_ar' => 'كتاب'],
-            self::RESEARCH => ['id' => '2', 'name_en' => 'Research', 'name_ar' => 'بحث علمي'],
-            self::PAPER => ['id' => '3', 'name_en' => 'Paper', 'name_ar' => 'ورقة علمية'],
-        };
-    }
 
     /**
      * @return array<string>
@@ -31,5 +21,17 @@ enum ResearchType: string
         }
 
         return $array;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function lable(): array
+    {
+        return match ($this) {
+            self::BOOK => ['id' => '1', 'name_en' => 'Book', 'name_ar' => 'كتاب'],
+            self::RESEARCH => ['id' => '2', 'name_en' => 'Research', 'name_ar' => 'بحث علمي'],
+            self::PAPER => ['id' => '3', 'name_en' => 'Paper', 'name_ar' => 'ورقة علمية'],
+        };
     }
 }

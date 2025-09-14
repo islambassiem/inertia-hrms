@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum PositionType: string
@@ -8,19 +10,6 @@ enum PositionType: string
     case MOI = '2';
     case HRSD = '3';
     case GOSI = '4';
-
-    /**
-     * @return array<string, string>
-     */
-    public function label(): array
-    {
-        return match ($this) {
-            self::ENTITY => ['id' => '1', 'position_type_en' => 'Entity', 'position_type_ar' => 'الكيان'],
-            self::MOI => ['id' => '2', 'position_type_en' => 'MOI', 'position_type_ar' => 'مقيم'],
-            self::HRSD => ['id' => '3', 'position_type_en' => 'HRSD', 'position_type_ar' => 'وزرة الموارد البشرية'],
-            self::GOSI => ['id' => '4', 'position_type_en' => 'GOSI', 'position_type_ar' => 'التامينات'],
-        };
-    }
 
     /**
      * @return array<string>
@@ -33,5 +22,18 @@ enum PositionType: string
         }
 
         return $array;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function label(): array
+    {
+        return match ($this) {
+            self::ENTITY => ['id' => '1', 'position_type_en' => 'Entity', 'position_type_ar' => 'الكيان'],
+            self::MOI => ['id' => '2', 'position_type_en' => 'MOI', 'position_type_ar' => 'مقيم'],
+            self::HRSD => ['id' => '3', 'position_type_en' => 'HRSD', 'position_type_ar' => 'وزرة الموارد البشرية'],
+            self::GOSI => ['id' => '4', 'position_type_en' => 'GOSI', 'position_type_ar' => 'التامينات'],
+        };
     }
 }

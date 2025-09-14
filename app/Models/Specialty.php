@@ -1,13 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Specialty extends BaseModel
+final class Specialty extends Model
 {
     /** @use HasFactory<\Database\Factories\SpecialtyFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $table = '_specialties';
 

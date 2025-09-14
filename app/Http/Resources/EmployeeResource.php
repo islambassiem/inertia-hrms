@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Resources;
 
 use Carbon\Carbon;
@@ -9,7 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @mixin \App\Models\Employee
  */
-class EmployeeResource extends JsonResource
+final class EmployeeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

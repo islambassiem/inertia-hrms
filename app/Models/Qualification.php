@@ -1,17 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\GPAType;
 use App\Enums\Qualification as QualificationEnum;
 use App\Enums\Rating;
 use App\Enums\StudyNature;
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Qualification extends BaseModel
+final class Qualification extends Model
 {
     /** @use HasFactory<\Database\Factories\QualificationFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $fillable = [
         'employee_id',

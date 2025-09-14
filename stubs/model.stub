@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+{{ factoryImport }}
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\TracksUser;
+
+class {{ class }} extends Model
+{
+    use TracksUser;
+    {{ factory }}
+}

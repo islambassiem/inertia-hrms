@@ -1,14 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\IdentificationType;
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Identification extends BaseModel
+final class Identification extends Model
 {
     /** @use HasFactory<\Database\Factories\IdentificationFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $fillable = [
         'employee_id',

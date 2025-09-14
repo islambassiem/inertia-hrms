@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum AcademicRank: string
@@ -29,6 +31,19 @@ enum AcademicRank: string
     case TECHNICIAN = '33';
     case NA = '98';
     case OTHER = '99';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -62,18 +77,5 @@ enum AcademicRank: string
             self::NA => ['id' => '98', 'academic_rank_en' => 'N/A', 'academic_rank_ar' => 'غير محدد'],
             self::OTHER => ['id' => '99', 'academic_rank_en' => 'Other', 'academic_rank_ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

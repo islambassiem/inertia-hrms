@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum ResearchLanguage: string
@@ -14,6 +16,19 @@ enum ResearchLanguage: string
     case BENGALI = '8';
     case PORTOGESE = '9';
     case OTHER = '10';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -32,18 +47,5 @@ enum ResearchLanguage: string
             self::PORTOGESE => ['id' => '9', 'name_en' => 'Portuguese', 'name_ar' => 'البرتغالية'],
             self::OTHER => ['id' => '10', 'name_en' => 'Other', 'name_ar' => 'أخرى'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

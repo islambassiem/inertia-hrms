@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Enums;
 
 enum AppointmentType: string
@@ -10,6 +12,19 @@ enum AppointmentType: string
     case TRANSFER = '4';
     case NA = '8';
     case UNDETERMINED = '9';
+
+    /**
+     * @return array<string>
+     */
+    public static function toArray(): array
+    {
+        $array = [];
+        foreach (self::cases() as $case) {
+            $array[] = $case->value;
+        }
+
+        return $array;
+    }
 
     /**
      * @return array<string, string>
@@ -24,18 +39,5 @@ enum AppointmentType: string
             self::NA => ['id' => '8', 'appointment_type_en' => 'Not applicable', 'appointment_type_ar' => 'لاينطبق'],
             self::UNDETERMINED => ['id' => '9', 'appointment_type_en' => 'Unspecified / Undetermined', 'appointment_type_ar' => 'غير محدد'],
         };
-    }
-
-    /**
-     * @return array<string>
-     */
-    public static function toArray(): array
-    {
-        $array = [];
-        foreach (self::cases() as $case) {
-            $array[] = $case->value;
-        }
-
-        return $array;
     }
 }

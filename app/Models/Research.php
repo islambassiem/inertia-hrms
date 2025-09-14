@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Enums\ResearchCitation;
@@ -9,12 +11,14 @@ use App\Enums\ResearchNature;
 use App\Enums\ResearchProgress;
 use App\Enums\ResearchStatus;
 use App\Enums\ResearchType;
+use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Research extends BaseModel
+final class Research extends Model
 {
     /** @use HasFactory<\Database\Factories\ResearchFactory> */
-    use HasFactory;
+    use HasFactory, TracksUser;
 
     protected $fillable = [
         'employee_id',

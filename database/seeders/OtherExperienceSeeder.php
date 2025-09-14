@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use App\Models\OtherExperience;
 use Illuminate\Database\Seeder;
 
-class OtherExperienceSeeder extends Seeder
+final class OtherExperienceSeeder extends Seeder
 {
     /**
      * Run the database seeds.

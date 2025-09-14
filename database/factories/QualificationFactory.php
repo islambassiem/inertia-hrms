@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Factories;
 
 use App\Enums\GPAType;
@@ -14,7 +16,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Qualification>
  */
-class QualificationFactory extends Factory
+final class QualificationFactory extends Factory
 {
     /**
      * Define the model's default state.
