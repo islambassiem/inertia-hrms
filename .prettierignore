@@ -1,0 +1,9 @@
+node_modules
+vendor
+public
+storage
+bootstrap
+*.php
+*.blade.php
+dist
+global.d.ts
