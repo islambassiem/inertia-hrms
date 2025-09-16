@@ -45,7 +45,7 @@ export default tseslint.config(
       "react/jsx-wrap-multilines": "off",
 
       // Enable Prettier as the source of truth
-      "prettier/prettier": ["error", { tabWidth: 2 }],
+      "prettier/prettier": ["error", { tabWidth: 4 }],
 
       // Other recommended rules
       ...js.configs.recommended.rules,
