@@ -5,6 +5,7 @@ import Appearance from './components/Appearance';
 import Logo from './components/Logo';
 
 const Navbar = ({ children }: { children: React.ReactNode }) => {
+    const height = 90;
     const [activeIndex, setActiveIndex] = useState(-1);
 
     const handleShowMenu = (index: number) => {
@@ -18,7 +19,7 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             <nav
-                className={`bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm`}
+                className={`bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm h-[${height}px]`}
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
@@ -36,7 +37,9 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
                     </div>
                 </div>
             </nav>
-            {children}
+            <main className={`p-6 h-[calc(100vh-${height}px)]`}>
+                {children}
+            </main>
         </>
     );
 };

@@ -22,7 +22,8 @@ final class AuthController extends Controller
 
         session()->regenerate();
 
-        return redirect()->intended(route('home', absolute: true));
+        return redirect()->route('home');
+        // return redirect()->intended(route('home', absolute: true));
     }
 
     public function destroy(Request $request): RedirectResponse

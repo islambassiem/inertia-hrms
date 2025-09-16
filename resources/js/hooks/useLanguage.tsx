@@ -14,7 +14,6 @@ export function useLanguage() {
             'ar'
         );
     });
-    console.log(serverLocale);
 
     useEffect(() => {
         if (serverLocale && serverLocale !== lang) {

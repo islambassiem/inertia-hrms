@@ -184,6 +184,7 @@ return [
 
     'attributes' => [
         'empid' => 'الرقم الوظيفي',
+        'password' => 'كلمة المرور'
     ],
 
 ];
