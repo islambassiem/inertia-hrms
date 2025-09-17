@@ -5,12 +5,11 @@ import AppLayout from '@/Layouts/AppLayout';
 import FloatingLable from '@/components/ui/FloatingLablel';
 import Button from '@/components/ui/Button';
 
-import logo from '@/assets/images/image.png';
+import logo from '@/assets/images/logo.png';
 
 import { FcGoogle } from 'react-icons/fc';
 import { VscSignIn } from 'react-icons/vsc';
 import { useForm } from '@inertiajs/react';
-import { useLanguage } from '@/hooks/useLanguage';
 
 export type LoginProps = {
     empid: string;
@@ -18,8 +17,8 @@ export type LoginProps = {
 };
 
 const initValues = {
-    empid: '',
-    password: '',
+    empid: '500322',
+    password: 'password',
 };
 
 const Login = () => {
@@ -33,12 +32,9 @@ const Login = () => {
         }
     };
 
-    const { language } = useLanguage();
-    console.log(language);
-
     return (
         <AppLayout>
-            <section className="flex flex-col justify-center items-center max-w-md mx-auto bg-surface p-10 shadow-xl">
+            <section className="flex flex-col justify-center items-center max-w-md mx-auto p-10 shadow-lg bg-surface-subtle ">
                 <img src={logo} alt="logo" className="size-32 mb-6" />
                 <h1 className="text-2xl text-primary mb-6">{t('Login')}</h1>
 
@@ -88,10 +84,12 @@ const Login = () => {
                 </form>
                 <a
                     href="/"
-                    className="flex justify-center items-center gap-2 bg-neutral/10 hover:bg-neutral/30 shadow-xl rounded-lg font-sm w-full p-4"
+                    className="flex justify-center items-center gap-2 btn-secondary btn-primary p-4 w-full rounded-lg"
                 >
                     <FcGoogle className="text-2xl " />
-                    <span>{t('Login with Google')}</span>
+                    <span className="text-primary">
+                        {t('Login with Google')}
+                    </span>
                 </a>
             </section>
         </AppLayout>

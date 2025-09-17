@@ -34,7 +34,7 @@
     --color-border-strong: #bdc1c6;
 
     /* Interactive States */
-    --color-hover-surface: #f8f9fa;
+    --color-hover-surface: #ebeced;
     --color-active-surface: #f1f3f4;
 
     /* Status Colors */
@@ -83,7 +83,7 @@
     --color-border-strong: #555555;
 
     /* Dark Interactive States */
-    --color-hover-surface: #1e1e1e;
+    --color-hover-surface: #313131;
     --color-active-surface: #252525;
 
     /* Dark Status Colors */

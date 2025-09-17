@@ -1,3 +1,5 @@
+import { FaUser, FaUsersCog, FaUserTie } from 'react-icons/fa';
+
 const roles = {
     employee: {
         key: 'employee',
@@ -5,7 +7,8 @@ const roles = {
         title: 'Employee Account',
         subtitle: 'Manage your account',
         href: '/dashboard',
-        icon: '<User />',
+        icon: <FaUser className="text-2xl text-surface" />,
+        color: 'bg-primary',
     },
     hr: {
         key: 'hr',
@@ -13,6 +16,8 @@ const roles = {
         title: 'Human Resources Account',
         subtitle: 'Manage all employees',
         href: '/hr.employees',
+        icon: <FaUsersCog className="text-2xl text-surface" />,
+        color: 'bg-primary',
     },
     head: {
         key: 'head',
@@ -20,6 +25,8 @@ const roles = {
         title: 'Department Head Account',
         subtitle: 'Manage your department and subordinates',
         href: '/head.dashboard',
+        icon: <FaUserTie className="text-2xl text-surface" />,
+        color: 'bg-primary',
     },
 };
 
