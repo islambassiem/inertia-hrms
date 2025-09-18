@@ -115,12 +115,12 @@ const Employees = ({
             </Space>
             <section className="min-w-full overflow-x-auto border-collapse whitespace-nowrap rounded-lg shadow-lg mt-5 max-h-10/12">
                 <table className="p-2 min-w-full ">
-                    <thead className="bg-gray-50 dark:bg-gray-800 dark:text-gray-100 border-b-2 border-gray-200 sticky top-0 right-0 z-10">
+                    <thead className="bg-gray-50 dark:bg-gray-800 dark:text-gray-100 border-b-2 border-gray-200 sticky top-0 left-0 rtl:left-auto rtl:right-0 z-10">
                         <tr className="min-h-11">
-                            <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right w-20 sticky top-0 right-0 z-50 bg-gray-50 dark:bg-gray-800">
+                            <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right w-20 sticky top-0 left-0 rtl:left-auto rtl:right-0 z-50 bg-gray-50 dark:bg-gray-800">
                                 #
                             </th>
-                            <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right w-52 sticky top-0 right-[70px] z-50 bg-gray-50 dark:bg-gray-800">
+                            <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right w-52 sticky top-0 left-[70px] rtl:left-auto rtl:right-[70px] z-50 bg-gray-50 dark:bg-gray-800">
                                 {t('Employee')}
                             </th>
                             {colums.map((col) => (
@@ -140,7 +140,7 @@ const Employees = ({
                                 className={`group text-gray-700 dark:text-gray-200 p-2 ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} sticky`}
                             >
                                 <td
-                                    className={`group-hover:bg-gray-200 group-hover:dark:bg-gray-700 text-gray-700 dark:text-gray-200 p-2 ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} sticky right-0 z-30 `}
+                                    className={`group-hover:bg-gray-200 group-hover:dark:bg-gray-700 text-gray-700 dark:text-gray-200 p-2 ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} sticky left-0 rtl:left-auto rtl:right-0 z-30 `}
                                 >
                                     <Link
                                         href={'#'}
@@ -150,7 +150,7 @@ const Employees = ({
                                     </Link>
                                 </td>
                                 <td
-                                    className={`flex gap-2 overflow-x-auto p-2 text-sm  whitespace-nowrap sticky right-[70px] ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} group-hover:bg-gray-200 group-hover:dark:bg-gray-700`}
+                                    className={`flex gap-2 overflow-x-auto p-2 text-sm  whitespace-nowrap sticky left-[70px] rtl:left-auto rtl:right-[70px] ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} group-hover:bg-gray-200 group-hover:dark:bg-gray-700`}
                                 >
                                     <img
                                         src={employee.image}
