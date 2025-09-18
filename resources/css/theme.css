@@ -336,3 +336,54 @@
         color: #93c5fd;
     }
 }
+
+@layer components {
+    .custom-drawer {
+        font-family: fustat;
+    }
+    /* Drawer panel */
+    .custom-drawer .ant-drawer-content {
+        @apply bg-white text-black; /* Light */
+    }
+
+    .dark .custom-drawer .ant-drawer-content {
+        @apply bg-gray-900 text-gray-100; /* Dark */
+    }
+
+    /* Drawer header */
+    .custom-drawer .ant-drawer-header {
+        @apply bg-gray-100 text-black;
+    }
+
+    .dark .custom-drawer .ant-drawer-header {
+        @apply bg-gray-800 text-gray-100;
+    }
+
+    /* Drawer body */
+    .custom-drawer .ant-drawer-body {
+        @apply bg-white text-black;
+    }
+
+    .dark .custom-drawer .ant-drawer-body {
+        @apply bg-gray-900 text-gray-100;
+    }
+
+    /* Overlay mask */
+    .custom-drawer .ant-drawer-mask {
+        @apply bg-black/40; /* Light */
+    }
+
+    .dark .custom-drawer .ant-drawer-mask {
+        @apply bg-black/70; /* Darker mask */
+    }
+
+    @layer components {
+        .custom-drawer .ant-drawer-content {
+            font-family: 'playfair', sans-serif;
+        }
+
+        [dir='rtl'] .custom-drawer .ant-drawer-content {
+            font-family: 'Fustat', sans-serif;
+        }
+    }
+}

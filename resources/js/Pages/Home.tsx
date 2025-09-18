@@ -8,7 +8,7 @@ import { AuthUser } from '@/types/auth';
 
 const Home = () => {
     const { auth } = usePage<AuthUser>().props;
-    console.log(auth);
+
     return (
         <App>
             <div className="relative flex flex-col items-center text-center">

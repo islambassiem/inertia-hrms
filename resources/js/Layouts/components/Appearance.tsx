@@ -45,7 +45,7 @@ const Appearance = ({ isActive, onShow }: ApperanceProps) => {
             </button>
 
             {isActive && (
-                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-40 dark:bg-gray-800 rounded-md shadow-xl z-50">
+                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-40 bg-gray-50 dark:bg-gray-800 rounded-md shadow-xl z-50">
                     <div className="py-1">
                         {(
                             Object.entries(appearances) as [

@@ -8,6 +8,7 @@ use App\Dtos\EmployeeFilterDto;
 use App\Enums\Gender;
 use App\Enums\JobStatus;
 use App\Enums\Qualification;
+use App\Exports\EmployeesExport;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryListResource;
 use App\Http\Resources\CountryListResource;
@@ -25,7 +26,9 @@ use App\Models\Sponsorship;
 use App\Queries\Hr\EmployeeListQuery;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Inertia\Inertia;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 final class EmployeeController extends Controller
 {
@@ -45,11 +48,11 @@ final class EmployeeController extends Controller
         ]);
     }
 
-    public function export(Request $request, EmployeeListQuery $query): void
+    public function export(Request $request, EmployeeListQuery $query): BinaryFileResponse|Response
     {
-        // $employees = $this->filter($query, $request);
+        $employees = $this->filter($query, $request);
 
-        // return (new EmployeesExport($employees->get()))->download('employees.xlsx');
+        return (new EmployeesExport($employees->get()))->download('employees.xlsx');
     }
 
     /**

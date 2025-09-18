@@ -1,5 +1,6 @@
 import React from 'react';
 import { t } from 'i18next';
+import { store } from '@/actions/App/Http/Controllers/AuthController';
 
 import AppLayout from '@/Layouts/AppLayout';
 import FloatingLable from '@/components/ui/FloatingLablel';
@@ -28,7 +29,7 @@ const Login = () => {
         e.preventDefault();
 
         if (!errors.password && !errors.empid) {
-            post('/login');
+            post(store().url);
         }
     };
 

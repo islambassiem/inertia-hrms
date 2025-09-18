@@ -1,3 +1,4 @@
+import { destroy } from '@/actions/App/Http/Controllers/AuthController';
 import { useClickOutSide } from '@/hooks/useClickOutside';
 import { AuthUser } from '@/types/auth';
 import { Link, usePage } from '@inertiajs/react';
@@ -61,7 +62,7 @@ const Profile = ({ isActive, onShow }: ProfileProps) => {
                     )}
                     <hr />
                     <Link
-                        href={'/logout'}
+                        href={destroy().url}
                         method="post"
                         className="flex items-center gap-4 flex-1 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer w-full hover:bg-gray-100 dark:hover:bg-gray-700"
                     >

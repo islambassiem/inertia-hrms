@@ -1,3 +1,4 @@
+import { index } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import { FaUser, FaUsersCog, FaUserTie } from 'react-icons/fa';
 
 const roles = {
@@ -15,7 +16,7 @@ const roles = {
         role: 'hr',
         title: 'Human Resources Account',
         subtitle: 'Manage all employees',
-        href: '/hr.employees',
+        href: index().url,
         icon: <FaUsersCog className="text-2xl text-surface" />,
         color: 'bg-primary',
     },

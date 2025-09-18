@@ -123,6 +123,17 @@ final class Employee extends Model
         if (file_exists($path)) {
             return asset($path);
         }
+        /** @var Gender $gender */
+        $gender = $this->gender;
+
+        if ($gender === Gender::MALE) {
+            return asset('storage/profile/male.png');
+        }
+
+        /** @var Gender $gender */
+        if ($gender === Gender::FEMALE) {
+            return asset('storage/profile/female.png');
+        }
 
         return null;
     }
