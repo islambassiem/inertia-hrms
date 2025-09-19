@@ -32,7 +32,7 @@ const Profile = ({ isActive, onShow }: ProfileProps) => {
             </button>
 
             {isActive && (
-                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-48 dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-800 ring-opacity-5 z-50">
+                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-48 bg-gray-50 dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-800 ring-opacity-5 z-50">
                     {auth && (
                         <Link
                             href={'/profile'}

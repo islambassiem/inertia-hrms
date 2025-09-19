@@ -275,6 +275,7 @@ const DatePicker: React.FC<CalendarProps> = ({
         <div className={`relative ${className}`} ref={calendarRef}>
             {/* Trigger Button */}
             <button
+                type="button"
                 onClick={() => !disabled && setIsOpen(!isOpen)}
                 disabled={disabled}
                 className={`

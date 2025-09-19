@@ -36,6 +36,8 @@ interface Resource {
 
 export interface EmployeeListProps {
     employees: {
+        links: any;
+        meta: any;
         data: Employee[];
     };
     genders: ResourceList;

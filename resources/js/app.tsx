@@ -1,5 +1,4 @@
 import axios from 'axios';
-import '@ant-design/v5-patch-for-react-19';
 import './i18n';
 
 import { createInertiaApp } from '@inertiajs/react';

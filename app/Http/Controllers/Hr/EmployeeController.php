@@ -34,7 +34,10 @@ final class EmployeeController extends Controller
 {
     public function index(EmployeeListQuery $query, Request $request): \Inertia\Response
     {
-        $employees = $this->filter($query, $request)->get();
+        $employees = $this->filter($query, $request)
+            ->paginate($request->input('perPage'))
+            ->withQueryString()
+            ->onEachSide(1);
 
         return Inertia::render('Hr/Employees', [
             'status' => JobStatusListResource::collection(JobStatus::cases()),

@@ -54,11 +54,11 @@ const MultiSelect = ({
             }
         }
 
-        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutside);
         return () => {
-            document.removeEventListener('click', handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [isOpen]);
 
     const position =
         direction === 'start'
@@ -68,6 +68,7 @@ const MultiSelect = ({
     return (
         <section ref={wapperRef} className="w-full relative">
             <button
+                type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 className={`border rounded-md px-4 py-2 cursor-pointer select-none flex justify-between items-center w-full`}
             >
