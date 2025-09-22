@@ -41,7 +41,7 @@
     @inertiaHead
 </head>
 
-<body class="font-playfair rtl:font-fustat antialiased">
+<body class="font-playfair rtl:font-fustat antialiased text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-900">
     @inertia
 </body>
 

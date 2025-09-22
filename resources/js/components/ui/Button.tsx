@@ -6,6 +6,8 @@ interface ButtonProps {
     type?: 'button' | 'submit' | 'reset';
     className?: string;
     disabled?: boolean;
+    // eslint-disable-next-line no-unused-vars
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button = ({
@@ -13,6 +15,7 @@ const Button = ({
     children,
     className,
     disabled = false,
+    onClick,
 }: ButtonProps) => {
     return (
         <button
@@ -22,10 +25,11 @@ const Button = ({
                 `flex items-center justify-center gap-2
                 py-2 px-4 rounded-lg
                 transition-colors duration-300
-                color-text cursor-pointer
+                cursor-pointer
                 disabled:opacity-30 disabled:cursor-not-allowed`,
                 className
             )}
+            onClick={onClick}
         >
             {children}
         </button>

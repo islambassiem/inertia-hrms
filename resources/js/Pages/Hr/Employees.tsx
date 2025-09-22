@@ -10,6 +10,11 @@ import { Link, router } from '@inertiajs/react';
 import Drawer from '@/components/ui/Drawer';
 import { index } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import { exportMethod } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
+import Pagination from '@/components/ui/Pagination';
+import Select from '@/components/ui/Select';
+import Button from '@/components/ui/Button';
+import { Funnel } from 'lucide-react';
+import { PiMicrosoftExcelLogoFill } from 'react-icons/pi';
 
 const Employees = ({
     employees,
@@ -21,11 +26,28 @@ const Employees = ({
     status,
     qualifications,
 }: EmployeeListProps) => {
+    const [formData, setFormData] = useState({
+        page: getArrayParam('page') ?? ['1'],
+        gender: getArrayParam('gender'),
+        status: getArrayParam('status'),
+        departments: getArrayParam('departments'),
+        categories: getArrayParam('categories'),
+        countries: getArrayParam('countries'),
+        sponsorships: getArrayParam('sponsorships'),
+        qualifications: getArrayParam('qualifications'),
+        perPage: getStringParam('perPage') ? getStringParam('perPage') : '10',
+        search: getStringParam('search') ?? '',
+        active_from: getStringParam('active_from') ?? null,
+        active_to: getStringParam('active_to') ?? null,
+        joining_date_from: getStringParam('joining_date_from') ?? null,
+        joining_date_to: getStringParam('joining_date_to') ?? null,
+        resignation_date_from: getStringParam('resignation_date_from') ?? null,
+        resignation_date_to: getStringParam('resignation_date_to') ?? null,
+    });
     const [open, setOpen] = useState(false);
     const { language } = useLanguage();
     const [copied, setCopies] = useState('');
     const formRef = useRef(null);
-    const [perPage, setPerPage] = useState(5);
     const [shouldFilter, setShouldFilter] = useState(false);
 
     const showDrawer = () => {
@@ -43,6 +65,7 @@ const Employees = ({
             sponsorships: [],
             qualifications: [],
             perPage: '5',
+            search: '',
             active_from: '',
             active_to: '',
             joining_date_from: '',
@@ -50,6 +73,8 @@ const Employees = ({
             resignation_date_from: '',
             resignation_date_to: '',
         });
+        onAction();
+        setOpen(false);
     };
 
     const onAction = () => {
@@ -103,24 +128,6 @@ const Employees = ({
         []
     );
 
-    const [formData, setFormData] = useState({
-        page: getArrayParam('page') ?? 1,
-        gender: getArrayParam('gender'),
-        status: getArrayParam('status'),
-        departments: getArrayParam('departments'),
-        categories: getArrayParam('categories'),
-        countries: getArrayParam('countries'),
-        sponsorships: getArrayParam('sponsorships'),
-        qualifications: getArrayParam('qualifications'),
-        perPage: getStringParam('perPage') ?? perPage,
-        active_from: getStringParam('active_from') ?? null,
-        active_to: getStringParam('active_to') ?? null,
-        joining_date_from: getStringParam('joining_date_from') ?? null,
-        joining_date_to: getStringParam('joining_date_to') ?? null,
-        resignation_date_from: getStringParam('resignation_date_from') ?? null,
-        resignation_date_to: getStringParam('resignation_date_to') ?? null,
-    });
-
     const handleFilter = useCallback(() => {
         const cleanFormData = Object.fromEntries(
             Object.entries(formData).filter(([, v]) => v !== null && v !== '')
@@ -133,15 +140,10 @@ const Employees = ({
         });
     }, [formData]);
 
-    const handlePerPageChange = useCallback(
-        (e: React.ChangeEvent<HTMLSelectElement>) => {
-            const perPage = e.target.value;
-            setPerPage(parseInt(perPage));
-            setFormData((prev) => ({ ...prev, perPage }));
-            setShouldFilter(true);
-        },
-        [setPerPage]
-    );
+    const handlePerPageChange = useCallback((perPage: string) => {
+        setFormData((prev) => ({ ...prev, perPage }));
+        setShouldFilter(true);
+    }, []);
 
     useEffect(() => {
         if (shouldFilter) {
@@ -208,46 +210,62 @@ const Employees = ({
         document.body.removeChild(exportForm);
     };
 
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData((prev) => ({ ...prev, search: e.target.value }));
+        setShouldFilter(true);
+        handleFilter();
+    };
+
     return (
         <AppLayout>
-            <div>
-                <button
-                    onClick={showDrawer}
-                    className="text-black dark:text-white"
+            <div className="flex justify-start items-center gap-4">
+                <Button onClick={showDrawer} className="btn-primary">
+                    <Funnel />
+                    Filter
+                </Button>
+                <Button
+                    onClick={(e) => handleExport(e)}
+                    className="btn-primary"
                 >
-                    Open
-                </button>
-                <button
-                    onClick={handleExport}
-                    className="text-black dark:text-white"
-                >
-                    export
-                </button>
-                <div>
-                    <select
-                        name="pages"
-                        id="pages"
-                        value={perPage}
-                        onChange={handlePerPageChange}
-                    >
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select>
+                    <PiMicrosoftExcelLogoFill />
+                    Export
+                </Button>
+                <div className="flex gap-4">
+                    <div className="w-36">
+                        <Select
+                            items={[
+                                { id: '5', name: '5' },
+                                { id: '10', name: '10' },
+                                { id: '15', name: '15' },
+                                { id: '20', name: '20' },
+                                { id: '50', name: '50' },
+                                { id: '100', name: '100' },
+                            ]}
+                            checked={formData.perPage}
+                            onChange={handlePerPageChange}
+                            name="perPage"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="search"
+                            className="input"
+                            value={formData.search}
+                            onChange={handleSearch}
+                        />
+                    </div>
                 </div>
             </div>
-            <section className="min-w-full overflow-x-auto border-collapse whitespace-nowrap rounded-lg shadow-lg mt-5 max-h-11/12">
+            <section className=" overflow-x-auto border-collapse whitespace-nowrap rounded-lg shadow-lg mt-5 max-h-10/12">
                 {employees.data.length > 0 ? (
-                    <table className="p-2 table-auto border-collapse">
-                        <thead className="bg-gray-50 dark:bg-gray-800 dark:text-gray-100 border-b-2 border-gray-200 sticky top-0 left-0 rtl:left-auto rtl:right-0 z-10">
+                    <table className="p-2 table-auto border-collapse w-full">
+                        <thead className="border-b-2 sticky top-0 left-0 rtl:left-auto rtl:right-0 z-10">
                             <tr className="min-h-11">
-                                <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right sticky top-0 left-0 rtl:left-auto rtl:right-0 z-20 bg-gray-50 dark:bg-gray-800">
+                                <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right sticky top-0 left-0 rtl:left-auto rtl:right-0 z-20">
                                     #
                                 </th>
                                 {/* Set a fixed width for the employee column */}
-                                <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right sticky top-0 left-[70px] rtl:left-auto rtl:right-[70px] z-20 bg-gray-50 dark:bg-gray-800 w-64">
+                                <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right sticky top-0 left-[70px] rtl:left-auto rtl:right-[70px] z-20 w-64">
                                     {t('Employee')}
                                 </th>
                                 {colums.map((col) => (
@@ -264,21 +282,21 @@ const Employees = ({
                             {employees.data.map((employee, idx) => (
                                 <tr
                                     key={employee.id}
-                                    className={`group text-gray-700 dark:text-gray-200 p-2 ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} ${employee.is_active ? '' : 'text-red-500 dark:text-red-600'} sticky`}
+                                    className={`group p-2 ${idx % 2 === 0 ? ' ' : ''} ${employee.is_active ? '' : ''} sticky`}
                                 >
                                     <td
-                                        className={`group-hover:bg-gray-200 group-hover:dark:bg-gray-700 text-gray-700 dark:text-gray-200 p-2 ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} sticky left-0 rtl:left-auto rtl:right-0 z-30 `}
+                                        className={` p-2 ${idx % 2 === 0 ? ' ' : ''} sticky left-0 rtl:left-auto rtl:right-0 z-30 `}
                                     >
                                         <Link
                                             href={'#'}
-                                            className={` hover:underline font-bold ${employee.is_active ? 'text-blue-500' : 'text-red-500'}`}
+                                            className={` hover:underline font-bold ${employee.is_active ? '' : ''}`}
                                         >
                                             {employee.empid}
                                         </Link>
                                     </td>
                                     {/* Fixed width and proper text truncation */}
                                     <td
-                                        className={`p-2 text-sm sticky left-[70px] rtl:left-auto rtl:right-[70px] w-64 ${idx % 2 === 0 ? 'bg-gray-100 dark:bg-gray-800 ' : 'bg-white dark:bg-gray-900'} group-hover:bg-gray-200 group-hover:dark:bg-gray-700`}
+                                        className={`p-2 text-sm sticky left-[70px] rtl:left-auto rtl:right-[70px] w-64 ${idx % 2 === 0 ? '' : ''} `}
                                     >
                                         <div className="flex gap-2">
                                             <img
@@ -299,7 +317,7 @@ const Employees = ({
                                                     {employee.name_ar}
                                                     {copied ===
                                                         employee.name_ar && (
-                                                        <span className="absolute -top-3 left-full rtl:left-auto rtl:right-full text-xs text-green-600">
+                                                        <span className="absolute -top-3 left-full rtl:left-auto rtl:right-full text-xs">
                                                             {t('Copied')}!
                                                         </span>
                                                     )}
@@ -311,12 +329,11 @@ const Employees = ({
                                                             employee.name_en
                                                         )
                                                     }
-                                                    title={employee.name_en} // Show full name on hover
                                                 >
                                                     {employee.name_en}
                                                     {copied ===
                                                         employee.name_en && (
-                                                        <span className="absolute -top-3 left-full rtl:left-auto rtl:right-full text-xs text-green-600">
+                                                        <span className="absolute -top-3 left-full rtl:left-auto rtl:right-full text-xs">
                                                             {t('Copied')}!
                                                         </span>
                                                     )}
@@ -328,12 +345,11 @@ const Employees = ({
                                                         )
                                                     }
                                                     className="font-playfair text-sm text-muted relative cursor-pointer transition-colors duration-300 truncate text-left rtl:text-right"
-                                                    title={employee.email} // Show full email on hover
                                                 >
                                                     {employee.email}
                                                     {copied ===
                                                         employee.email && (
-                                                        <span className="absolute -top-3 left-full rtl:left-auto rtl:right-full text-xs text-green-600 rtl:font-fustat">
+                                                        <span className="absolute -top-3 left-full rtl:left-auto rtl:right-full text-xs rtl:font-fustat">
                                                             {t('Copied')}!
                                                         </span>
                                                     )}
@@ -341,13 +357,13 @@ const Employees = ({
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {employee.identification}
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {employee.nationality}
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {new Date(
                                             employee.date_of_birth
                                         ).toLocaleDateString(language, {
@@ -356,10 +372,10 @@ const Employees = ({
                                             day: '2-digit',
                                         })}
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {employee.sponsorship}
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {Array.isArray(employee.departments)
                                             ? employee.departments
                                                   .map(
@@ -371,7 +387,7 @@ const Employees = ({
                                                   .join(', ')
                                             : ''}
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {Array.isArray(employee.categories)
                                             ? employee.categories
                                                   .map(
@@ -383,7 +399,7 @@ const Employees = ({
                                                   .join(', ')
                                             : ''}
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {new Date(
                                             employee.joining_date
                                         ).toLocaleDateString(language, {
@@ -392,7 +408,7 @@ const Employees = ({
                                             day: '2-digit',
                                         })}
                                     </td>
-                                    <td className="px-4 group-hover:bg-gray-200 group-hover:dark:bg-gray-700">
+                                    <td className="px-4">
                                         {employee.resignation_date
                                             ? new Date(
                                                   employee.resignation_date
@@ -408,48 +424,12 @@ const Employees = ({
                         </tbody>
                     </table>
                 ) : (
-                    <div className="bg-pink-100 p-4">
+                    <div className="p-4">
                         There are not record matching this criteria
                     </div>
                 )}
             </section>
-            <div className="p-6 px-4 flex items-center justify-between text-gray-700 dark:text-gray-200">
-                <div>
-                    {employees.meta.links.map(
-                        (link: {
-                            url: string;
-                            label: string;
-                            active: boolean;
-                        }) =>
-                            link.url ? (
-                                <Link
-                                    key={link.label}
-                                    href={link.url}
-                                    dangerouslySetInnerHTML={{
-                                        __html: link.label,
-                                    }}
-                                    className={`p-1 mx-1 ${
-                                        link.active
-                                            ? 'text-blue-500 font-bold'
-                                            : ''
-                                    }`}
-                                />
-                            ) : (
-                                <span
-                                    key={link.label}
-                                    dangerouslySetInnerHTML={{
-                                        __html: link.label,
-                                    }}
-                                    className="p-1 mx-1 text-slate-300"
-                                ></span>
-                            )
-                    )}
-                </div>
-                <div>
-                    {t('Showing')} {employees.meta.from} {t('to')}{' '}
-                    {employees.meta.to} {t('of')} {employees.meta.total}
-                </div>
-            </div>
+            <Pagination {...employees.meta} />
 
             <Drawer
                 title={t('Employees Filter')}

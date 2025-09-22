@@ -8,7 +8,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final class IsHR
+final class IsHr
 {
     /**
      * Handle an incoming request.

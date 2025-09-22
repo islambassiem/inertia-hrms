@@ -18,6 +18,7 @@ final class EmployeeFilterDto
      * @param  array<string, mixed>  $qualifications
      */
     public function __construct(
+        public readonly ?string $search = null,
         public readonly ?array $gender = [],
         public readonly ?array $is_active = [],
         public readonly ?string $identification = null,

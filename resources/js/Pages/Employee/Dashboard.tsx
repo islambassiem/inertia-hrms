@@ -7,12 +7,7 @@ const Dashboard = () => {
     const [open, setOpen] = useState(false);
     return (
         <AppLayout>
-            <button
-                onClick={() => setOpen(true)}
-                className="text-gray-700 dark:text-gray-100"
-            >
-                {t('Logout')}
-            </button>
+            <button onClick={() => setOpen(true)}>{t('Logout')}</button>
             <Drawer
                 onClose={() => {
                     setOpen(false);
@@ -26,7 +21,7 @@ const Dashboard = () => {
                 width={500}
             >
                 <button
-                    className="bg-blue-400 p-2 border"
+                    className="p-2 border"
                     onClick={() => console.log('cliked')}
                 >
                     Click me

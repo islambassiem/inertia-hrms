@@ -26,6 +26,22 @@ final class EmployeeListQuery
             'extentions',
             'passport',
         ])
+            ->when(! empty($dto->search), function ($query) use ($dto) {
+                return $query->where(function ($query) use ($dto) {
+                    return $query->whereHas('nationalId', function ($query) use ($dto) {
+                        return $query->where('id_number', 'like', "%{$dto->search}%");
+                    })
+                        ->orWhere('first_name_en', 'like', "%{$dto->search}%")
+                        ->orWhere('middle_name_en', 'like', "%{$dto->search}%")
+                        ->orWhere('third_name_en', 'like', "%{$dto->search}%")
+                        ->orWhere('last_name_en', 'like', "%{$dto->search}%")
+                        ->orWhere('first_name_ar', 'like', "%{$dto->search}%")
+                        ->orWhere('middle_name_en', 'like', "%{$dto->search}%")
+                        ->orWhere('third_name_en', 'like', "%{$dto->search}%")
+                        ->orWhere('last_name_en', 'like', "%{$dto->search}%")
+                        ->orWhere('code', 'like', "%{$dto->search}%");
+                });
+            })
             ->when(! empty($dto->active_from) && ! empty($dto->active_to), function ($query) use ($dto) {
                 return $query->whereDate('joining_date', '<=', $dto->active_to)
                     ->where(function ($query) use ($dto) {

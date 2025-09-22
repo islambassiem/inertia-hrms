@@ -35,7 +35,7 @@ final class EmployeeController extends Controller
     public function index(EmployeeListQuery $query, Request $request): \Inertia\Response
     {
         $employees = $this->filter($query, $request)
-            ->paginate($request->input('perPage'))
+            ->paginate($request->input('perPage') ?? 10)
             ->withQueryString()
             ->onEachSide(1);
 
@@ -65,6 +65,7 @@ final class EmployeeController extends Controller
     {
         $builder = $query->handle(
             new EmployeeFilterDto(
+                $request->input('search'),
                 $request->input('gender', []),
                 $request->input('status', []),
                 $request->input('identificaiton'),
