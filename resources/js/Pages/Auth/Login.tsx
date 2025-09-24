@@ -35,9 +35,9 @@ const Login = () => {
 
     return (
         <AppLayout>
-            <section className="flex flex-col justify-center items-center max-w-md mx-auto p-10 shadow-lg bg-surface-subtle ">
+            <section className="flex flex-col justify-center items-center max-w-md mx-auto p-10 shadow-lg">
                 <img src={logo} alt="logo" className="size-32 mb-6" />
-                <h1 className="text-2xl text-primary mb-6">{t('Login')}</h1>
+                <h1 className="text-3xl font-semibold mb-6">{t('Login')}</h1>
 
                 {errors.empid && (
                     <p className="alert-error px-4 py-2 my-2 rounded-sm w-full">
@@ -79,18 +79,16 @@ const Login = () => {
                         className="btn-primary w-full mt-6"
                         disabled={processing}
                     >
-                        <VscSignIn className="rtl:rotate-180 text-bg" />
-                        <span className="text-bg">{t('Login')}</span>
+                        <VscSignIn className="rtl:rotate-180" />
+                        <span className="">{t('Login')}</span>
                     </Button>
                 </form>
                 <a
                     href="/"
-                    className="flex justify-center items-center gap-2 btn-secondary btn-primary p-4 w-full rounded-lg"
+                    className="flex justify-center items-center gap-2 btn-primary p-4 w-full rounded-lg"
                 >
-                    <FcGoogle className="text-2xl " />
-                    <span className="text-primary">
-                        {t('Login with Google')}
-                    </span>
+                    <FcGoogle className="text-2xl" />
+                    <span>{t('Login with Google')}</span>
                 </a>
             </section>
         </AppLayout>

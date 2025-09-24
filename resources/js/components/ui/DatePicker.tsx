@@ -235,17 +235,17 @@ const DatePicker: React.FC<CalendarProps> = ({
             w-10 h-10 rounded-lg text-sm font-medium transition-all duration-200
             ${
                 isDayDisabled || disabled
-                    ? 'text-gray-300 cursor-not-allowed'
-                    : 'hover:bg-blue-100 hover:text-primary hover:scale-105'
+                    ? 'text-ash-300 dark:text-ash-600 cursor-not-allowed'
+                    : 'hover:bg-primary-100 dark:hover:bg-primary-800 hover:text-primary-500 dark:hover:text-primary-400 hover:scale-105'
             }
             ${
                 isSelected
-                    ? 'bg-blue-500 text-white shadow-lg scale-105'
+                    ? 'bg-primary-500 text-ash-100 ring-2 ring-primary-200 shadow-lg scale-105'
                     : isToday && !isDayDisabled
-                      ? 'bg-blue-50 text-primary ring-2 ring-primary/20'
+                      ? 'bg-primary-200 dark:text-ash-600 ring-2 ring-primary-200 dark:ring-primary-700'
                       : !isDayDisabled && !disabled
-                        ? 'text-text hover:shadow-md'
-                        : 'text-gray-300'
+                        ? 'text-ash-800 dark:text-ash-100 hover:shadow-md'
+                        : 'text-ash-300'
             }
           `}
                 >
@@ -279,13 +279,13 @@ const DatePicker: React.FC<CalendarProps> = ({
                 onClick={() => !disabled && setIsOpen(!isOpen)}
                 disabled={disabled}
                 className={`
-                    flex items-center gap-3 px-4 py-3 bg-surface  border  border-border rounded-lg shadow-sm
-                    transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary
+                    flex items-center gap-3 px-4 py-3 border border-primary-300 rounded-lg shadow-sm
+                    transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500
                     focus:border-transparent w-full
                 ${
                     disabled
                         ? 'cursor-not-allowed opacity-50'
-                        : 'hover:border-primary hover:shadow-md'
+                        : 'hover:border-primary-500 hover:shadow-md'
                 }
             `}
             >
@@ -298,17 +298,17 @@ const DatePicker: React.FC<CalendarProps> = ({
             {/* Calendar Dropdown */}
             {isOpen && !disabled && (
                 <div
-                    className={`absolute top-full mt-2 bg-surface border border-border rounded-xl shadow-2xl z-50 p-6 min-w-[450px] ${position}`}
+                    className={`absolute top-full mt-2 surface border border-primary-300 rounded-xl shadow-2xl z-50 p-6 min-w-[450px] ${position}`}
                 >
                     {/* Header */}
                     <div className="flex items-center justify-between mb-6 ">
                         <button
                             onClick={handlePrevMonth}
-                            className="p-2 rounded-lg hover:bg-text-secondary/10 transition-colors duration-200"
+                            className="p-2 rounded-lg hover:bg-primary-500 hover:text-ash-300 transition-colors duration-200"
                             type="button"
                         >
                             <BsChevronLeft
-                                className={`w-5 h-5 text-muted ${language === 'ar' && 'rotate-180'}`}
+                                className={`w-5 h-5 ${language === 'ar' && 'rotate-180'}`}
                             />
                         </button>
 
@@ -322,13 +322,13 @@ const DatePicker: React.FC<CalendarProps> = ({
                                         parseInt(e.target.value, 10)
                                     )
                                 }
-                                className="text-lg font-semibold text-muted bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-primary/10 focus:bg-primary/10 rounded-md px-2 py-1 cursor-pointer hover:bg-primary-hover/30 transition-colors duration-200"
+                                className="text-lg font-semibold bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-md px-2 py-1 cursor-pointer transition-colors duration-200"
                             >
                                 {months.map((month: string, index: number) => (
                                     <option
                                         key={month}
                                         value={index}
-                                        className="text-base font-normal "
+                                        className="text-base font-normal"
                                     >
                                         {month}
                                     </option>
@@ -344,14 +344,14 @@ const DatePicker: React.FC<CalendarProps> = ({
                                     ) => setYearInput(e.target.value)}
                                     onBlur={handleYearSubmit}
                                     onKeyDown={handleYearKeyPress}
-                                    className="w-20 px-2 py-1 text-lg font-semibold text-center border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/30 hover:bg-primary-hover/30 transition-colors duration-200"
+                                    className="w-20 px-2 py-1 text-lg font-semibold text-center border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500/30 transition-colors duration-200"
                                     min="1900"
                                     max="2100"
                                 />
                             ) : (
                                 <button
                                     onClick={handleYearEdit}
-                                    className="text-lg font-semibold text-text hover:text-primary/30 hover:bg-primary-hover/30 px-2 py-1 rounded-md transition-colors duration-200"
+                                    className="text-lg font-semibold text-text hover:text-primary-500 px-2 py-1 rounded-md transition-colors duration-200"
                                     title="Click to edit year"
                                     type="button"
                                 >
@@ -362,7 +362,7 @@ const DatePicker: React.FC<CalendarProps> = ({
 
                         <button
                             onClick={handleNextMonth}
-                            className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                            className="p-2 rounded-lg hover:bg-primary-500 hover:text-ash-300 transition-colors duration-200"
                             type="button"
                         >
                             <BsChevronRight
@@ -376,7 +376,7 @@ const DatePicker: React.FC<CalendarProps> = ({
                         {weekdays.map((day: string) => (
                             <div
                                 key={day}
-                                className="text-center text-sm font-medium text-text py-2"
+                                className="text-center text-sm font-medium text-text py-2 "
                             >
                                 {day}
                             </div>
@@ -389,17 +389,17 @@ const DatePicker: React.FC<CalendarProps> = ({
                     </div>
 
                     {/* Footer */}
-                    <div className="flex justify-between items-center mt-4 pt-4 border-t border-border">
+                    <div className="flex justify-between items-center mt-4 pt-4 border-t ">
                         <button
                             onClick={handleTodayClick}
-                            className="text-sm text-primary hover:text-text hover:bg-primary-subtle px-3 py-1 rounded-md transition-colors duration-200"
+                            className="text-sm hover:bg-primary-500 hover:text-primary-200 px-3 py-1 rounded-md transition-colors duration-200"
                             type="button"
                         >
                             {t('Today')}
                         </button>
                         <button
                             onClick={handleClearClick}
-                            className="text-sm text-primary hover:text-text hover:bg-primary-subtle px-3 py-1 rounded-md transition-colors duration-200"
+                            className="text-sm hover:bg-danger-500 hover:text-danger-200 px-3 py-1 rounded-md transition-colors duration-200"
                             type="button"
                         >
                             {t('Clear')}

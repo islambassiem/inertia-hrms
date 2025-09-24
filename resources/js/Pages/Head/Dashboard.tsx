@@ -1,5 +1,10 @@
+import AppLayout from '@/Layouts/AppLayout';
 const Dashboard = () => {
-    return <div>Head</div>;
+    return (
+        <AppLayout>
+            <div>Head Dashboard</div>
+        </AppLayout>
+    );
 };
 
 export default Dashboard;

@@ -4,6 +4,7 @@ import { useClickOutSide } from '@/hooks/useClickOutside';
 import { useLanguage } from '@/hooks/useLanguage';
 import { ChevronDown } from 'lucide-react';
 import { memo, useRef } from 'react';
+import { IoMdCheckmark } from 'react-icons/io';
 
 interface LanguageProps {
     isActive: boolean;
@@ -27,7 +28,7 @@ const Language = ({ isActive, onShow }: LanguageProps) => {
         <div className="relative" ref={menuRef}>
             <button
                 onClick={() => onShow()}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium"
             >
                 <span className="hidden sm:inline">{currentLanguage.icon}</span>
                 <span className="hidden md:inline">
@@ -37,7 +38,7 @@ const Language = ({ isActive, onShow }: LanguageProps) => {
             </button>
 
             {isActive && (
-                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-800 ring-opacity-5 z-50">
+                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-48 rounded-md shadow-lg ring-opacity-5 z-50">
                     <div className="py-1">
                         {Object.entries(languages).map(([code, lang]) => (
                             <button
@@ -48,16 +49,14 @@ const Language = ({ isActive, onShow }: LanguageProps) => {
                                     }
                                     onShow();
                                 }}
-                                className={`w-full text-left px-4 py-2 text-sm flex items-center space-x-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
-                                    code === language
-                                        ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300'
-                                        : 'text-gray-700 dark:text-gray-200'
-                                }`}
+                                className={`font-fustat w-full text-left px-4 py-2 text-sm flex items-center space-x-3 bg`}
                             >
                                 <span className="text-lg">{lang.icon}</span>
                                 <span>{lang.label}</span>
                                 {code === language && (
-                                    <div className="ms-auto w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <div className="ms-auto">
+                                        <IoMdCheckmark className="text-primary-900 dark:text-primary-500" />
+                                    </div>
                                 )}
                             </button>
                         ))}

@@ -24,7 +24,6 @@ const Button = ({
             className={cn(
                 `flex items-center justify-center gap-2
                 py-2 px-4 rounded-lg
-                transition-colors duration-300
                 cursor-pointer
                 disabled:opacity-30 disabled:cursor-not-allowed`,
                 className

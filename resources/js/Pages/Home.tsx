@@ -22,7 +22,7 @@ const Home = () => {
                     />
                 </div>
 
-                <h1 className="text-3xl font-bold mb-5 mt-12 text-primary">
+                <h1 className="text-3xl font-bold mb-5 mt-12">
                     {t('Choose your account type')}
                 </h1>
 

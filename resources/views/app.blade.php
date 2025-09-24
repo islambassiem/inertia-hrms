@@ -20,17 +20,6 @@
         })();
     </script>
 
-    {{-- Inline style to set the HTML background color based on our theme in app.css --}}
-    <style>
-        html {
-            background-color: oklch(1 0 0);
-        }
-
-        html.dark {
-            background-color: oklch(0.145 0 0);
-        }
-    </style>
-
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -41,7 +30,7 @@
     @inertiaHead
 </head>
 
-<body class="font-playfair rtl:font-fustat antialiased text-gray-700 dark:text-gray-200 bg-gray-50 dark:bg-gray-900">
+<body class="font-playfair rtl:font-fustat antialiased surface text">
     @inertia
 </body>
 

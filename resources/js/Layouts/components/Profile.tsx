@@ -22,7 +22,7 @@ const Profile = ({ isActive, onShow }: ProfileProps) => {
         <div className="relative" ref={menuRef}>
             <button
                 onClick={() => onShow()}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
             >
                 <img
                     src={auth.data.image}
@@ -32,11 +32,11 @@ const Profile = ({ isActive, onShow }: ProfileProps) => {
             </button>
 
             {isActive && (
-                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-48 bg-gray-50 dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-800 ring-opacity-5 z-50">
+                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-48 rounded-md shadow-lg ring-opacity-5 z-50">
                     {auth && (
                         <Link
-                            href={'/profile'}
-                            className="flex items-center gap-4 flex-1 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer w-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                            href={'/dashboard'}
+                            className="flex items-center gap-4 flex-1 px-4 py-2 text-sm cursor-pointer w-full bg "
                         >
                             <FaUser />
                             {t('My Account')}
@@ -44,8 +44,8 @@ const Profile = ({ isActive, onShow }: ProfileProps) => {
                     )}
                     {auth.data.roles.includes('hr') && (
                         <Link
-                            href={'/profile'}
-                            className="flex items-center gap-4 flex-1 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer w-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                            href={'/hr/employees'}
+                            className="flex items-center gap-4 flex-1 px-4 py-2 text-sm cursor-pointer w-full bg"
                         >
                             <FaUsersCog />
                             {t('HR')}
@@ -53,8 +53,8 @@ const Profile = ({ isActive, onShow }: ProfileProps) => {
                     )}
                     {auth.data.roles.includes('head') && (
                         <Link
-                            href={'/profile'}
-                            className="flex items-center gap-4 flex-1 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer w-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                            href={'/head/dashboard'}
+                            className="flex items-center gap-4 flex-1 px-4 py-2 text-sm cursor-pointer w-full bg"
                         >
                             <FaUserTie />
                             {t('Depaertment Head')}
@@ -64,7 +64,7 @@ const Profile = ({ isActive, onShow }: ProfileProps) => {
                     <Link
                         href={destroy().url}
                         method="post"
-                        className="flex items-center gap-4 flex-1 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 cursor-pointer w-full hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="flex items-center gap-4 flex-1 px-4 py-2 text-sm cursor-pointer w-full bg"
                     >
                         <Power />
                         {t('Logout')}

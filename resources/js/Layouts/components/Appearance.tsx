@@ -3,6 +3,7 @@ import { useClickOutSide } from '@/hooks/useClickOutside';
 import { t } from 'i18next';
 import { ChevronDown, Monitor, Moon, Sun } from 'lucide-react';
 import { memo, useRef } from 'react';
+import { IoMdCheckmark } from 'react-icons/io';
 
 interface ApperanceProps {
     isActive: boolean;
@@ -32,7 +33,7 @@ const Appearance = ({ isActive, onShow }: ApperanceProps) => {
                 onClick={() => {
                     onShow();
                 }}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors "
+                className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors "
             >
                 <currentAppearance.icon className="h-4 w-4" />
                 <span className="hidden md:inline capitalize">
@@ -45,7 +46,7 @@ const Appearance = ({ isActive, onShow }: ApperanceProps) => {
             </button>
 
             {isActive && (
-                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-40 bg-gray-50 dark:bg-gray-800 rounded-md shadow-xl z-50">
+                <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-40 rounded-md shadow-xl z-50">
                     <div className="py-1">
                         {(
                             Object.entries(appearances) as [
@@ -61,16 +62,14 @@ const Appearance = ({ isActive, onShow }: ApperanceProps) => {
                                         updateAppearance(mode);
                                         onShow();
                                     }}
-                                    className={`w-full text-left px-4 py-2 text-sm flex items-center space-x-3 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
-                                        mode === appearance
-                                            ? 'bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300'
-                                            : 'text-gray-700 dark:text-gray-200'
-                                    }`}
+                                    className={`w-full text-left px-4 py-2 text-sm flex items-center space-x-3 bg`}
                                 >
                                     <IconComponent className="h-4 w-4" />
                                     <span>{t(config.label)}</span>
                                     {mode === appearance && (
-                                        <div className="ms-auto w-2 h-2 bg-blue-500 rounded-full"></div>
+                                        <div className="ms-auto">
+                                            <IoMdCheckmark className="text-primary-500" />
+                                        </div>
                                     )}
                                 </button>
                             );

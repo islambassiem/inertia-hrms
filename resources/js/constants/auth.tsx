@@ -8,7 +8,9 @@ const roles = {
         title: 'Employee Account',
         subtitle: 'Manage your account',
         href: '/dashboard',
-        icon: <FaUser className="text-2xl text-surface" />,
+        icon: (
+            <FaUser className="text-2xl text-primary-800 dark:text-primary-300" />
+        ),
         color: 'bg-primary',
     },
     hr: {
@@ -17,7 +19,9 @@ const roles = {
         title: 'Human Resources Account',
         subtitle: 'Manage all employees',
         href: index().url,
-        icon: <FaUsersCog className="text-2xl text-surface" />,
+        icon: (
+            <FaUsersCog className="text-2xl text-primary-800 dark:text-primary-300" />
+        ),
         color: 'bg-primary',
     },
     head: {
@@ -25,8 +29,10 @@ const roles = {
         role: 'head',
         title: 'Department Head Account',
         subtitle: 'Manage your department and subordinates',
-        href: '/head.dashboard',
-        icon: <FaUserTie className="text-2xl text-surface" />,
+        href: '/head/dashboard',
+        icon: (
+            <FaUserTie className="text-2xl text-primary-800 dark:text-primary-300" />
+        ),
         color: 'bg-primary',
     },
 };

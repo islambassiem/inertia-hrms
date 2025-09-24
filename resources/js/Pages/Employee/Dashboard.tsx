@@ -7,7 +7,9 @@ const Dashboard = () => {
     const [open, setOpen] = useState(false);
     return (
         <AppLayout>
-            <button onClick={() => setOpen(true)}>{t('Logout')}</button>
+            <button onClick={() => setOpen(true)}>
+                {t('Employee Dashboard')}
+            </button>
             <Drawer
                 onClose={() => {
                     setOpen(false);

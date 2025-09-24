@@ -14,7 +14,7 @@ type PaginationProps = {
 
 const Pagination = ({ links, from, to, total }: PaginationProps) => {
     return (
-        <div className="p-6 px-4 flex items-center justify-between text-gray-700 dark:text-gray-200">
+        <div className="p-6 px-4 flex items-center justify-between text-ash-700 dark:text-ash-200">
             <div>
                 {links.map((link, index) =>
                     link.url ? (
@@ -22,15 +22,15 @@ const Pagination = ({ links, from, to, total }: PaginationProps) => {
                             key={link.label}
                             href={link.url}
                             dangerouslySetInnerHTML={{ __html: link.label }}
-                            className={`p-1 mx-1 items-center ${
-                                link.active ? 'text-blue-500 font-bold' : ''
+                            className={`p-1 mx-1 items-center hover:text-primary-500 hover:font-bold hover:scale-110 ${
+                                link.active ? 'text-primary-500 font-bold' : ''
                             }`}
                         />
                     ) : (
                         <span
                             key={index}
                             dangerouslySetInnerHTML={{ __html: link.label }}
-                            className="p-1 mx-1 text-slate-300"
+                            className="p-1 mx-1 text-ash-300"
                         />
                     )
                 )}

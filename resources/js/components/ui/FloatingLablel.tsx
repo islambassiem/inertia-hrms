@@ -18,8 +18,8 @@ const FloatingLable = ({
                 type={type}
                 placeholder={placeholder}
                 autoComplete="off"
-                className="w-full peer placeholder-transparent text-primary placeholder:text-primary
-                py-1.5 border-b border-b-gray-600 dark:border-b-gray-200
+                className="w-full peer placeholder-transparent
+                py-1.5 border-b border-b-dark-600 dark:border-b-dark-200
                 focus:outline-none"
                 {...props}
             />
@@ -31,10 +31,10 @@ const FloatingLable = ({
                 peer-placeholder-shown:top-1.5
                 peer-placeholder-shown:text-base
                 peer-focus:text-sm
-                text-gray-600 dark:text-gray-300
-                peer-placeholder-shown:text-gray-400
-                peer-placeholder-shown:dark:text-gray-200
-                peer-focus:text-text-muted
+                text-dark-600 dark:text-dark-300
+                peer-placeholder-shown:text-dark-500
+                peer-placeholder-shown:dark:text-dark-400
+
             "
             >
                 {placeholder}

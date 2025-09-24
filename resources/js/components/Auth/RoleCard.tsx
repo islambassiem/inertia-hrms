@@ -7,7 +7,7 @@ const RoleCard = ({ card }: CardProps) => {
         <Link
             key={card.key}
             href={card.href}
-            className="card hover-surface  block rounded-xl group shadow-2xl transition p-6"
+            className="group block rounded-xl shadow-2xl transition p-6 bg"
         >
             <div className="flex items-center gap-4">
                 <div
@@ -16,12 +16,8 @@ const RoleCard = ({ card }: CardProps) => {
                     {card.icon}
                 </div>
                 <div className="flex flex-col items-start">
-                    <h2 className="font-semibold text-primary">
-                        {t(card.title)}
-                    </h2>
-                    <p className="text-sm text-primary group-hover:text-primary">
-                        {t(card.subtitle)}
-                    </p>
+                    <h2 className="font-semibold">{t(card.title)}</h2>
+                    <p className="text-sm">{t(card.subtitle)}</p>
                 </div>
             </div>
         </Link>
