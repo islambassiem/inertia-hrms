@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class DepartmentHierarchy extends Model
 {
@@ -21,4 +22,12 @@ final class DepartmentHierarchy extends Model
         'created_by',
         'updated_by',
     ];
+
+    /**
+     * @return BelongsTo<Institution, $this>
+     */
+    public function entity(): BelongsTo
+    {
+        return $this->belongsTo(Institution::class, 'entity_id');
+    }
 }

@@ -43,5 +43,10 @@
     "Showing": "عرض",
     "to": "إلى",
     "of": "من",
+    "Filter": "تصفية",
+    "Export": "تصدير",
+    "There are not record matching this criteria": "لا يوجد سجلات تطابق هذه المعايير",
+    "Institution": "المؤسسة",
+    "College": "الكلية",
     "Logout": "تسجيل الخروج"
 }

@@ -25,6 +25,8 @@ const Employees = ({
     genders,
     status,
     qualifications,
+    institutions,
+    colleges,
 }: EmployeeListProps) => {
     const [formData, setFormData] = useState({
         page: getArrayParam('page') ?? ['1'],
@@ -35,6 +37,8 @@ const Employees = ({
         countries: getArrayParam('countries'),
         sponsorships: getArrayParam('sponsorships'),
         qualifications: getArrayParam('qualifications'),
+        institutions: getArrayParam('institutions'),
+        colleges: getArrayParam('colleges'),
         perPage: getStringParam('perPage') ? getStringParam('perPage') : '10',
         search: getStringParam('search') ?? '',
         active_from: getStringParam('active_from') ?? null,
@@ -44,7 +48,7 @@ const Employees = ({
         resignation_date_from: getStringParam('resignation_date_from') ?? null,
         resignation_date_to: getStringParam('resignation_date_to') ?? null,
     });
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const { language } = useLanguage();
     const [copied, setCopies] = useState('');
     const formRef = useRef(null);
@@ -65,6 +69,8 @@ const Employees = ({
             countries: [],
             sponsorships: [],
             qualifications: [],
+            institutions: [],
+            colleges: [],
             perPage: '5',
             search: '',
             active_from: '',
@@ -126,6 +132,17 @@ const Employees = ({
     const handleSponsorshipsChange = useCallback(
         (sponsorships: string[]) =>
             setFormData((prev) => ({ ...prev, sponsorships })),
+        []
+    );
+
+    const handleInstitutionsChange = useCallback(
+        (institutions: string[]) =>
+            setFormData((prev) => ({ ...prev, institutions })),
+        []
+    );
+
+    const handleCollegesChange = useCallback(
+        (colleges: string[]) => setFormData((prev) => ({ ...prev, colleges })),
         []
     );
 
@@ -216,20 +233,21 @@ const Employees = ({
         setShouldFilter(true);
         handleFilter();
     };
+    console.log(sponsorships);
 
     return (
         <AppLayout>
             <div className="flex justify-start items-center gap-4">
                 <Button onClick={showDrawer} className="btn-primary">
                     <Funnel />
-                    Filter
+                    {t('Filter')}
                 </Button>
                 <Button
                     onClick={(e) => handleExport(e)}
                     className="btn-primary"
                 >
                     <PiMicrosoftExcelLogoFill />
-                    Export
+                    {t('Export')}
                 </Button>
                 <div className="flex gap-4">
                     <div className="w-36">
@@ -426,8 +444,8 @@ const Employees = ({
                         </tbody>
                     </table>
                 ) : (
-                    <div className="p-4">
-                        There are not record matching this criteria
+                    <div className="p-4 flex justify-center items-center alert-error">
+                        {t('There are not record matching this criteria')}
                     </div>
                 )}
             </section>
@@ -566,18 +584,18 @@ const Employees = ({
                         </div>
                     </section>
 
-                    {/* Nationality and Gender */}
+                    {/* Status and Gender */}
                     <section className="grid grid-cols-2 gap-4 mb-4">
                         <div className="flex-1 flex flex-col">
-                            <div>
+                            <div className="flex-1 flex flex-col">
                                 <h3 className="font-bold mb-2">
-                                    {t('Nationality')}
+                                    {t('Job Status')}
                                 </h3>
                                 <MultiSelect
-                                    items={countries.data}
-                                    selected={formData.countries}
-                                    name="countries"
-                                    onChange={handleCountriesChange}
+                                    items={status.data}
+                                    name="status"
+                                    selected={formData.status}
+                                    onChange={handleStatusChange}
                                     direction="start"
                                 />
                             </div>
@@ -594,17 +612,45 @@ const Employees = ({
                         </div>
                     </section>
 
-                    {/* Status and Sponsprship */}
+                    {/* Institution and College */}
                     <section className="grid grid-cols-2 gap-4 mb-4">
                         <div className="flex-1 flex flex-col">
+                            <div className="flex-1 flex flex-col">
+                                <h3 className="font-bold mb-2">
+                                    {t('Institution')}
+                                </h3>
+                                <MultiSelect
+                                    items={institutions.data}
+                                    name="institution"
+                                    selected={formData.institutions}
+                                    onChange={handleInstitutionsChange}
+                                    direction="start"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex-1 flex flex-col">
+                            <h3 className="font-bold mb-2">{t('College')}</h3>
+                            <MultiSelect
+                                items={colleges.data}
+                                name="college"
+                                selected={formData.colleges}
+                                onChange={handleCollegesChange}
+                                direction="end"
+                            />
+                        </div>
+                    </section>
+
+                    {/* Nationality and Sponsprship */}
+                    <section className="grid grid-cols-2 gap-4 mb-4">
+                        <div>
                             <h3 className="font-bold mb-2">
-                                {t('Job Status')}
+                                {t('Nationality')}
                             </h3>
                             <MultiSelect
-                                items={status.data}
-                                name="status"
-                                selected={formData.status}
-                                onChange={handleStatusChange}
+                                items={countries.data}
+                                selected={formData.countries}
+                                name="countries"
+                                onChange={handleCountriesChange}
                                 direction="start"
                             />
                         </div>

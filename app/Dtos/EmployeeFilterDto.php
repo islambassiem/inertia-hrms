@@ -16,6 +16,8 @@ final class EmployeeFilterDto
      * @param  array<string, mixed>  $countries
      * @param  array<string, mixed>  $sponsorships
      * @param  array<string, mixed>  $qualifications
+     * @param  array<string, mixed>  $institutions
+     * @param  array<string, mixed>  $colleges
      */
     public function __construct(
         public readonly ?string $search = null,
@@ -28,6 +30,8 @@ final class EmployeeFilterDto
         public readonly ?array $countries = [],
         public readonly ?array $sponsorships = [],
         public readonly ?array $qualifications = [],
+        public readonly ?array $institutions = [],
+        public readonly ?array $colleges = [],
         public readonly ?string $active_from = null,
         public readonly ?string $active_to = null,
         public readonly ?string $joining_date_from = null,
