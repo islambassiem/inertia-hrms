@@ -15,8 +15,8 @@ use App\Http\Resources\CollegeListResource;
 use App\Http\Resources\CountryListResource;
 use App\Http\Resources\DepartmentListResource;
 use App\Http\Resources\EmployeeResource;
+use App\Http\Resources\EntityListResource;
 use App\Http\Resources\GenderListResource;
-use App\Http\Resources\InstitutionListResource;
 use App\Http\Resources\JobStatusListResource;
 use App\Http\Resources\QualificationListResource;
 use App\Http\Resources\SponsorshipListResource;
@@ -25,7 +25,7 @@ use App\Models\College;
 use App\Models\Country;
 use App\Models\Department;
 use App\Models\Employee;
-use App\Models\Institution;
+use App\Models\Entity;
 use App\Models\Sponsorship;
 use App\Queries\Hr\EmployeeListQuery;
 use Illuminate\Database\Eloquent\Builder;
@@ -52,7 +52,7 @@ final class EmployeeController extends Controller
             'countries' => CountryListResource::collection(Country::all()),
             'sponsorships' => SponsorshipListResource::collection(Sponsorship::all()),
             'qualifications' => QualificationListResource::collection(Qualification::cases()),
-            'institutions' => InstitutionListResource::collection(Institution::all()),
+            'entities' => EntityListResource::collection(Entity::all()),
             'colleges' => CollegeListResource::collection(College::all()),
         ]);
     }
@@ -81,7 +81,7 @@ final class EmployeeController extends Controller
                 $request->input('countries', []),
                 $request->input('sponsorships', []),
                 $request->input('qualifications', []),
-                $request->input('institutions', []),
+                $request->input('entities', []),
                 $request->input('colleges', []),
                 $request->input('active_from'),
                 $request->input('active_to'),

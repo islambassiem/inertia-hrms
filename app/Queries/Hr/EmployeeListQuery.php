@@ -93,6 +93,22 @@ final class EmployeeListQuery
                 return $query->whereHas('qualification', function ($query) use ($dto) {
                     return $query->whereIn('qualifications.qualification', $dto->qualifications);
                 });
+            })
+            ->when(! empty($dto->entities), function ($query) use ($dto) {
+                return $query->whereIn('id', function ($query) use ($dto) {
+                    $query->select('employee_id')
+                        ->from('department_employee')
+                        ->join('department_hierarchies', 'department_employee.department_id', '=', 'department_hierarchies.department_id')
+                        ->whereIn('department_hierarchies.entity_id', $dto->entities);
+                });
+            })
+            ->when(! empty($dto->colleges), function ($query) use ($dto) {
+                return $query->whereIn('id', function ($query) use ($dto) {
+                    $query->select('employee_id')
+                        ->from('department_employee')
+                        ->join('department_hierarchies', 'department_employee.department_id', '=', 'department_hierarchies.department_id')
+                        ->whereIn('department_hierarchies.college_id', $dto->colleges);
+                });
             });
     }
 }

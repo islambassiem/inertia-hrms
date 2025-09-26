@@ -25,7 +25,7 @@ const Employees = ({
     genders,
     status,
     qualifications,
-    institutions,
+    entities,
     colleges,
 }: EmployeeListProps) => {
     const [formData, setFormData] = useState({
@@ -37,7 +37,7 @@ const Employees = ({
         countries: getArrayParam('countries'),
         sponsorships: getArrayParam('sponsorships'),
         qualifications: getArrayParam('qualifications'),
-        institutions: getArrayParam('institutions'),
+        entities: getArrayParam('entities'),
         colleges: getArrayParam('colleges'),
         perPage: getStringParam('perPage') ? getStringParam('perPage') : '10',
         search: getStringParam('search') ?? '',
@@ -48,7 +48,7 @@ const Employees = ({
         resignation_date_from: getStringParam('resignation_date_from') ?? null,
         resignation_date_to: getStringParam('resignation_date_to') ?? null,
     });
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const { language } = useLanguage();
     const [copied, setCopies] = useState('');
     const formRef = useRef(null);
@@ -69,7 +69,7 @@ const Employees = ({
             countries: [],
             sponsorships: [],
             qualifications: [],
-            institutions: [],
+            entities: [],
             colleges: [],
             perPage: '5',
             search: '',
@@ -135,9 +135,8 @@ const Employees = ({
         []
     );
 
-    const handleInstitutionsChange = useCallback(
-        (institutions: string[]) =>
-            setFormData((prev) => ({ ...prev, institutions })),
+    const handleEntitiesChange = useCallback(
+        (entities: string[]) => setFormData((prev) => ({ ...prev, entities })),
         []
     );
 
@@ -233,7 +232,6 @@ const Employees = ({
         setShouldFilter(true);
         handleFilter();
     };
-    console.log(sponsorships);
 
     return (
         <AppLayout>
@@ -620,10 +618,10 @@ const Employees = ({
                                     {t('Institution')}
                                 </h3>
                                 <MultiSelect
-                                    items={institutions.data}
-                                    name="institution"
-                                    selected={formData.institutions}
-                                    onChange={handleInstitutionsChange}
+                                    items={entities.data}
+                                    name="entities"
+                                    selected={formData.entities}
+                                    onChange={handleEntitiesChange}
                                     direction="start"
                                 />
                             </div>

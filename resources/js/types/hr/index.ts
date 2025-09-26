@@ -47,6 +47,6 @@ export interface EmployeeListProps {
     countries: ResourceList;
     sponsorships: ResourceList;
     qualifications: ResourceList;
-    institutions: ResourceList;
+    entities: ResourceList;
     colleges: ResourceList;
 }
