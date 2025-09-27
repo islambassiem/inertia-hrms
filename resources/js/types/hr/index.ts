@@ -25,7 +25,7 @@ export interface Employee {
     qualification: Resource;
 }
 
-interface ResourceList {
+export interface ResourceList {
     data: Resource[];
 }
 
@@ -49,4 +49,36 @@ export interface EmployeeListProps {
     qualifications: ResourceList;
     entities: ResourceList;
     colleges: ResourceList;
+}
+
+export interface FormDataProps {
+    page: string[];
+    gender: string[];
+    status: string[];
+    departments: string[];
+    categories: string[];
+    countries: string[];
+    sponsorships: string[];
+    qualifications: string[];
+    entities: string[];
+    colleges: string[];
+    perPage: string;
+    search: string;
+    active_from: string;
+    active_to: string;
+    joining_date_from: string;
+    joining_date_to: string;
+    resignation_date_from: string;
+    resignation_date_to: string;
+}
+
+export interface HeaderProps {
+    handleFilter: () => void;
+    // eslint-disable-next-line no-unused-vars
+    handleExport: (e: any) => void;
+    formData: FormDataProps;
+    // eslint-disable-next-line no-unused-vars
+    handlePerPageChange: (perPage: string) => void;
+    // eslint-disable-next-line no-unused-vars
+    handleSearch: (e: any) => void;
 }
