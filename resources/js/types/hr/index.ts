@@ -81,4 +81,5 @@ export interface HeaderProps {
     handlePerPageChange: (perPage: string) => void;
     // eslint-disable-next-line no-unused-vars
     handleSearch: (e: any) => void;
+    searchInput: string;
 }

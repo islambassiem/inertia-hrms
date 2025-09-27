@@ -11,6 +11,7 @@ const Header = ({
     formData,
     handlePerPageChange,
     handleSearch,
+    searchInput,
 }: HeaderProps) => {
     return (
         <>
@@ -46,7 +47,7 @@ const Header = ({
                         <input
                             type="search"
                             className="input"
-                            value={formData.search}
+                            value={searchInput}
                             onChange={handleSearch}
                         />
                     </div>

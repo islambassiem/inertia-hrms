@@ -10,6 +10,7 @@ import Pagination from '@/components/ui/Pagination';
 import EmployeesTable from '../../components/Hr/EmployeesList/EmployeesTable';
 import Header from '@/components/Hr/EmployeesList/Header';
 import EmployeeFiltersDrawer from '@/components/Hr/EmployeesList/EmployeeFiltersDrawer';
+import useDebouncedValue from '@/hooks/useDebouncValue';
 
 const Employees = ({
     employees,
@@ -45,6 +46,9 @@ const Employees = ({
     });
     const [open, setOpen] = useState(false);
     const [shouldFilter, setShouldFilter] = useState(false);
+    const [searchInput, setSearchInput] = useState(formData.search);
+
+    const debouncedSearch = useDebouncedValue(searchInput, 500);
     const defaultFormData: FormDataProps = {
         page: [],
         gender: [],
@@ -102,13 +106,11 @@ const Employees = ({
             handleFilter();
             setShouldFilter(false);
         }
-    }, [formData, handleFilter, shouldFilter]);
-
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev) => ({ ...prev, search: e.target.value }));
-        setShouldFilter(true);
-        handleFilter();
-    };
+        if (debouncedSearch !== formData.search) {
+            setFormData((prev) => ({ ...prev, search: debouncedSearch }));
+            setShouldFilter(true);
+        }
+    }, [formData, handleFilter, shouldFilter, debouncedSearch]);
 
     return (
         <AppLayout>
@@ -118,8 +120,9 @@ const Employees = ({
                     handleExport(e, exportMethod().url, formData)
                 }
                 formData={formData}
-                handleSearch={handleSearch}
+                handleSearch={(e) => setSearchInput(e.target.value)}
                 handlePerPageChange={handlePerPageChange}
+                searchInput={searchInput}
             />
             <EmployeesTable employees={employees} />
             <Pagination {...employees.meta} />
