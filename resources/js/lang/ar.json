@@ -48,5 +48,8 @@
     "There are not record matching this criteria": "لا يوجد سجلات تطابق هذه المعايير",
     "Institution": "المؤسسة",
     "College": "الكلية",
+    "Name, ID, Email": "الاسم, الرقم, البريد الالكتروني",
+    "Display": "عرض",
+    "employee per page": "موظف بالصفحة",
     "Logout": "تسجيل الخروج"
 }

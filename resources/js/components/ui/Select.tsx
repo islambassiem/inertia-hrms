@@ -116,7 +116,7 @@ const Select = ({
                                     <li key={idStr}>
                                         <label
                                             htmlFor={inputId}
-                                            className="flex items-center gap-2 px-3 py-2 cursor-pointer hover:bg-primary-500 text-sm"
+                                            className="flex items-center gap-2 px-3 py-2 cursor-pointer text-ash-800 dark:text-ash-100 hover:bg-primary-500 hover:text-ash-100 text-sm"
                                         >
                                             <input
                                                 id={inputId}
@@ -127,7 +127,7 @@ const Select = ({
                                                 onChange={() =>
                                                     handleCheck(idStr)
                                                 }
-                                                className="accent-primary-500"
+                                                className="accent-primary-500 "
                                             />
                                             {item.name}
                                         </label>
