@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 export type Appearance = 'light' | 'dark' | 'system';
+export type Theme = 'light' | 'dark';
 const prefersDark = () => {
     if (typeof window === 'undefined') {
         return false;
@@ -16,6 +17,13 @@ const setCookie = (name: string, value: string, days = 365) => {
 
     const maxAge = days * 24 * 60 * 60;
     document.cookie = `${name}=${value};path=/;max-age=${maxAge};SameSite=Lax`;
+};
+
+const getTheme = (appearance: Appearance): Theme => {
+    if (appearance === 'system') {
+        return prefersDark() ? 'dark' : 'light';
+    }
+    return appearance;
 };
 
 const applyTheme = (appearance: Appearance) => {
@@ -50,10 +58,12 @@ export function initializeTheme() {
 
 export function useAppearance() {
     const [appearance, setAppearance] = useState<Appearance>('system');
+    const [theme, setTheme] = useState<Theme>('dark');
 
     const updateAppearance = useCallback((mode: Appearance) => {
         setAppearance(mode);
 
+        setTheme(getTheme(mode));
         // Store in localStorage for client-side persistence...
         localStorage.setItem('appearance', mode);
 
@@ -69,12 +79,20 @@ export function useAppearance() {
         ) as Appearance | null;
         updateAppearance(savedAppearance || 'system');
 
+        const handleChange = () => {
+            if (appearance === 'system') {
+                setTheme(getTheme('system'));
+            }
+        };
+
+        mediaQuery()?.addEventListener('change', handleChange);
+
         return () =>
             mediaQuery()?.removeEventListener(
                 'change',
                 handleSystemThemeChange
             );
-    }, [updateAppearance]);
+    }, [appearance, updateAppearance]);
 
-    return { appearance, updateAppearance } as const;
+    return { appearance, theme, updateAppearance } as const;
 }
