@@ -1,9 +1,10 @@
-import DatePicker from '@/components/ui/DatePicker';
+// import DatePicker from '@/components/ui/DatePicker';
 import Drawer from '@/components/ui/Drawer';
 import MultiSelect from '@/components/ui/MultiSelect';
 import { FormDataProps, ResourceList } from '@/types/hr';
 import { t } from 'i18next';
-import React, { useRef } from 'react';
+import React, { memo, useCallback, useMemo, useRef } from 'react';
+import DateRangeSection from './DateRangeSection';
 
 interface EmployeeFilterProps {
     onClose: () => void;
@@ -23,8 +24,7 @@ interface EmployeeFilterProps {
     entities: ResourceList;
     colleges: ResourceList;
 }
-
-const EmployeeFiltersDrawer = ({
+const EmployeeFiltersDrawer = memo(function EmployeeDrawer({
     open,
     onClose,
     onAction,
@@ -40,8 +40,32 @@ const EmployeeFiltersDrawer = ({
     qualifications,
     entities,
     colleges,
-}: EmployeeFilterProps) => {
+}: EmployeeFilterProps) {
     const formRef = useRef<HTMLFormElement>(null);
+    const createDateHandler = useCallback(
+        (field: string) => {
+            return (date: Date | null) => {
+                setFormData((prev) => ({
+                    ...prev,
+                    [field]: date ? date.toISOString().slice(0, 10) : '',
+                }));
+            };
+        },
+        [setFormData]
+    );
+
+    const dateHandlers = useMemo(
+        () => ({
+            active_from: createDateHandler('active_from'),
+            active_to: createDateHandler('active_to'),
+            joining_date_from: createDateHandler('joining_date_from'),
+            joining_date_to: createDateHandler('joining_date_to'),
+            resignation_date_from: createDateHandler('resignation_date_from'),
+            resignation_date_to: createDateHandler('resignation_date_to'),
+        }),
+        [createDateHandler]
+    );
+
     return (
         <>
             <Drawer
@@ -52,130 +76,29 @@ const EmployeeFiltersDrawer = ({
                 width={500}
             >
                 <form ref={formRef}>
-                    {/* Active */}
-                    <section className="mb-4">
-                        <p className="mb-2 text-lg">{t('Active Period')}</p>
-                        <div className="grid grid-cols-2 gap-4">
-                            <DatePicker
-                                selectedDate={
-                                    formData.active_from
-                                        ? new Date(formData.active_from)
-                                        : null
-                                }
-                                onDateSelect={(date) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        active_from: date
-                                            ? date.toISOString().slice(0, 10)
-                                            : '',
-                                    }))
-                                }
-                                placeholder={t('From')}
-                                direction="start"
-                            />
-                            <DatePicker
-                                selectedDate={
-                                    formData.active_to
-                                        ? new Date(formData.active_to)
-                                        : null
-                                }
-                                onDateSelect={(date) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        active_to: date
-                                            ? date.toISOString().slice(0, 10)
-                                            : '',
-                                    }))
-                                }
-                                placeholder={t('To')}
-                                direction="end"
-                            />
-                        </div>
-                    </section>
+                    <DateRangeSection
+                        title="Active Period"
+                        fromValue={formData.active_from}
+                        toValue={formData.active_to}
+                        onFromChange={dateHandlers.active_from}
+                        onToChange={dateHandlers.active_to}
+                    />
 
-                    {/* Joining Date */}
-                    <section className="mb-4">
-                        <p className="mb-2 text-lg">{t('Joining Date')}</p>
-                        <div className="grid grid-cols-2 gap-4">
-                            <DatePicker
-                                selectedDate={
-                                    formData.joining_date_from
-                                        ? new Date(formData.joining_date_from)
-                                        : null
-                                }
-                                onDateSelect={(date) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        joining_date_from: date
-                                            ? date.toISOString().slice(0, 10)
-                                            : '',
-                                    }))
-                                }
-                                placeholder={t('From')}
-                                direction="start"
-                            />
-                            <DatePicker
-                                selectedDate={
-                                    formData.joining_date_to
-                                        ? new Date(formData.joining_date_to)
-                                        : null
-                                }
-                                onDateSelect={(date) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        joining_date_to: date
-                                            ? date.toISOString().slice(0, 10)
-                                            : '',
-                                    }))
-                                }
-                                placeholder={t('To')}
-                                direction="end"
-                            />
-                        </div>
-                    </section>
+                    <DateRangeSection
+                        title="Joining Date"
+                        fromValue={formData.joining_date_from}
+                        toValue={formData.joining_date_to}
+                        onFromChange={dateHandlers.joining_date_from}
+                        onToChange={dateHandlers.joining_date_to}
+                    />
 
-                    {/* Resignation Date */}
-                    <section className="mb-4">
-                        <p className="mb-2 text-lg">{t('Resignation Date')}</p>
-                        <div className="grid grid-cols-2 gap-4">
-                            <DatePicker
-                                selectedDate={
-                                    formData.resignation_date_from
-                                        ? new Date(
-                                              formData.resignation_date_from
-                                          )
-                                        : null
-                                }
-                                onDateSelect={(date) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        resignation_date_from: date
-                                            ? date.toISOString().slice(0, 10)
-                                            : '',
-                                    }))
-                                }
-                                placeholder={t('From')}
-                                direction="start"
-                            />
-                            <DatePicker
-                                selectedDate={
-                                    formData.resignation_date_to
-                                        ? new Date(formData.resignation_date_to)
-                                        : null
-                                }
-                                onDateSelect={(date) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        resignation_date_to: date
-                                            ? date.toISOString().slice(0, 10)
-                                            : '',
-                                    }))
-                                }
-                                placeholder={t('To')}
-                                direction="end"
-                            />
-                        </div>
-                    </section>
+                    <DateRangeSection
+                        title="Resignation Date"
+                        fromValue={formData.resignation_date_from}
+                        toValue={formData.resignation_date_to}
+                        onFromChange={dateHandlers.resignation_date_from}
+                        onToChange={dateHandlers.resignation_date_to}
+                    />
 
                     {/* Status and Gender */}
                     <section className="grid grid-cols-2 gap-4 mb-4">
@@ -272,6 +195,6 @@ const EmployeeFiltersDrawer = ({
             </Drawer>
         </>
     );
-};
+});
 
 export default EmployeeFiltersDrawer;

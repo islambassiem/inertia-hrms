@@ -19,7 +19,7 @@ const Pagination = ({ links, from, to, total }: PaginationProps) => {
                 {links.map((link, index) =>
                     link.url ? (
                         <Link
-                            key={link.label}
+                            key={`${link.url}-${index}`}
                             href={link.url}
                             dangerouslySetInnerHTML={{ __html: link.label }}
                             className={`p-1 mx-1 items-center hover:text-primary-500 hover:font-bold hover:scale-110 ${

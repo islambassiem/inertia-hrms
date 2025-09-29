@@ -19,3 +19,21 @@ export function getStringParam(name: string): string {
     const params = new URLSearchParams(window.location.search);
     return params.get(name) ?? '';
 }
+
+export function dateFormatter(
+    date: string | Date | null | undefined,
+    language: string,
+    fallback = '-'
+): string {
+    if (!date) return fallback;
+
+    const d = typeof date === 'string' ? new Date(date) : date;
+
+    if (isNaN(d.getTime())) return fallback;
+
+    return d.toLocaleDateString(language, {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+    });
+}

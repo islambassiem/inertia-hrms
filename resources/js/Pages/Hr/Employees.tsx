@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import AppLayout from '@/Layouts/AppLayout';
 import { getArrayParam, getStringParam } from '@/lib/utils';
 import { EmployeeListProps, FormDataProps } from '@/types/hr';
@@ -24,6 +24,30 @@ const Employees = ({
     entities,
     colleges,
 }: EmployeeListProps) => {
+    const defaultFormData: FormDataProps = useMemo(
+        () => ({
+            page: [],
+            gender: [],
+            status: [],
+            departments: [],
+            categories: [],
+            countries: [],
+            sponsorships: [],
+            qualifications: [],
+            entities: [],
+            colleges: [],
+            perPage: '10',
+            search: '',
+            active_from: '',
+            active_to: '',
+            joining_date_from: '',
+            joining_date_to: '',
+            resignation_date_from: '',
+            resignation_date_to: '',
+        }),
+        []
+    );
+
     const [formData, setFormData] = useState<FormDataProps>({
         page: getArrayParam('page'),
         gender: getArrayParam('gender'),
@@ -44,45 +68,12 @@ const Employees = ({
         resignation_date_from: getStringParam('resignation_date_from') ?? null,
         resignation_date_to: getStringParam('resignation_date_to') ?? null,
     });
+
     const [open, setOpen] = useState(false);
     const [shouldFilter, setShouldFilter] = useState(false);
     const [searchInput, setSearchInput] = useState(formData.search);
 
     const debouncedSearch = useDebouncedValue(searchInput, 500);
-    const defaultFormData: FormDataProps = {
-        page: [],
-        gender: [],
-        status: [],
-        departments: [],
-        categories: [],
-        countries: [],
-        sponsorships: [],
-        qualifications: [],
-        entities: [],
-        colleges: [],
-        perPage: '10',
-        search: '',
-        active_from: '',
-        active_to: '',
-        joining_date_from: '',
-        joining_date_to: '',
-        resignation_date_from: '',
-        resignation_date_to: '',
-    };
-    const onClose = () => {
-        setShouldFilter(true);
-        setFormData(defaultFormData);
-        setOpen(false);
-    };
-
-    const onAction = () => {
-        handleFilter();
-        setOpen(false);
-    };
-
-    const updateFilter = (field: string, value: string[]) => {
-        setFormData((prev) => ({ ...prev, [field]: value }));
-    };
 
     const handleFilter = useCallback(() => {
         const cleanFormData = Object.fromEntries(
@@ -96,53 +87,106 @@ const Employees = ({
         });
     }, [formData]);
 
-    const handlePerPageChange = useCallback((perPage: string) => {
+    const handleFilterClick = useCallback(() => {
+        setOpen(true);
+    }, []);
+
+    const handleExportClick = useCallback(
+        (e: React.FormEvent<HTMLFormElement>) =>
+            handleExport(e, exportMethod().url, formData),
+        [formData]
+    );
+
+    const handleSearchChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            setSearchInput(e.target.value);
+        },
+        []
+    );
+
+    const handlePerPageChangeCallback = useCallback((perPage: string) => {
         setFormData((prev) => ({ ...prev, perPage }));
         setShouldFilter(true);
     }, []);
+
+    const updateFilter = useCallback((field: string, value: string[]) => {
+        setFormData((prev) => ({ ...prev, [field]: value }));
+    }, []);
+
+    const onClose = useCallback(() => {
+        setShouldFilter(true);
+        setFormData(defaultFormData);
+        setOpen(false);
+    }, [defaultFormData]);
+
+    const onAction = useCallback(() => {
+        handleFilter();
+        setOpen(false);
+    }, [handleFilter]);
+
+    const drawerProps = useMemo(
+        () => ({
+            open,
+            onClose,
+            onAction,
+            updateFilter,
+            setFormData,
+            formData,
+            status,
+            genders,
+            departments,
+            categories,
+            countries,
+            sponsorships,
+            qualifications,
+            entities,
+            colleges,
+        }),
+        [
+            open,
+            onClose,
+            onAction,
+            updateFilter,
+            formData,
+            status,
+            genders,
+            departments,
+            categories,
+            countries,
+            sponsorships,
+            qualifications,
+            entities,
+            colleges,
+        ]
+    );
 
     useEffect(() => {
         if (shouldFilter) {
             handleFilter();
             setShouldFilter(false);
         }
+    }, [shouldFilter, handleFilter]);
+
+    useEffect(() => {
         if (debouncedSearch !== formData.search) {
             setFormData((prev) => ({ ...prev, search: debouncedSearch }));
             setShouldFilter(true);
         }
-    }, [formData, handleFilter, shouldFilter, debouncedSearch]);
+    }, [debouncedSearch, formData.search]);
 
     return (
         <AppLayout>
             <Header
-                handleFilter={() => setOpen(true)}
-                handleExport={(e: React.FormEvent<HTMLFormElement>) =>
-                    handleExport(e, exportMethod().url, formData)
-                }
+                handleFilter={handleFilterClick}
+                handleExport={handleExportClick}
                 formData={formData}
-                handleSearch={(e) => setSearchInput(e.target.value)}
-                handlePerPageChange={handlePerPageChange}
+                handleSearch={handleSearchChange}
+                handlePerPageChange={handlePerPageChangeCallback}
                 searchInput={searchInput}
             />
             <EmployeesTable employees={employees} />
             <Pagination {...employees.meta} />
-            <EmployeeFiltersDrawer
-                open={open}
-                onClose={onClose}
-                onAction={onAction}
-                setFormData={setFormData}
-                updateFilter={updateFilter}
-                formData={formData}
-                status={status}
-                genders={genders}
-                departments={departments}
-                categories={categories}
-                countries={countries}
-                sponsorships={sponsorships}
-                qualifications={qualifications}
-                entities={entities}
-                colleges={colleges}
-            />
+            {open && <EmployeeFiltersDrawer {...drawerProps} />}
         </AppLayout>
     );
 };
