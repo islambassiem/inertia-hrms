@@ -25,6 +25,9 @@ export interface Employee {
     qualification: Resource;
 }
 
+export interface EmployeeData {
+    data: Employee;
+}
 export interface ResourceList {
     data: Resource[];
 }

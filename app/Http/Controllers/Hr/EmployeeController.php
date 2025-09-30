@@ -94,4 +94,11 @@ final class EmployeeController extends Controller
 
         return $builder;
     }
+
+    public function show(Employee $employee): \Inertia\Response
+    {
+        return Inertia::render('Hr/Employee', [
+            'employee' => new EmployeeResource($employee),
+        ]);
+    }
 }

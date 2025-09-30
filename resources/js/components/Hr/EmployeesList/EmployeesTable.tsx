@@ -5,6 +5,7 @@ import { Employee } from '@/types/hr';
 import { Link } from '@inertiajs/react';
 import { t } from 'i18next';
 import { toast } from 'react-toastify';
+import { show } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 
 const colums = [
     'National ID',
@@ -41,7 +42,7 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                     className={`p-2 ${evenClass} sticky left-0 rtl:left-auto rtl:right-0 z-30`}
                 >
                     <Link
-                        href={'#'}
+                        href={show(employee.id).url}
                         className={`hover:underline font-bold ${employee.is_active ? '' : 'text-danger-500'}`}
                     >
                         {employee.empid}
