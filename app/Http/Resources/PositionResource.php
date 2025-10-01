@@ -21,8 +21,7 @@ final class PositionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'position_en' => $this->position_en,
-            'position_ar' => $this->position_ar,
+            'name' => app()->getLocale() === 'ar' ? $this->position_ar : $this->position_en,
         ];
     }
 }

@@ -14,8 +14,8 @@ type PaginationProps = {
 
 const Pagination = ({ links, from, to, total }: PaginationProps) => {
     return (
-        <div className="p-6 px-4 flex items-center justify-between text-ash-700 dark:text-ash-200">
-            <div>
+        <div className="p-6 px-4 flex flex-col md:flex-row items-center justify-between text-ash-700 dark:text-ash-200">
+            <div style={{ direction: 'ltr' }}>
                 {links.map((link, index) =>
                     link.url ? (
                         <Link

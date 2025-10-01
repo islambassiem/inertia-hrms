@@ -15,7 +15,7 @@ const Header = ({
     searchInput,
 }: HeaderProps) => {
     return (
-        <div className="surface rounded-2xl shadow-lg border border-ash-100 p-6 mb-8">
+        <div className="rounded-2xl shadow-lg border border-ash-100 p-6 m-5 mt-0">
             {/* Header title section (optional) */}
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text">
@@ -28,7 +28,7 @@ const Header = ({
                     </Button>
                     <Button
                         onClick={(e) => handleExport(e)}
-                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-200 hover:shadow-lg"
+                        className="bg-secondary-600 hover:bg-secondary-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-200 hover:shadow-lg"
                     >
                         <PiMicrosoftExcelLogoFill className="w-4 h-4" />
                         {t('Export')}
@@ -38,7 +38,7 @@ const Header = ({
 
             {/* Search and pagination row */}
             <div className="flex flex-col justify-between sm:flex-row items-stretch sm:items-center gap-4">
-                <div className="min-w-xl">
+                <div className="md:w-xl">
                     <SearchInput
                         searchTerm={searchInput}
                         handleSearch={handleSearch}

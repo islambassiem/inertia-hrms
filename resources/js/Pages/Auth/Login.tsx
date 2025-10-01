@@ -76,7 +76,7 @@ const Login = () => {
                     />
                     <Button
                         type="submit"
-                        className="btn-primary w-full mt-6"
+                        className="btn-primary w-full mt-6 hover:scale-105"
                         disabled={processing}
                     >
                         <VscSignIn className="rtl:rotate-180" />
@@ -85,7 +85,7 @@ const Login = () => {
                 </form>
                 <a
                     href="/"
-                    className="flex justify-center items-center gap-2 btn-primary p-4 w-full rounded-lg"
+                    className="flex justify-center items-center gap-2 btn-primary p-4 w-full rounded-lg hover:scale-105"
                 >
                     <FcGoogle className="text-2xl" />
                     <span>{t('Login with Google')}</span>

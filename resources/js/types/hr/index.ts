@@ -19,10 +19,10 @@ export interface Employee {
     special_needs: boolean;
     nationality: string;
     sponsorship: string;
-    categories: Resource;
-    positions: Resource;
-    departments: Resource;
-    qualification: Resource;
+    categories: Resource[];
+    positions: Resource[];
+    departments: Resource[];
+    qualification: Resource[];
 }
 
 export interface EmployeeData {

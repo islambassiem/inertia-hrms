@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useAppearance } from '@/hooks/useAppearance';
 
-const Navbar = ({ children }: { children: React.ReactNode }) => {
+const AppLayout = ({ children }: { children: React.ReactNode }) => {
     const height = 80;
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const { language } = useLanguage();
@@ -49,8 +49,8 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
                 </div>
             </nav>
             <main
-                className={`p-6`}
                 style={{ height: `calc(100vh - ${height}px)` }}
+                className="overflow-y-auto"
             >
                 {children}
                 <ToastContainer
@@ -65,4 +65,4 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default Navbar;
+export default AppLayout;

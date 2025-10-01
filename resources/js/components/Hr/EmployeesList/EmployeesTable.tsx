@@ -1,3 +1,4 @@
+import { info } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import NoRecords from '@/components/ui/NoRecords';
 import { useLanguage } from '@/hooks/useLanguage';
 import { dateFormatter } from '@/lib/utils';
@@ -5,7 +6,6 @@ import { Employee } from '@/types/hr';
 import { Link } from '@inertiajs/react';
 import { t } from 'i18next';
 import { toast } from 'react-toastify';
-import { show } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 
 const colums = [
     'National ID',
@@ -39,10 +39,10 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                 className={`group p-2 ${evenClass} ${employee.is_active ? '' : 'text-danger-500'} sticky`}
             >
                 <td
-                    className={`p-2 ${evenClass} sticky left-0 rtl:left-auto rtl:right-0 z-30`}
+                    className={`p-2 ${evenClass} md:sticky md:left-0 md:rtl:left-auto md:rtl:right-0 md:z-30`}
                 >
                     <Link
-                        href={show(employee.id).url}
+                        href={info(employee.id).url}
                         className={`hover:underline font-bold ${employee.is_active ? '' : 'text-danger-500'}`}
                     >
                         {employee.empid}
@@ -50,7 +50,7 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                 </td>
                 {/* Fixed width and proper text truncation */}
                 <td
-                    className={`p-2 text-sm sticky left-[70px] rtl:left-auto rtl:right-[70px] w-64 ${evenClass} `}
+                    className={`p-2 text-sm md:sticky md:left-[70px] md:rtl:left-auto md:rtl:right-[70px] w-64 ${evenClass} `}
                 >
                     <div className="flex gap-2">
                         <img
@@ -101,24 +101,14 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                 </td>
                 <td className="px-4">{employee.sponsorship}</td>
                 <td className="px-4">
-                    {Array.isArray(employee.departments)
-                        ? employee.departments
-                              .map(
-                                  (department: { id: number; name: string }) =>
-                                      department.name
-                              )
-                              .join(', ')
-                        : ''}
+                    {employee.departments
+                        .map((department) => department.name)
+                        .join(', ')}
                 </td>
                 <td className="px-4">
-                    {Array.isArray(employee.categories)
-                        ? employee.categories
-                              .map(
-                                  (category: { id: number; name: string }) =>
-                                      category.name
-                              )
-                              .join(', ')
-                        : ''}
+                    {employee.categories
+                        .map((category) => category.name)
+                        .join(', ')}
                 </td>
                 <td className="px-4">
                     {dateFormatter(employee.joining_date, language)}
@@ -135,12 +125,12 @@ function Table({ employees }: { employees: { data: Employee[] } }) {
     return (
         <>
             <table className="p-2 table-auto border-collapse w-full">
-                <thead className="border-b-2 sticky top-0 left-0 rtl:left-auto rtl:right-0 z-10">
+                <thead className="border-b-2 md:sticky top-0 md:left-0 md:rtl:left-auto md:rtl:right-0 md:z-10">
                     <tr className="min-h-11 surface">
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right sticky top-0 left-0 rtl:left-auto rtl:right-0 z-20 surface">
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right md:sticky top-0 md:left-0 md:rtl:left-auto md:rtl:right-0 md:z-20 surface">
                             #
                         </th>
-                        <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right sticky top-0 left-[70px] rtl:left-auto rtl:right-[70px] z-20 w-64 surface">
+                        <th className="p-3 text-sm font-semibold tracking-wide text-left rtl:text-right md:sticky top-0 md:left-[70px] md:rtl:left-auto md:rtl:right-[70px] md:z-20 w-64 surface">
                             {t('Employee')}
                         </th>
                         {colums.map((col) => (
@@ -169,7 +159,7 @@ function Table({ employees }: { employees: { data: Employee[] } }) {
 
 const EmployeesTable = ({ employees }: { employees: { data: Employee[] } }) => {
     return (
-        <section className="overflow-x-auto border-collapse whitespace-nowrap rounded-lg shadow-lg mt-5 max-h-10/12">
+        <section className="overflow-x-auto border-collapse whitespace-nowrap rounded-lg shadow-lg m-5 max-h-7/12">
             {employees.data.length > 0 ? (
                 <Table employees={employees} />
             ) : (

@@ -30,7 +30,7 @@
     @inertiaHead
 </head>
 
-<body class="font-playfair rtl:font-fustat antialiased surface text">
+<body class="font-playfair rtl:font-fustat antialiased surface text" style="margin: 0">
     @inertia
 </body>
 
