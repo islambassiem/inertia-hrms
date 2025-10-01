@@ -27,10 +27,7 @@ const Login = () => {
         useForm<LoginProps>(initValues);
     const submit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        if (!errors.password && !errors.empid) {
-            post(store().url);
-        }
+        post(store().url);
     };
 
     return (
