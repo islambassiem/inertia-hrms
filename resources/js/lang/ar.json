@@ -84,5 +84,14 @@
     "Bank Account Number": "رقم حساب البنك",
     "Bank Name": "اسم البنك",
     "Edit Information": "تعديل بيانات الموظف",
+    "Name (Arabic)": "الاسم باللغة العربية",
+    "Name (English)": "الاسم باللغة الانجليزية",
+    "First Name": "الاسم الاول",
+    "Middle Name": "الاسم الوسط",
+    "Third Name": "الاسم الثالث",
+    "Family Name": "اسم العائلة",
+    "Personal Details": "المعلومات الشخصية",
+    "Male": "ذكر",
+    "Female": "انثى",
     "Logout": "تسجيل الخروج"
 }

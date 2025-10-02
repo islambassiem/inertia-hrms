@@ -86,3 +86,14 @@ export interface HeaderProps {
     handleSearch: (e: any) => void;
     searchInput: string;
 }
+
+export interface EmployeeName {
+    first_name_ar: string;
+    middle_name_ar: string | null;
+    third_name_ar: string | null;
+    family_name_ar: string;
+    first_name_en: string;
+    middle_name_en: string | null;
+    third_name_en: string | null;
+    family_name_en: string;
+}

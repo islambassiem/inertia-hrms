@@ -17,6 +17,7 @@ import { t } from 'i18next';
 import {
     index,
     info,
+    infoEdit,
 } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
@@ -36,7 +37,9 @@ const EmployeeLayout = ({
             label: t('Basic Info'),
             icon: GrInfo,
             href: info(employee.data.id).url,
-            active: url === info(employee.data.id).url,
+            active:
+                url === info(employee.data.id).url ||
+                url === infoEdit(employee.data.id).url,
         },
         { id: 'experience', label: t('Experience'), icon: Briefcase },
         {
@@ -53,7 +56,8 @@ const EmployeeLayout = ({
 
     return (
         <>
-            <section className="md:sticky md:top-0 md:z-40">
+            <section className="">
+                {/* md:sticky md:top-0 md:z-40 */}
                 <div className="bg-gradient-to-l from-primary-200 to-primary-400 dark:from-primary-700 dark:to-primary-950 text">
                     <div className="max-w-7xl mx-auto px-6 py-8 ">
                         {/* Back Button */}
@@ -91,7 +95,11 @@ const EmployeeLayout = ({
                                             : employee.data.name_en}
                                     </h1>
                                     <p className="text-ash-500 dark:text-ash-400 text-lg mb-4">
-                                        {employee.data.positions.length > 0 &&
+                                        {Array.isArray(
+                                            employee.data.positions
+                                        ) &&
+                                            employee.data.positions.length >
+                                                0 &&
                                             employee.data.positions[0].name}
                                     </p>
                                 </div>
@@ -104,8 +112,11 @@ const EmployeeLayout = ({
                                     <div className="flex items-center justify-center md:justify-start gap-2">
                                         <Briefcase className="w-4 h-4" />
                                         <span>
-                                            {employee.data.departments.length >
-                                                0 &&
+                                            {Array.isArray(
+                                                employee.data.departments
+                                            ) &&
+                                                employee.data.departments
+                                                    .length > 0 &&
                                                 employee.data.departments[0]
                                                     .name}
                                         </span>
@@ -129,7 +140,6 @@ const EmployeeLayout = ({
                         </div>
                     </div>
                 </div>
-
                 {/* Navigation Tabs */}
                 <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
                     <div className="max-w-7xl mx-auto px-6">

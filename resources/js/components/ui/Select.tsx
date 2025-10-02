@@ -30,6 +30,7 @@ const Select = ({
     const wapperRef = useRef<HTMLElement>(null);
     const [isOpen, setIsOpen] = useState(false);
     const [search, setSearch] = useState('');
+    const [searchable] = useState(false);
 
     const handleCheck = (checked: string) => {
         onChange(checked);
@@ -65,41 +66,43 @@ const Select = ({
                 className={`border border-primary-300 ring-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500
                     focus:border-transparent  rounded-md px-4 py-2 cursor-pointer select-none flex justify-between items-center w-full`}
             >
-                <span>{checked}</span>
+                <span>{items.find((item) => item.id === checked)?.name}</span>
                 <GoChevronDown
                     className={`transition duration-300 ${isOpen ? 'rotate-180' : ''}`}
                 />
             </button>
             {isOpen && (
                 <div
-                    className={`absolute z-50 mt-1 border bg-ash-100 dark:bg-ash-800 rounded-lg shadow-lg overflow-hidden ${position}`}
+                    className={`absolute w-full z-50 mt-1 border bg-ash-100 dark:bg-ash-800 rounded-lg shadow-lg overflow-hidden ${position}`}
                 >
-                    <div className="p-3 border-b flex items-center gap-2 bg-ash-50 dark:bg-ash-700">
-                        <div
-                            className="flex flex-1 items-center rounded-md border px-2
+                    {searchable && (
+                        <div className="p-3 border-b flex items-center gap-2 bg-ash-50 dark:bg-ash-700 ">
+                            <div
+                                className="flex flex-1 items-center rounded-md border px-2
                             bg-ash-100 dark:bg-ash-800
                             focus-within:ring-1 focus-within:ring-primary-500
                             transition-all duration-300 ease-in-out
                             focus-within:shadow-md focus-within:scale-[1.02]"
-                        >
-                            <input
-                                type="text"
-                                className="flex-1 outline-none bg-transparent
+                            >
+                                <input
+                                    type="text"
+                                    className="flex-1 outline-none bg-transparent
                                 placeholder:text-ash-400 dark:placeholder:text-ash-300
                                 text-sm transition-all duration-300 ease-in-out
                                 focus:pl-1"
-                                placeholder={t('Search')}
-                                value={search}
-                                onChange={(e) => setSearch(e.target.value)}
-                            />
-                            <CiSearch className="text-ash-400 transition-colors duration-300 group-focus-within:text-500" />
-                        </div>
+                                    placeholder={t('Search')}
+                                    value={search}
+                                    onChange={(e) => setSearch(e.target.value)}
+                                />
+                                <CiSearch className="text-ash-400 transition-colors duration-300 group-focus-within:text-500" />
+                            </div>
 
-                        <IoCloseOutline
-                            className="cursor-pointer text-xl text-ash-500 hover:text-ash-700 dark:text-ash-300 dark:hover:text-white"
-                            onClick={() => setSearch('')}
-                        />
-                    </div>
+                            <IoCloseOutline
+                                className="cursor-pointer text-xl text-ash-500 hover:text-ash-700 dark:text-ash-300 dark:hover:text-white"
+                                onClick={() => setSearch('')}
+                            />
+                        </div>
+                    )}
 
                     {/* Items */}
                     <ul className="max-h-48 overflow-y-auto divide-y divide-ash-100 dark:divide-ash-700">

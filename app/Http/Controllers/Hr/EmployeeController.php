@@ -64,21 +64,31 @@ final class EmployeeController extends Controller
         return (new EmployeesExport($employees->get()))->download('employees.xlsx');
     }
 
-    public function show(Employee $employee): \Inertia\Response
-    {
-        $employee->load(['departments', 'positions']);
-
-        return Inertia::render('Hr/Employee', [
-            'employee' => new EmployeeResource($employee),
-        ]);
-    }
-
     public function info(Employee $employee): \Inertia\Response
     {
         $employee->load(['departments', 'positions']);
 
         return Inertia::render('Hr/Employee/Info', [
             'employee' => new EmployeeResource($employee),
+        ]);
+    }
+
+    public function infoEdit(Employee $employee): \Inertia\Response
+    {
+        $employee->load(['departments', 'positions']);
+
+        return Inertia::render('Hr/Employee/EditInfo', [
+            'employee' => new EmployeeResource($employee),
+            'name' => [
+                'first_name_ar' => $employee->first_name_ar,
+                'middle_name_ar' => $employee->middle_name_ar,
+                'third_name_ar' => $employee->third_name_ar,
+                'family_name_ar' => $employee->family_name_ar,
+                'first_name_en' => $employee->first_name_en,
+                'middle_name_en' => $employee->middle_name_en,
+                'third_name_en' => $employee->third_name_en,
+                'family_name_en' => $employee->family_name_en,
+            ],
         ]);
     }
 

@@ -49,7 +49,7 @@ const Header = ({
                     <span className="text-sm font-medium text-ash-600 flex-1">
                         {t('Employees per page')}
                     </span>
-                    <span className="inline-block w-24">
+                    <span className="inline-block w-52">
                         <Select
                             items={[
                                 { id: '5', name: '5' },

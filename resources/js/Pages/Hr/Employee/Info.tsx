@@ -18,6 +18,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { t } from 'i18next';
 import Section from '@/components/Hr/Employee/Section';
 import InfoField from '@/components/Hr/Employee/InfoField';
+import { Link } from '@inertiajs/react';
 
 const Info = ({ employee }: { employee: EmployeeData }) => {
     const { language } = useLanguage();
@@ -29,18 +30,13 @@ const Info = ({ employee }: { employee: EmployeeData }) => {
                         <h2 className="text-xl font-bold text">
                             {t('Personal Information')}
                         </h2>
-                        <button
-                            onClick={() => {
-                                console.log('Navigate to edit page');
-                                alert(
-                                    'Navigate to: /employees/2847/personal/edit'
-                                );
-                            }}
+                        <Link
+                            href={`/hr/employees/${employee.data.id}/edit/info`}
                             className="flex items-center gap-2 px-4 py-2 btn-primary rounded-lg transition-colors font-medium"
                         >
                             <Edit className="w-4 h-4" />
                             {t('Edit Information')}
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Basic Information */}
