@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { AlertCircle } from 'lucide-react';
 import React, { ComponentPropsWithoutRef } from 'react';
 
@@ -7,6 +8,7 @@ interface TextInputProps
     label: string;
     error?: string;
     value: string | null;
+    className?: string;
 }
 
 const TextInput = React.memo(
@@ -20,6 +22,7 @@ const TextInput = React.memo(
         required = false,
         error,
         placeholder = '',
+        className = '',
         ...inputProps
     }: TextInputProps) => {
         return (
@@ -42,14 +45,17 @@ const TextInput = React.memo(
                     value={value ?? ''}
                     onChange={onChange}
                     placeholder={placeholder}
-                    className={`w-full px-4 py-2.5 rounded-lg border transition-colors
+                    className={clsx(
+                        `w-full px-4 py-2.5 rounded-lg border transition-colors
                             ${
                                 error
                                     ? 'border-danger-500 focus:border-danger-500 focus:ring-danger-500'
                                     : 'border-ash-300 dark:border-ash-600 focus:border-primary-500 dark:focus:border-primary-500'
                             }
                             bg-ash-50 dark:bg-ash-700 text-ash-900 dark:text-ash-100 placeholder-ash-400
-                            dark:placeholder-ash-500 focus:outline-none`}
+                            dark:placeholder-ash-500 focus:outline-none`,
+                        className
+                    )}
                     {...inputProps}
                 />
 

@@ -8,6 +8,7 @@ import {
     DollarSign,
     FileText,
     GraduationCap,
+    Mail,
     Settings,
     User,
 } from 'lucide-react';
@@ -122,7 +123,9 @@ const EmployeeLayout = ({
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-center md:justify-start gap-2">
-                                        <span className="font-medium">📧</span>
+                                        <span className="font-medium">
+                                            <Mail className="size-4" />
+                                        </span>
                                         <span>{employee.data.email}</span>
                                     </div>
                                     <div className="flex items-center justify-center md:justify-start gap-2">

@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Hr;
 use App\Dtos\EmployeeFilterDto;
 use App\Enums\Gender;
 use App\Enums\JobStatus;
+use App\Enums\MaritalStatus;
 use App\Enums\Qualification;
 use App\Exports\EmployeesExport;
 use App\Http\Controllers\Controller;
@@ -18,6 +19,7 @@ use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\EntityListResource;
 use App\Http\Resources\GenderListResource;
 use App\Http\Resources\JobStatusListResource;
+use App\Http\Resources\MaritalStatusListResource;
 use App\Http\Resources\QualificationListResource;
 use App\Http\Resources\SponsorshipListResource;
 use App\Models\Category;
@@ -89,6 +91,8 @@ final class EmployeeController extends Controller
                 'third_name_en' => $employee->third_name_en,
                 'family_name_en' => $employee->family_name_en,
             ],
+            'genders' => GenderListResource::collection(Gender::cases()),
+            'maritalStatus' => MaritalStatusListResource::collection(MaritalStatus::cases()),
         ]);
     }
 

@@ -23,6 +23,9 @@ final class EmployeeResource extends JsonResource
         /** @var \App\Enums\Gender $gender */
         $gender = $this->gender;
 
+        /** @var \App\Enums\MaritalStatus $marital_status */
+        $marital_status = $this->marital_status;
+
         return [
             'id' => $this->id,
             'empid' => $this->code,
@@ -31,9 +34,11 @@ final class EmployeeResource extends JsonResource
             'name_en' => $this->resource->english_name,
             'email' => $this->whenLoaded('user', $this->user->email),
             'gender' => $gender->label(),
+            // @phpstan-ignore nullsafe.neverNull
+            'marital_status' => $marital_status?->label(),
             'date_of_birth' => Carbon::parse($this->date_of_birth)->format('Y-m-d'),
             'identification' => $this->whenLoaded('nationalId', $this->nationalId?->id_number),
-            'passprt' => $this->whenLoaded('passport', $this->passport?->id_number),
+            'passport' => $this->whenLoaded('passport', $this->passport?->id_number),
             'is_active' => $this->is_active,
             'has_salary' => $this->has_salary,
             'has_biometric' => $this->has_biometric,

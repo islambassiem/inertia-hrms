@@ -5,19 +5,16 @@ import { t } from 'i18next';
 import { GoChevronDown } from 'react-icons/go';
 import { IoCloseOutline } from 'react-icons/io5';
 import { CiSearch } from 'react-icons/ci';
-
-interface Item {
-    id: string | number;
-    name: string;
-}
+import { Resource } from '@/types/hr';
 
 interface SelectProps {
-    items: Item[];
+    items: Resource[];
     checked: string;
     // eslint-disable-next-line no-unused-vars
     onChange: (checked: string) => void;
     name?: string;
     direction?: 'start' | 'end';
+    title?: string;
 }
 
 const Select = ({
@@ -26,6 +23,7 @@ const Select = ({
     onChange,
     name = 'items',
     direction = 'start',
+    title,
 }: SelectProps) => {
     const wapperRef = useRef<HTMLElement>(null);
     const [isOpen, setIsOpen] = useState(false);
@@ -60,6 +58,7 @@ const Select = ({
 
     return (
         <section ref={wapperRef} className="w-full relative">
+            {title && <h3 className="font-bold mb-2">{title}</h3>}
             <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}

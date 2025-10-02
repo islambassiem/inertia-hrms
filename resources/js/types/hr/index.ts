@@ -5,9 +5,10 @@ export interface Employee {
     email: string;
     identification: string;
     gender: Resource;
+    marital_status: Resource;
     name_ar: string;
     name_en: string;
-    date_of_birth: Date;
+    date_of_birth: Date | string;
     is_active: boolean;
     has_salary: boolean;
     has_biometric: boolean;
@@ -32,7 +33,7 @@ export interface ResourceList {
     data: Resource[];
 }
 
-interface Resource {
+export interface Resource {
     id: string;
     name: string;
 }

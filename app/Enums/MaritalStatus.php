@@ -29,9 +29,9 @@ enum MaritalStatus: string
     public function label(): array
     {
         return match ($this) {
-            self::SINGLE => ['id' => '1', 'marital_status_en' => 'Single', 'marital_status_ar' => 'أعزب'],
-            self::MARRIED => ['id' => '2', 'marital_status_en' => 'Married', 'marital_status_ar' => 'متزوج'],
-            self::OTHER => ['id' => '9', 'marital_status_en' => 'Other', 'maretal_status_ar' => 'أخرى'],
+            self::SINGLE => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Single' : 'أعزب'],
+            self::MARRIED => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Married' : 'متزوج'],
+            self::OTHER => ['id' => '9', 'name' => app()->getLocale() === 'en' ? 'Other' : 'أخرى'],
         };
     }
 }
