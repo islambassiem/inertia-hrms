@@ -7,8 +7,6 @@ namespace App\Models;
 use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 final class Department extends Model
 {
@@ -21,58 +19,8 @@ final class Department extends Model
         'code',
         'department_en',
         'department_ar',
+        'employee_id',
+        'entity_id',
+        'college_id',
     ];
-
-    /**
-     * @return HasManyThrough<Branch, DepartmentHierarchy, $this>
-     */
-    public function branches(): HasManyThrough
-    {
-        return $this->hasManyThrough(
-            Branch::class,
-            DepartmentHierarchy::class,
-            'department_id',
-            'id',
-            'id',
-            'branch_id'
-        )->distinct();
-    }
-
-    /**
-     * @return HasManyThrough<College, DepartmentHierarchy, $this>
-     */
-    public function colleges(): HasManyThrough
-    {
-        return $this->hasManyThrough(
-            College::class,
-            DepartmentHierarchy::class,
-            'department_id',
-            'id',
-            'id',
-            'college_id'
-        )->distinct();
-    }
-
-    /**
-     * @return HasManyThrough<Entity, DepartmentHierarchy, $this>
-     */
-    public function entities(): HasManyThrough
-    {
-        return $this->hasManyThrough(
-            Entity::class,
-            DepartmentHierarchy::class,
-            'department_id',
-            'id',
-            'id',
-            'entity_id'
-        )->distinct();
-    }
-
-    /**
-     * @return BelongsToMany<Employee, $this>
-     */
-    public function employees(): BelongsToMany
-    {
-        return $this->belongsToMany(Employee::class);
-    }
 }

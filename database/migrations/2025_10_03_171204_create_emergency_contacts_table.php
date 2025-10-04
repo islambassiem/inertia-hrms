@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\Employee;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->string('mobile', 20);
             $table->string('email', 100);
             $table->string('relation', 100);
+            $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained();
+            $table->foreignIdFor(User::class, 'updated_by')->nullable()->constrained();
             $table->timestamps();
         });
     }

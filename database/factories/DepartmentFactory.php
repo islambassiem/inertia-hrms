@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\College;
+use App\Models\Employee;
+use App\Models\Entity;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +25,9 @@ final class DepartmentFactory extends Factory
             'code' => fake()->unique()->text(10),
             'department_en' => fake()->unique()->text(10),
             'department_ar' => fake()->unique()->text(10),
+            'head_id' => Employee::inRandomOrder()->first()->id,
+            'entity_id' => Entity::inRandomOrder()->first()->id,
+            'college_id' => fake()->randomElement([College::inRandomOrder()->first()->id, null]),
         ];
     }
 }

@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 
 final class Employee extends Model
 {
@@ -195,6 +196,22 @@ final class Employee extends Model
     public function departments(): BelongsToMany
     {
         return $this->belongsToMany(Department::class, 'department_employee');
+    }
+
+    /**
+     * @return Collection<int, mixed>
+     */
+    public function entities(): Collection
+    {
+        return $this->departments->pluck('entity_id');
+    }
+
+    /**
+     * @return Collection<int, mixed>
+     */
+    public function colleges(): Collection
+    {
+        return $this->departments->pluck('college_id');
     }
 
     /**
