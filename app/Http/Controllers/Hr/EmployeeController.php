@@ -86,6 +86,26 @@ final class EmployeeController extends Controller
         ]);
     }
 
+    public function official(Employee $employee): \Inertia\Response
+    {
+        $employee->load([
+            'departments',
+            'positions',
+            'phone',
+            'email',
+            'mobile',
+            'nationalId',
+            'passport',
+            'bank',
+            'address',
+            'contacts',
+        ]);
+
+        return Inertia::render('Hr/Employee/Official', [
+            'employee' => new EmployeeResource($employee),
+        ]);
+    }
+
     public function infoEdit(Employee $employee): \Inertia\Response
     {
         $employee->load(['departments', 'positions']);

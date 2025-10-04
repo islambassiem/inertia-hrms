@@ -18,10 +18,12 @@ import {
     index,
     infoEdit,
     show,
+    official,
 } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
+import { TbContract } from 'react-icons/tb';
 const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
     const { language } = useLanguage();
     const { url } = usePage();
@@ -35,6 +37,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             active:
                 url === show(employee.data.id).url ||
                 url === infoEdit(employee.data.id).url,
+        },
+        {
+            id: 'official',
+            label: t('Official Information'),
+            icon: TbContract,
+            href: official(employee.data.id).url,
+            active: url === official(employee.data.id).url,
         },
         { id: 'experience', label: t('Experience'), icon: Briefcase },
         {

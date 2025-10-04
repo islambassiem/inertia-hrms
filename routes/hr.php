@@ -18,6 +18,7 @@ Route::group([
     Route::post('/employees/export', [EmployeeController::class, 'export'])->name('employees.export');
 
     Route::get('/employees/{employee}/info', [EmployeeController::class, 'show'])->name('employees.show');
+    Route::get('/employees/{employee}/official', [EmployeeController::class, 'official'])->name('employees.official');
 
     Route::get('/employees/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('employees.edit.info');
 
