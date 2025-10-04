@@ -21,7 +21,7 @@ export function getStringParam(name: string): string {
 }
 
 export function dateFormatter(
-    date: string | Date | null | undefined,
+    date: string | null | undefined,
     language: string,
     fallback = '-'
 ): string {

@@ -17,7 +17,7 @@ Route::group([
     Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
     Route::post('/employees/export', [EmployeeController::class, 'export'])->name('employees.export');
 
-    Route::get('/employees/{employee}/info', [EmployeeController::class, 'info'])->name('employees.info');
+    Route::get('/employees/{employee}/info', [EmployeeController::class, 'show'])->name('employees.show');
 
     Route::get('/employees/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('employees.edit.info');
 

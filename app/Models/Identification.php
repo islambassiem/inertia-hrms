@@ -29,8 +29,8 @@ final class Identification extends Model
     {
         return [
             'type' => IdentificationType::class,
-            'date_of_issue' => 'date',
-            'date_of_expiry' => 'date',
+            'date_of_issue' => 'datetime',
+            'date_of_expiry' => 'datetime',
         ];
     }
 }

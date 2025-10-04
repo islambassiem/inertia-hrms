@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\ContactType;
 use App\Enums\Gender;
 use App\Enums\IdentificationType;
 use App\Enums\MaritalStatus;
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 final class Employee extends Model
 {
@@ -67,7 +69,7 @@ final class Employee extends Model
             'gender' => Gender::class,
             'marital_status' => MaritalStatus::class,
             'religion' => Religion::class,
-            'date_of_birth' => 'date',
+            'date_of_birth' => 'datetime',
             'is_active' => 'boolean',
             'has_salary' => 'boolean',
             'has_biometric' => 'boolean',
@@ -252,6 +254,57 @@ final class Employee extends Model
     public function institutions(): HasManyThrough
     {
         return $this->hasManyThrough(Institution::class, DepartmentEmployee::class);
+    }
+
+    /**
+     * @return HasMany<Contact, $this>
+     */
+    public function mobile(): HasMany
+    {
+        return $this->hasMany(Contact::class)
+            ->where('type', ContactType::MOBILE->value);
+    }
+
+    /**
+     * @return HasMany<Contact, $this>
+     */
+    public function email(): HasMany
+    {
+        return $this->hasMany(Contact::class)
+            ->where('type', ContactType::EMAIL->value);
+    }
+
+    /**
+     * @return HasMany<Contact, $this>
+     */
+    public function phone(): HasMany
+    {
+        return $this->hasMany(Contact::class)
+            ->where('type', ContactType::PHONE->value);
+    }
+
+    /**
+     * @return HasOne<Bank, $this>
+     */
+    public function bank(): HasOne
+    {
+        return $this->hasOne(Bank::class);
+    }
+
+    /**
+     * @return HasOne<Address, $this>
+     */
+    public function address(): HasOne
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    /**
+     * @return HasMany<EmergencyContact, $this>
+     */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(EmergencyContact::class);
     }
 
     /**

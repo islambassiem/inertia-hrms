@@ -73,6 +73,12 @@
         ],
         "phpstan": [
             "./vendor/bin/phpstan analyse"
+        ],
+        "commit": [
+            "./vendor/bin/pint",
+            "./vendor/bin/phpstan analyse",
+            "npm run format",
+            "npm run lint:fix"
         ]
     },
     "extra": {

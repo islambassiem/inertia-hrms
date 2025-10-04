@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -33,12 +32,24 @@ final class EmployeeResource extends JsonResource
             'name_ar' => $this->resource->arabic_name,
             'name_en' => $this->resource->english_name,
             'email' => $this->whenLoaded('user', $this->user->email),
+            'phone' => $this->whenLoaded('phone', function () {
+                return $this->phone->first()?->value;
+            }, null),
+            'mobile' => $this->whenLoaded('mobile', function () {
+                return $this->mobile->first()?->value;
+            }, null),
+            'personal_email' => $this->whenLoaded('email', function () {
+                return $this->email->first()?->value;
+            }, null),
             'gender' => $gender->label(),
             // @phpstan-ignore nullsafe.neverNull
             'marital_status' => $marital_status?->label(),
-            'date_of_birth' => Carbon::parse($this->date_of_birth)->format('Y-m-d'),
-            'identification' => $this->whenLoaded('nationalId', $this->nationalId?->id_number),
-            'passport' => $this->whenLoaded('passport', $this->passport?->id_number),
+            'date_of_birth' => $this->date_of_birth,
+            'identification' => IdentificationResource::make($this->whenLoaded('nationalId')),
+            'passport' => IdentificationResource::make($this->whenLoaded('passport')),
+            'bank' => BankResource::make($this->whenLoaded('bank')),
+            'address' => AddressResource::make($this->whenLoaded('address')),
+            'emergency_contacts' => EmergencyContactResource::collection($this->whenLoaded('contacts', fn () => $this->contacts)),
             'is_active' => $this->is_active,
             'has_salary' => $this->has_salary,
             'has_biometric' => $this->has_biometric,

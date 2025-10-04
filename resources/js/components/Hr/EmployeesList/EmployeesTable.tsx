@@ -1,4 +1,4 @@
-import { info } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
+import { show } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import NoRecords from '@/components/ui/NoRecords';
 import { useLanguage } from '@/hooks/useLanguage';
 import { dateFormatter } from '@/lib/utils';
@@ -42,7 +42,7 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                     className={`p-2 ${evenClass} md:sticky md:left-0 md:rtl:left-auto md:rtl:right-0 md:z-30`}
                 >
                     <Link
-                        href={info(employee.id).url}
+                        href={show(employee.id).url}
                         className={`hover:underline font-bold ${employee.is_active ? '' : 'text-danger-500'}`}
                     >
                         {employee.empid}
@@ -83,21 +83,16 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                 <td className="px-4">
                     <button
                         className="cursor-pointer hover:text-primary-500 transition-colors duration-300"
-                        onClick={() => handleToast(employee.identification)}
+                        onClick={() =>
+                            handleToast(employee.identification?.id_number)
+                        }
                     >
-                        {employee.identification}
+                        {employee.identification?.id_number}
                     </button>
                 </td>
                 <td className="px-4">{employee.nationality}</td>
                 <td className="px-4">
-                    {new Date(employee.date_of_birth).toLocaleDateString(
-                        language,
-                        {
-                            year: 'numeric',
-                            month: 'short',
-                            day: '2-digit',
-                        }
-                    )}
+                    {dateFormatter(employee.date_of_birth, language)}
                 </td>
                 <td className="px-4">{employee.sponsorship}</td>
                 <td className="px-4">

@@ -66,9 +66,20 @@ final class EmployeeController extends Controller
         return (new EmployeesExport($employees->get()))->download('employees.xlsx');
     }
 
-    public function info(Employee $employee): \Inertia\Response
+    public function show(Employee $employee): \Inertia\Response
     {
-        $employee->load(['departments', 'positions']);
+        $employee->load([
+            'departments',
+            'positions',
+            'phone',
+            'email',
+            'mobile',
+            'nationalId',
+            'passport',
+            'bank',
+            'address',
+            'contacts',
+        ]);
 
         return Inertia::render('Hr/Employee/Info', [
             'employee' => new EmployeeResource($employee),

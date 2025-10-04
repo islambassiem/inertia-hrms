@@ -5,7 +5,7 @@ const InfoField = ({
 }: {
     icon: any;
     label: string;
-    value?: string;
+    value?: string | null;
 }) => {
     return (
         <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-ash-50 dark:hover:bg-ash-700/50 transition-colors">
@@ -17,7 +17,7 @@ const InfoField = ({
                     {label}
                 </p>
                 <p className="text-base text-ash-900 dark:text-ash-100 break-words">
-                    {value || 'N/A'}
+                    {value || '-'}
                 </p>
             </div>
         </div>

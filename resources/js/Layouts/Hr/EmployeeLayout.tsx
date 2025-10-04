@@ -1,5 +1,4 @@
-import React from 'react';
-import { EmployeeData } from '@/types/hr';
+import React, { useContext } from 'react';
 import {
     ArrowLeft,
     Award,
@@ -17,29 +16,24 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { t } from 'i18next';
 import {
     index,
-    info,
     infoEdit,
+    show,
 } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
-const EmployeeLayout = ({
-    children,
-    employee,
-}: {
-    children: React.ReactNode;
-    employee: EmployeeData;
-}) => {
+import EmployeeContext from '@/contexts/EmployeeContext';
+const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
     const { language } = useLanguage();
     const { url } = usePage();
-
+    const employee = useContext(EmployeeContext);
     const pages = [
         {
             id: 'info',
-            label: t('Basic Info'),
+            label: t('Personal Information'),
             icon: GrInfo,
-            href: info(employee.data.id).url,
+            href: show(employee.data.id).url,
             active:
-                url === info(employee.data.id).url ||
+                url === show(employee.data.id).url ||
                 url === infoEdit(employee.data.id).url,
         },
         { id: 'experience', label: t('Experience'), icon: Briefcase },
@@ -57,8 +51,7 @@ const EmployeeLayout = ({
 
     return (
         <>
-            <section className="">
-                {/* md:sticky md:top-0 md:z-40 */}
+            <section className="md:sticky md:top-0 md:z-40">
                 <div className="bg-gradient-to-l from-primary-200 to-primary-400 dark:from-primary-700 dark:to-primary-950 text">
                     <div className="max-w-7xl mx-auto px-6 py-8 ">
                         {/* Back Button */}
@@ -144,14 +137,14 @@ const EmployeeLayout = ({
                     </div>
                 </div>
                 {/* Navigation Tabs */}
-                <div className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+                <div className="bg-white dark:bg-ash-800 shadow-sm border-b border-ash-200 dark:border-ash-700">
                     <div className="max-w-7xl mx-auto px-6">
                         <nav className="flex overflow-x-auto">
                             {pages.map((page) => (
                                 <Link
                                     key={page.id}
                                     href={page.href}
-                                    className={`flex items-center gap-2 py-4 px-6 text-sm font-medium ${page.active ? 'text-primary-600 dark:text-primary-400' : 'text-gray-900 dark:text-gray-100'} hover:text-primary-600 dark:hover:text-primary-400 transition-colors`}
+                                    className={`flex items-center gap-2 py-4 px-6 text-sm font-medium ${page.active ? 'text-primary-600 dark:text-primary-400 border-b border-b-primary-400' : 'text-ash-900 dark:text-ash-100'} hover:text-primary-600 dark:hover:text-primary-400 transition-colors`}
                                 >
                                     <page.icon className="w-4 h-4" />
                                     <span>{page.label}</span>
