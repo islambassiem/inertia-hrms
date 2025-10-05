@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Models\Branch;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,7 +16,6 @@ return new class extends Migration
     {
         Schema::create('_colleges', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Branch::class)->constrained();
             $table->string('code', 10)->nullable()->unique();
             $table->string('college_en', 50)->nullable()->unique();
             $table->string('college_ar', 50)->nullable()->unique();

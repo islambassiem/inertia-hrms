@@ -28,14 +28,12 @@ final class DatabaseSeeder extends Seeder
 
         $this->call([
             EntitySeeder::class,
-            BranchSeeder::class,
             CollegeSeeder::class,
             CountrySeeder::class,
             SponsorshipSeeder::class,
             UserSeeder::class,
             EmployeeSeeder::class,
             DepartmentSeeder::class,
-            DepartmentHierarchySeeder::class,
             CategorySeeder::class,
             PositionSeeder::class,
             IdentificationSeeder::class,

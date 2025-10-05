@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Branch;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +19,6 @@ final class CollegeFactory extends Factory
     public function definition(): array
     {
         return [
-            'branch_id' => Branch::inRandonOrder()->first()->id ?? 1,
             'code' => fake()->unique()->text(6),
             'college_en' => fake()->unique()->company(),
             'college_ar' => fake()->unique()->company(),
