@@ -14,12 +14,16 @@ Route::group([
         return inertia('Hr/Dashboard');
     })->name('dashboard');
 
-    Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
-    Route::post('/employees/export', [EmployeeController::class, 'export'])->name('employees.export');
+    Route::group([
+        'prefix' => 'employees',
+        'as' => 'employees.',
+    ], function () {
+        Route::get('/', [EmployeeController::class, 'index'])->name('index');
+        Route::post('/export', [EmployeeController::class, 'export'])->name('export');
 
-    Route::get('/employees/{employee}/info', [EmployeeController::class, 'show'])->name('employees.show');
-    Route::get('/employees/{employee}/official', [EmployeeController::class, 'official'])->name('employees.official');
+        Route::get('/{employee}/info', [EmployeeController::class, 'show'])->name('show');
+        Route::get('/{employee}/official', [EmployeeController::class, 'official'])->name('official');
 
-    Route::get('/employees/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('employees.edit.info');
-
+        Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('edit.info');
+    });
 });
