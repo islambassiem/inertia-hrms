@@ -130,13 +130,16 @@ final class Employee extends Model
         /** @var Gender $gender */
         $gender = $this->gender;
 
+        $male = 'storage/profile/male.png';
+        $femlae = 'storage/profile/female.png';
+
         if ($gender === Gender::MALE) {
-            return asset('storage/profile/male.png');
+            return asset($male);
         }
 
         /** @var Gender $gender */
         if ($gender === Gender::FEMALE) {
-            return asset('storage/profile/female.png');
+            return asset($femlae);
         }
 
         return null;

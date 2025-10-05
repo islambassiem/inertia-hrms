@@ -19,7 +19,12 @@ final class PositionSeeder extends Seeder
 
         $employees = Employee::all(['id']);
         foreach ($employees as $employee) {
-            $employee->positions()->attach(Position::all(['id'])->random(1)->pluck('id'));
+            $employee->positions()->attach(
+                Position::inRandomOrder()->take(1)->pluck('id')->toArray(), [
+                    'start_date' => fake()->date(),
+                    'end_date' => fake()->randomElement([null, fake()->date()]),
+                ]
+            );
         }
     }
 }

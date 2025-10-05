@@ -6,6 +6,7 @@ namespace App\Enums;
 
 enum PositionType: string
 {
+    case GENERIC = '0';
     case ENTITY = '1';
     case MOI = '2';
     case HRSD = '3';
@@ -30,6 +31,7 @@ enum PositionType: string
     public function label(): array
     {
         return match ($this) {
+            self::GENERIC => ['id' => '0', 'position_type_en' => 'Generic', 'position_type_ar' => 'عام'],
             self::ENTITY => ['id' => '1', 'position_type_en' => 'Entity', 'position_type_ar' => 'الكيان'],
             self::MOI => ['id' => '2', 'position_type_en' => 'MOI', 'position_type_ar' => 'مقيم'],
             self::HRSD => ['id' => '3', 'position_type_en' => 'HRSD', 'position_type_ar' => 'وزرة الموارد البشرية'],

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Employee::class)->constrained();
             $table->foreignIdFor(Position::class)->constrained();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained();
             $table->foreignIdFor(User::class, 'updated_by')->nullable()->constrained();
             $table->timestamps();

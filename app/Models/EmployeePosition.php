@@ -16,6 +16,8 @@ final class EmployeePosition extends Model
     protected $fillable = [
         'employee_id',
         'position_id',
+        'start_date',
+        'end_date',
         'created_by',
         'updated_by',
     ];
