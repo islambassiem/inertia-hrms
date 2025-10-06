@@ -28,9 +28,11 @@ export interface Employee {
     nationality: string;
     sponsorship: string;
     categories: Resource[];
-    positions: Resource[];
+    positions: Position[];
     departments: Resource[];
     qualification: Resource[];
+    entities: Resource[];
+    colleges: Resource[];
 }
 
 interface Idnetification {
@@ -59,6 +61,12 @@ interface EmergencyContacts {
     mobile: string;
     email: string;
     relation: string;
+}
+
+interface Position extends Resource {
+    start_date: string;
+    end_date: string | null;
+    is_current: boolean;
 }
 
 export interface EmployeeData {

@@ -128,7 +128,7 @@ const EmployeeFiltersDrawer = memo(function EmployeeDrawer({
                             selected={formData.entities}
                             onChange={(v) => updateFilter('entities', v)}
                             direction="start"
-                            title={t('Institution')}
+                            title={t('Entity')}
                         />
                         <MultiSelect
                             items={colleges.data}

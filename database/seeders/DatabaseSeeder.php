@@ -27,12 +27,12 @@ final class DatabaseSeeder extends Seeder
         $hr->assignRole('hr');
 
         $this->call([
-            EntitySeeder::class,
-            CollegeSeeder::class,
             CountrySeeder::class,
             SponsorshipSeeder::class,
             UserSeeder::class,
             EmployeeSeeder::class,
+            EntitySeeder::class,
+            CollegeSeeder::class,
             DepartmentSeeder::class,
             CategorySeeder::class,
             PositionSeeder::class,
@@ -73,5 +73,7 @@ final class DatabaseSeeder extends Seeder
         foreach ($heads as $head) {
             $head->assignRole('head');
         }
+
+        Employee::where('user_id', $hr->id)->first()?->update(['code' => '500322']);
     }
 }

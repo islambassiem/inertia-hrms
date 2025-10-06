@@ -46,7 +46,7 @@
     "Filter": "تصفية",
     "Export": "تصدير",
     "There are not record matching this criteria": "لا يوجد سجلات تطابق هذه المعايير",
-    "Institution": "المؤسسة",
+    "Entity": "المؤسسة",
     "College": "الكلية",
     "Search by Name, ID, Employee ID": "ابحث بالاسم ، رقم الهوية ، رقم الموظف",
     "Employees per page": "الموظفين لكل صفحة",
@@ -109,5 +109,7 @@
     "No bank information added yet.": "لم يتم اضافة معلومات البنك بعد.",
     "Contact Person": "شخص الاتصال",
     "Official Information": "المعلومات الوظيفية",
+    "Position": "الوظيفة",
+    "Finger Print Status": "حالة البصمة",
     "Logout": "تسجيل الخروج"
 }

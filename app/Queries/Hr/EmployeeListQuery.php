@@ -79,13 +79,13 @@ final class EmployeeListQuery
                 });
             })
             ->when(! empty($dto->entities), function ($query) use ($dto) {
-                return $query->whereHas('departments', function ($query) use ($dto) {
-                    $query->whereIn('entity_id', $dto->entities);
+                return $query->whereHas('entities', function ($query) use ($dto) {
+                    $query->whereIn('_entities.id', $dto->entities);
                 });
             })
             ->when(! empty($dto->colleges), function ($query) use ($dto) {
-                return $query->whereHas('departments', function ($query) use ($dto) {
-                    $query->whereIn('college_id', $dto->colleges);
+                return $query->whereHas('colleges', function ($query) use ($dto) {
+                    $query->whereIn('_colleges.id', $dto->colleges);
                 });
             })
             ->when(! empty($dto->categories), function ($query) use ($dto) {
@@ -104,21 +104,5 @@ final class EmployeeListQuery
                     return $query->whereIn('qualifications.qualification', $dto->qualifications);
                 });
             });
-        // ->when(! empty($dto->entities), function ($query) use ($dto) {
-        //     return $query->whereIn('id', function ($query) use ($dto) {
-        //         $query->select('employee_id')
-        //             ->from('department_employee')
-        //             ->join('department_hierarchies', 'department_employee.department_id', '=', 'department_hierarchies.department_id')
-        //             ->whereIn('department_hierarchies.entity_id', $dto->entities);
-        //     });
-        // })
-        // ->when(! empty($dto->colleges), function ($query) use ($dto) {
-        //     return $query->whereIn('id', function ($query) use ($dto) {
-        //         $query->select('employee_id')
-        //             ->from('department_employee')
-        //             ->join('department_hierarchies', 'department_employee.department_id', '=', 'department_hierarchies.department_id')
-        //             ->whereIn('department_hierarchies.college_id', $dto->colleges);
-        //     });
-        // });
     }
 }

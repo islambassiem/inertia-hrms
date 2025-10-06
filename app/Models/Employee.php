@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Collection;
 
 final class Employee extends Model
 {
@@ -190,7 +189,8 @@ final class Employee extends Model
      */
     public function positions(): BelongsToMany
     {
-        return $this->belongsToMany(Position::class);
+        return $this->belongsToMany(Position::class)
+            ->withPivot('start_date', 'end_date');
     }
 
     /**
@@ -202,19 +202,21 @@ final class Employee extends Model
     }
 
     /**
-     * @return Collection<int, mixed>
+     * @return BelongsToMany<Entity, $this>
      */
-    public function entities(): Collection
+    public function entities(): BelongsToMany
     {
-        return $this->departments->pluck('entity_id');
+        return $this->belongsToMany(Entity::class, 'employee_entity')
+            ->withPivot('start_date', 'end_date');
     }
 
     /**
-     * @return Collection<int, mixed>
+     * @return BelongsToMany<College, $this>
      */
-    public function colleges(): Collection
+    public function colleges(): BelongsToMany
     {
-        return $this->departments->pluck('college_id');
+        return $this->belongsToMany(College::class, 'college_employee')
+            ->withPivot('start_date', 'end_date');
     }
 
     /**

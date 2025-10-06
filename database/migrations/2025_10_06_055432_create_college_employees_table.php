@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Models\College;
 use App\Models\Employee;
-use App\Models\Position;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,10 +16,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_position', function (Blueprint $table) {
+        Schema::create('college_employee', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(College::class)->constrained();
             $table->foreignIdFor(Employee::class)->constrained();
-            $table->foreignIdFor(Position::class)->constrained();
             $table->date('start_date');
             $table->date('end_date')->nullable();
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_position');
+        Schema::dropIfExists('college_employees');
     }
 };

@@ -79,6 +79,7 @@ final class EmployeeController extends Controller
             'bank',
             'address',
             'contacts',
+            'entities',
         ]);
 
         return Inertia::render('Hr/Employee/Info', [
@@ -99,6 +100,9 @@ final class EmployeeController extends Controller
             'bank',
             'address',
             'contacts',
+            'entities',
+            'categories',
+            'colleges',
         ]);
 
         return Inertia::render('Hr/Employee/Official', [

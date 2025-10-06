@@ -1,11 +1,15 @@
+import React from 'react';
+
 const InfoField = ({
     icon: Icon,
     label,
     value,
+    children,
 }: {
     icon: any;
     label: string;
     value?: string | null;
+    children?: React.ReactNode;
 }) => {
     return (
         <div className="flex items-start gap-3 p-3 rounded-lg hover:bg-ash-50 dark:hover:bg-ash-700/50 transition-colors">
@@ -17,7 +21,7 @@ const InfoField = ({
                     {label}
                 </p>
                 <p className="text-base text-ash-900 dark:text-ash-100 break-words">
-                    {value || '-'}
+                    {value || children || '-'}
                 </p>
             </div>
         </div>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
 use App\Models\Entity;
 use Illuminate\Database\Seeder;
 
@@ -35,5 +36,15 @@ final class EntitySeeder extends Seeder
             'entity_ar' => 'العناية للنظافة',
             'created_by' => 1,
         ]);
+
+        $employees = Employee::all(['id']);
+        foreach ($employees as $employee) {
+            $employee->entities()->attach(
+                Entity::inRandomOrder()->take(1)->pluck('id')->toArray(), [
+                    'start_date' => fake()->date(),
+                    'end_date' => fake()->randomElement([null, fake()->date()]),
+                ]
+            );
+        }
     }
 }
