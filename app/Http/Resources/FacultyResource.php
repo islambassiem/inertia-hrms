@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Models\Institution
+ * @mixin \App\Models\Faculty
  */
-final class InstitutionListResource extends JsonResource
+final class FacultyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,7 +21,7 @@ final class InstitutionListResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => app()->getLocale() === 'en' ? $this->institution_en : $this->institution_ar,
+            'name' => app()->getLocale() === 'en' ? $this->faculty_en : $this->faculty_ar,
         ];
     }
 }

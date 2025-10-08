@@ -13,6 +13,7 @@ use App\Enums\ProfessionalRank;
 use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class AcademicExperience extends Model
 {
@@ -56,5 +57,53 @@ final class AcademicExperience extends Model
             'job_nature' => JobNature::class,
             'accommodation_status' => AccomodationStatus::class,
         ];
+    }
+
+    /**
+     * @return BelongsTo<Institution, $this>
+     */
+    public function institution(): BelongsTo
+    {
+        return $this->belongsTo(Institution::class);
+    }
+
+    /**
+     * @return BelongsTo<City, $this>
+     */
+    public function city(): BelongsTo
+    {
+        return $this->belongsTo(City::class);
+    }
+
+    /**
+     * @return BelongsTo<Section, $this>
+     */
+    public function section(): BelongsTo
+    {
+        return $this->belongsTo(Section::class);
+    }
+
+    /**
+     * @return BelongsTo<Faculty, $this>
+     */
+    public function faculty(): BelongsTo
+    {
+        return $this->belongsTo(Faculty::class);
+    }
+
+    /**
+     * @return BelongsTo<Specialty, $this>
+     */
+    public function major(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'major_id');
+    }
+
+    /**
+     * @return BelongsTo<Specialty, $this>
+     */
+    public function minor(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'minor_id');
     }
 }

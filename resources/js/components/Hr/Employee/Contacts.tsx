@@ -9,11 +9,18 @@ import EmployeeContext from '@/contexts/EmployeeContext';
 const Contacts = () => {
     const employee = useContext(EmployeeContext);
     return (
-        <Section title={t('Emergency Contacts')}>
+        <Section
+            title={t('Emergency Contacts')}
+            body={t('Emergency Contacts Persons')}
+        >
             <div className="md:col-span-2 space-y-4">
                 {employee.data.emergency_contacts.length === 0 ? (
                     <NoRecords
-                        message={t('No emergency contacts added yet.')}
+                        title={t('No emergency contacts added yet.')}
+                        body={t(
+                            'This employee has no emergency contact information.'
+                        )}
+                        icon={Phone}
                     />
                 ) : (
                     employee.data.emergency_contacts.map((contact, index) => (

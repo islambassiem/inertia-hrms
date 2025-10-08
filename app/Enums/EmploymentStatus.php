@@ -37,17 +37,17 @@ enum EmploymentStatus: string
     public function label(): array
     {
         return match ($this) {
-            self::ONJOB_FULL => ['id' => '11', 'employment_status_en' => 'On-the-job and not associated with work outside the educational institution', 'employment_status_ar' => 'على رأس العمل ولا يرتبط بأعمال خارج الجهة التعليمية'],
-            self::ONJOB_PART => ['id' => '12', 'employment_status_en' => 'On-the-job and working as a part-time consultant for an external entity', 'employment_status_ar' => 'على رأس العمل ويعمل مستشارا غير متفرغ لدى جهة خارجية'],
-            self::CONSULTANT => ['id' => '21', 'employment_status_en' => 'Working as a full-time consultant for an external entity', 'employment_status_ar' => 'يعمل مستشارا متفرغا لجهة خارجية'],
-            self::DELEGATE => ['id' => '22', 'employment_status_en' => 'Delegate or seconded to an external entity', 'employment_status_ar' => 'مندوب أو معار لجهة خارجية'],
-            self::SCHOLARSHIP => ['id' => '23', 'employment_status_en' => 'Scholarship student', 'employment_status_ar' => 'مبتعث'],
-            self::SUSPENDED => ['id' => '24', 'employment_status_en' => 'Suspended from duty (typically pending investigation or disciplinary action)', 'employment_status_ar' => 'مكفوف اليد'],
-            self::ACADEMIC_LEAVE => ['id' => '25', 'employment_status_en' => 'On academic leave (for research or scholarly work)', 'employment_status_ar' => 'تفرغ علمي'],
-            self::RETIRED => ['id' => '26', 'employment_status_en' => 'Retired', 'employment_status_ar' => 'متقاعد'],
-            self::DISMISSED => ['id' => '27', 'employment_status_en' => 'Record closed / Dismissed / Deregistered (depending on context)', 'employment_status_ar' => 'مطوي قيده'],
-            self::ENDED_CONTRACT => ['id' => '28', 'employment_status_en' => 'Contract ended', 'employment_status_ar' => 'عقد منتهي'],
-            self::OTHERS => ['id' => '99', 'employment_status_en' => 'Others', 'employment_status_ar' => 'اخرى'],
+            self::ONJOB_FULL => ['id' => '11', 'name' => app()->getLocale() === 'en' ? 'On-the-job and not associated with work outside the educational institution' : 'على رأس العمل ولا يرتبط بأعمال خارج الجهة التعليمية'],
+            self::ONJOB_PART => ['id' => '12', 'name' => app()->getLocale() === 'en' ? 'On-the-job and working as a part-time consultant for an external entity' : 'على رأس العمل ويعمل مستشارا غير متفرغ لدى جهة خارجية'],
+            self::CONSULTANT => ['id' => '21', 'name' => app()->getLocale() === 'en' ? 'Working as a full-time consultant for an external entity' : 'يعمل مستشارا متفرغا لجهة خارجية'],
+            self::DELEGATE => ['id' => '22', 'name' => app()->getLocale() === 'en' ? 'Delegate or seconded to an external entity' : 'مندوب أو معار لجهة خارجية'],
+            self::SCHOLARSHIP => ['id' => '23', 'name' => app()->getLocale() === 'en' ? 'Scholarship student' : 'مبتعث'],
+            self::SUSPENDED => ['id' => '24', 'name' => app()->getLocale() === 'en' ? 'Suspended from duty (typically pending investigation or disciplinary action)' : 'مكفوف اليد'],
+            self::ACADEMIC_LEAVE => ['id' => '25', 'name' => app()->getLocale() === 'en' ? 'On academic leave (for research or scholarly work)' : 'تفرغ علمي'],
+            self::RETIRED => ['id' => '26', 'name' => app()->getLocale() === 'en' ? 'Retired' : 'متقاعد'],
+            self::DISMISSED => ['id' => '27', 'name' => app()->getLocale() === 'en' ? 'Record closed / Dismissed / Deregistered (depending on context)' : 'مطوي قيده'],
+            self::ENDED_CONTRACT => ['id' => '28', 'name' => app()->getLocale() === 'en' ? 'Contract ended' : 'عقد منتهي'],
+            self::OTHERS => ['id' => '99', 'name' => app()->getLocale() === 'en' ? 'Others' : 'اخرى'],
         };
     }
 }

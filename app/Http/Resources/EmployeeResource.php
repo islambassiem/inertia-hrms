@@ -67,6 +67,7 @@ final class EmployeeResource extends JsonResource
             'entities' => EntityListResource::collection($this->whenLoaded('entities')),
             'colleges' => CollegeListResource::collection($this->whenLoaded('colleges')),
             'qualifications' => QualificationResource::collection($this->whenLoaded('qualifications')),
+            'academic_experiences' => AcademicExperienceResource::collection($this->whenLoaded('academicExperience')),
         ];
     }
 }

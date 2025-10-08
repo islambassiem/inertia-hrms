@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import Language from './components/Language';
 import Appearance from './components/Appearance';
@@ -65,4 +65,4 @@ const AppLayout = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default AppLayout;
+export default memo(AppLayout);

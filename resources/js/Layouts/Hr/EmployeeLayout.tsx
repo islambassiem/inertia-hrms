@@ -20,6 +20,7 @@ import {
     official,
 } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeQualificationConroller';
+import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAcademicExperienceController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -51,6 +52,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             icon: GraduationCap,
             href: qualifications(employee.data.id).url,
             active: url === qualifications(employee.data.id).url,
+        },
+        {
+            id: 'experiences',
+            label: t('Academic Experiences'),
+            icon: Briefcase,
+            href: academicExperience(employee.data.id).url,
+            active: url === academicExperience(employee.data.id).url,
         },
         { id: 'documents', label: t('Documents'), icon: FileText },
         { id: 'compensation', label: t('Compensation'), icon: DollarSign },
@@ -147,13 +155,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                 </div>
                 {/* Navigation Tabs */}
                 <div className="bg-white dark:bg-ash-800 shadow-sm border-b border-ash-200 dark:border-ash-700">
-                    <div className="max-w-7xl mx-auto px-6">
+                    <div className="max-w-fit mx-auto px-6">
                         <nav className="flex overflow-x-auto">
                             {pages.map((page) => (
                                 <Link
                                     key={page.id}
                                     href={page.href}
-                                    className={`flex items-center gap-2 py-4 px-6 text-sm font-medium ${page.active ? 'text-primary-600 dark:text-primary-400 border-b border-b-primary-400' : 'text-ash-900 dark:text-ash-100'} hover:text-primary-600 dark:hover:text-primary-400 transition-colors`}
+                                    className={`flex items-center gap-2 py-4 px-6 text-sm font-medium ${page.active ? 'text-primary-600 dark:text-primary-400 border-b border-b-primary-400' : 'text-ash-900 dark:text-ash-100'} hover:text-primary-600 dark:hover:text-primary-400 transition-colors whitespace-nowrap`}
                                 >
                                     <page.icon className="w-4 h-4" />
                                     <span>{page.label}</span>

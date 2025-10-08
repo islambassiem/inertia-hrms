@@ -332,6 +332,14 @@ final class Employee extends Model
     }
 
     /**
+     * @return HasMany<AcademicExperience, $this>
+     */
+    public function academicExperience(): HasMany
+    {
+        return $this->hasMany(AcademicExperience::class);
+    }
+
+    /**
      * @param  Builder<Employee>  $query
      */
     #[Scope]

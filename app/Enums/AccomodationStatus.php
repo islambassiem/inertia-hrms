@@ -30,10 +30,10 @@ enum AccomodationStatus: string
     public function label(): array
     {
         return match ($this) {
-            self::RESIDES => ['id' => '1', 'accomodation_status_en' => 'Resides in the institution’s housing', 'accomodation_status_ar' => 'يسكن في إسكان الجهة التعليمية'],
-            self::NOT_RESIDES => ['id' => '2', 'accomodation_status_en' => 'Does not reside in the institution’s housing', 'accomodation_status_ar' => 'لا يسكن في إسكان الجهة التعليمية'],
-            self::NO_ACCOMODATION => ['id' => '8', 'accomodation_status_en' => 'No housing is available at the institution', 'accomodation_status_ar' => 'لا يوجد إسكان في الجهة التعليمية'],
-            self::UNKNOWN => ['id' => '9', 'accomodation_status_en' => 'Unspecified', 'accomodation_status_ar' => 'غير محدد'],
+            self::RESIDES => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Resides in the institution’s housing' : 'يسكن في إسكان الجهة التعليمية'],
+            self::NOT_RESIDES => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Does not reside in the institution’s housing' : 'لا يسكن في إسكان الجهة التعليمية'],
+            self::NO_ACCOMODATION => ['id' => '8', 'name' => app()->getLocale() === 'en' ? 'No housing is available at the institution' : 'لا يوجد إسكان في الجهة التعليمية'],
+            self::UNKNOWN => ['id' => '9', 'name' => app()->getLocale() === 'en' ? 'Unspecified' : 'غير محدد'],
         };
     }
 }

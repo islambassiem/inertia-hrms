@@ -34,14 +34,14 @@ enum JobNature: string
     public function label(): array
     {
         return match ($this) {
-            self::TEACHING => ['id' => '1', 'job_nature_en' => 'Teaching', 'job_nature_ar' => 'تدريسية'],
-            self::RESEARCH => ['id' => '2', 'job_nature_en' => 'Research', 'job_nature_ar' => 'بحثية'],
-            self::ADMINSTRATIVE => ['id' => '3', 'job_nature_en' => 'Adminstrative', 'job_nature_ar' => 'إدارية'],
-            self::TEACHING_AND_RESEARCH => ['id' => '4', 'job_nature_en' => 'Teaching and Research', 'job_nature_ar' => 'تدريسية وبحثية'],
-            self::TEACHING_AND_ADMINSTRATIVE => ['id' => '5', 'job_nature_en' => 'Teaching and Adminstrative', 'job_nature_ar' => 'تدريسية وإدارية'],
-            self::RESEARCH_AND_ADMINSTRATIVE => ['id' => '6', 'job_nature_en' => 'Research and Adminstrative', 'job_nature_ar' => 'بحثية وإدارية'],
-            self::TEACHING_RESEARCH_AND_ADMINSTRATIVE => ['id' => '7', 'job_nature_en' => 'Teaching, Research and Adminstrative', 'job_nature_ar' => 'تدريسية وبحثية وإدارية'],
-            self::OTHER => ['id' => '8', 'job_nature_en' => 'Other', 'job_nature_ar' => 'أخرى'],
+            self::TEACHING => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Teaching' : 'تدريسية'],
+            self::RESEARCH => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Research' : 'بحثية'],
+            self::ADMINSTRATIVE => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Adminstrative' : 'إدارية'],
+            self::TEACHING_AND_RESEARCH => ['id' => '4', 'name' => app()->getLocale() === 'en' ? 'Teaching and Research' : 'تدريسية وبحثية'],
+            self::TEACHING_AND_ADMINSTRATIVE => ['id' => '5', 'name' => app()->getLocale() === 'en' ? 'Teaching and Adminstrative' : 'تدريسية وإدارية'],
+            self::RESEARCH_AND_ADMINSTRATIVE => ['id' => '6', 'name' => app()->getLocale() === 'en' ? 'Research and Adminstrative' : 'بحثية وإدارية'],
+            self::TEACHING_RESEARCH_AND_ADMINSTRATIVE => ['id' => '7', 'name' => app()->getLocale() === 'en' ? 'Teaching, Research and Adminstrative' : 'تدريسية وبحثية وإدارية'],
+            self::OTHER => ['id' => '8', 'name' => app()->getLocale() === 'en' ? 'Other' : 'أخرى'],
         };
     }
 }

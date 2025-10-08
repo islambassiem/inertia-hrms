@@ -8,18 +8,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 
-final class EmployeeQualificationConroller extends Controller
+final class EmployeeAcademicExperienceController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
         $employee->load([
             'departments',
             'positions',
-            'qualifications.major',
-            'qualifications.minor',
+            'academicExperience.institution',
         ]);
 
-        return inertia('Hr/Employee/Qualifications', [
+        return inertia('Hr/Employee/AcademicExperience', [
             'employee' => new EmployeeResource($employee),
         ]);
     }

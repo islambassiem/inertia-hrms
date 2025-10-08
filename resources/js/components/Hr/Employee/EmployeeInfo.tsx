@@ -60,7 +60,7 @@ const EmployeeInfo = () => {
                             <button
                                 key={tab.key}
                                 className={`flex items-center gap-2 py-4 px-6 text-sm font-medium
-                                    hover:text-primary-600 dark:hover:text-primary-400 transition-colors
+                                    hover:text-primary-600 dark:hover:text-primary-400 transition-colors whitespace-nowrap cursor-pointer
                                     ${
                                         activeTab === tab.key
                                             ? 'text-primary-600 dark:text-primary-400 border-b border-b-primary-500'
@@ -76,7 +76,7 @@ const EmployeeInfo = () => {
                 </div>
             </div>
 
-            <div className="bg-white dark:bg-ash-800 rounded-lg shadow-sm p-6">
+            <div>
                 {tabs.map((tab) =>
                     activeTab === tab.key ? (
                         <div key={tab.key}>{tab.content}</div>

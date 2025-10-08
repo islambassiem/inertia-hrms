@@ -32,12 +32,12 @@ enum AppointmentType: string
     public function label(): array
     {
         return match ($this) {
-            self::OFFICIAL => ['id' => '1', 'appointment_type_en' => 'Official position (Faculty cadre / Academic staff member)', 'appointment_type_ar' => 'وظيفة رسمية (كادر أعضاء هيئة التدريس)'],
-            self::CONTRACT => ['id' => '2', 'appointment_type_en' => 'Contracted (Employee under a fixed-term or renewable contract)', 'appointment_type_ar' => 'متعاقد'],
-            self::PARTTIME => ['id' => '3', 'appointment_type_en' => 'Part-time/Adjunct (Collaborator or Adjunct Faculty)', 'appointment_type_ar' => 'متعاون '],
-            self::TRANSFER => ['id' => '4', 'appointment_type_en' => 'Transferred (from another department or institution)', 'appointment_type_ar' => 'منقول'],
-            self::NA => ['id' => '8', 'appointment_type_en' => 'Not applicable', 'appointment_type_ar' => 'لاينطبق'],
-            self::UNDETERMINED => ['id' => '9', 'appointment_type_en' => 'Unspecified / Undetermined', 'appointment_type_ar' => 'غير محدد'],
+            self::OFFICIAL => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Official position (Faculty cadre / Academic staff member)' : 'وظيفة رسمية (كادر أعضاء هيئة التدريس)'],
+            self::CONTRACT => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Contracted (Employee under a fixed-term or renewable contract)' : 'متعاقد'],
+            self::PARTTIME => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Part-time/Adjunct (Collaborator or Adjunct Faculty)' : 'متعاون '],
+            self::TRANSFER => ['id' => '4', 'name' => app()->getLocale() === 'en' ? 'Transferred (from another department or institution)' : 'منقول'],
+            self::NA => ['id' => '8', 'name' => app()->getLocale() === 'en' ? 'Not applicable' : 'لاينطبق'],
+            self::UNDETERMINED => ['id' => '9', 'name' => app()->getLocale() === 'en' ? 'Unspecified / Undetermined' : 'غير محدد'],
         };
     }
 }

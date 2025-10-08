@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconType } from 'react-icons';
 
 const InfoField = ({
     icon: Icon,
@@ -6,7 +7,7 @@ const InfoField = ({
     value,
     children,
 }: {
-    icon: any;
+    icon: IconType;
     label: string;
     value?: string | null;
     children?: React.ReactNode;

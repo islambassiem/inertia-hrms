@@ -34,6 +34,7 @@ export interface Employee {
     entities: Resource[];
     colleges: Resource[];
     qualifications: Qualification[];
+    academic_experiences: AcademicExperience[];
 }
 
 interface Idnetification {
@@ -89,6 +90,27 @@ export interface Qualification {
     study_nature: Resource;
     thesis: string | null;
     updated_at: string | null;
+}
+
+export interface AcademicExperience {
+    id: string;
+    position: string | null;
+    institution: Resource | null;
+    city: Resource | null;
+    section: Resource | null;
+    major: Resource | null;
+    minor: Resource | null;
+    employment_number: string | null;
+    academic_rank: Resource | null;
+    professional_rank: Resource | null;
+    hiring_date: string | null;
+    joining_date: string | null;
+    resignation_date: string | null;
+    appointment_type: Resource | null;
+    employment_status: Resource | null;
+    tasks: string | null;
+    job_nature: Resource | null;
+    accommodation_status: Resource | null;
 }
 
 export interface EmployeeData {

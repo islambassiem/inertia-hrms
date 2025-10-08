@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Models\Institution
+ * @mixin \App\Enums\JobNature
  */
-final class InstitutionListResource extends JsonResource
+final class JobNatureResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,9 +19,6 @@ final class InstitutionListResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'id' => $this->id,
-            'name' => app()->getLocale() === 'en' ? $this->institution_en : $this->institution_ar,
-        ];
+        return $this->label();
     }
 }
