@@ -36,16 +36,16 @@ enum Rating: string
     public function lable(): array
     {
         return match ($this) {
-            self::VERY_GOOD_THIRD_DISTINCT => ['id' => '0', 'rating_en' => 'Very Good Third Distinct', 'rating_ar' => 'جيد جداً مع مرتبة الشرف الثالثة'],
-            self::EXCELLENT_FIRST_DISTINCT => ['id' => '1', 'rating_en' => 'Excellent First Distinct', 'rating_ar' => 'ممتاز مع مرتبة الشرف الأولى'],
-            self::EXCELLENT_SECOND_DISTINCT => ['id' => '2', 'rating_en' => 'Excellent Second Distinct', 'rating_ar' => 'ممتاز مع مرتبة الشرف الثانية'],
-            self::EXCELLENT => ['id' => '3', 'rating_en' => 'Excellent', 'rating_ar' => 'ممتاز'],
-            self::VERY_GOOD_SECOND_DISTINCT => ['id' => '4', 'rating_en' => 'Very Good Second Distinct', 'rating_ar' => 'جيد جداً مع مرتبة الشرف الثانية'],
-            self::VERY_GOOD => ['id' => '5', 'rating_en' => 'Very Good', 'rating_ar' => 'جيد جداً'],
-            self::GOOD => ['id' => '6', 'rating_en' => 'Good', 'rating_ar' => 'جيد'],
-            self::PASS => ['id' => '7', 'rating_en' => 'Pass', 'rating_ar' => 'مقبول'],
-            self::NA => ['id' => '8', 'rating_en' => 'N/A', 'rating_ar' => 'لا ينطبق'],
-            self::OTHER => ['id' => '9', 'rating_en' => 'Other', 'rating_ar' => 'أخرى'],
+            self::VERY_GOOD_THIRD_DISTINCT => ['id' => '0', 'name' => app()->getLocale() === 'en' ? 'Very Good Third Distinct' : 'جيد جداً مع مرتبة الشرف الثالثة'],
+            self::EXCELLENT_FIRST_DISTINCT => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Excellent First Distinct' : 'ممتاز مع مرتبة الشرف الأولى'],
+            self::EXCELLENT_SECOND_DISTINCT => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Excellent Second Distinct' : 'ممتاز مع مرتبة الشرف الثانية'],
+            self::EXCELLENT => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Excellent' : 'ممتاز'],
+            self::VERY_GOOD_SECOND_DISTINCT => ['id' => '4', 'name' => app()->getLocale() === 'en' ? 'Very Good Second Distinct' : 'جيد جداً مع مرتبة الشرف الثانية'],
+            self::VERY_GOOD => ['id' => '5', 'name' => app()->getLocale() === 'en' ? 'Very Good' : 'جيد جداً'],
+            self::GOOD => ['id' => '6', 'name' => app()->getLocale() === 'en' ? 'Good' : 'جيد'],
+            self::PASS => ['id' => '7', 'name' => app()->getLocale() === 'en' ? 'Pass' : 'مقبول'],
+            self::NA => ['id' => '8', 'name' => app()->getLocale() === 'en' ? 'N/A' : 'لا ينطبق'],
+            self::OTHER => ['id' => '9', 'name' => app()->getLocale() === 'en' ? 'Other' : 'أخرى'],
         };
     }
 }

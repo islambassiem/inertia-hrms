@@ -111,5 +111,16 @@
     "Official Information": "المعلومات الوظيفية",
     "Position": "الوظيفة",
     "Finger Print Status": "حالة البصمة",
+    "No qualifications added yet.": "لم يتم اضافة مؤهلات بعد.",
+    "Latest Qualification": "آخر مؤهل",
+    "Attested": "موثق",
+    "Major": "التخصص العام",
+    "Minor": "التخصص الدقيق",
+    "Study Nature": "طبيعة الدراسة",
+    "Graduation Date": "تاريخ التخرج",
+    "Grade Point Average(GPA)": "متوسط نقاط الدرجة (GPA)",
+    "Rating": "التقدير",
+    "Attestation Status": "حالة التوثيق",
+    "Not Attested": "غير موثق",
     "Logout": "تسجيل الخروج"
 }

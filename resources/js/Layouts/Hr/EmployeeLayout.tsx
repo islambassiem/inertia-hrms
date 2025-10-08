@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import {
     ArrowLeft,
-    Award,
     Briefcase,
     Clock,
     DollarSign,
@@ -20,6 +19,7 @@ import {
     show,
     official,
 } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
+import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeQualificationConroller';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -45,13 +45,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             href: official(employee.data.id).url,
             active: url === official(employee.data.id).url,
         },
-        { id: 'experience', label: t('Experience'), icon: Briefcase },
         {
             id: 'qualifications',
             label: t('Qualifications'),
             icon: GraduationCap,
+            href: qualifications(employee.data.id).url,
+            active: url === qualifications(employee.data.id).url,
         },
-        { id: 'certifications', label: t('Certifications'), icon: Award },
         { id: 'documents', label: t('Documents'), icon: FileText },
         { id: 'compensation', label: t('Compensation'), icon: DollarSign },
         { id: 'attendance', label: t('Attendance'), icon: Clock },

@@ -11,6 +11,7 @@ use App\Enums\StudyNature;
 use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Qualification extends Model
 {
@@ -49,5 +50,21 @@ final class Qualification extends Model
             'is_attested' => 'boolean',
             'is_active' => 'boolean',
         ];
+    }
+
+    /**
+     * @return BelongsTo<Specialty, $this>
+     */
+    public function major(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'major_id');
+    }
+
+    /**
+     * @return BelongsTo<Specialty, $this>
+     */
+    public function minor(): BelongsTo
+    {
+        return $this->belongsTo(Specialty::class, 'minor_id');
     }
 }

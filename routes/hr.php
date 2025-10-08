@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Hr\Employee\EmployeeQualificationConroller;
 use App\Http\Controllers\Hr\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,8 @@ Route::group([
 
         Route::get('/{employee}/info', [EmployeeController::class, 'show'])->name('show');
         Route::get('/{employee}/official', [EmployeeController::class, 'official'])->name('official');
+
+        Route::get('/{employee}/qualifications', [EmployeeQualificationConroller::class, 'index'])->name('qualifications.index');
 
         Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('edit.info');
     });

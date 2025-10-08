@@ -29,9 +29,9 @@ enum StudyNature: string
     public function lable(): array
     {
         return match ($this) {
-            self::RESEARCH => ['id' => '1', 'name_en' => 'Research Only', 'name_ar' => 'بحث فقط'],
-            self::SUBJECT => ['id' => '2', 'name_en' => 'Subjects Only', 'name_ar' => 'مواد فقط'],
-            self::BOTH => ['id' => '3', 'name_en' => 'Research and Subjects', 'name_ar' => 'بحث ومواد'],
+            self::RESEARCH => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Research Only' : 'بحث فقط'],
+            self::SUBJECT => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Subjects Only' : 'مواد فقط'],
+            self::BOTH => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Research and Subjects' : 'بحث ومواد'],
         };
     }
 }

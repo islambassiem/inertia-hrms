@@ -267,7 +267,9 @@ final class Employee extends Model
      */
     public function qualifications(): HasMany
     {
-        return $this->hasMany(Qualification::class);
+        return $this->hasMany(Qualification::class)
+            ->orderBy('is_active', 'desc')
+            ->orderBy('graduation_date', 'desc');
     }
 
     /**

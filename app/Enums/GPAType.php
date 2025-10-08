@@ -30,10 +30,10 @@ enum GPAType: string
     public function label(): array
     {
         return match ($this) {
-            self::FIVE_POINTS => ['id' => '1', 'name_en' => '5 Point Scale', 'name_ar' => 'نظام المعدل التراكمي المكون من خمس نقاط'],
-            self::FOUR_POINTS => ['id' => '2', 'name_en' => '4 Point Scale', 'name_ar' => 'نظام المعدل التراكمي المكون من أربع نقاط'],
-            self::PERCENTAGE => ['id' => '3', 'name_en' => 'Percentage', 'name_ar' => 'نظام المعدل التراكمي المئوي'],
-            self::OTHER => ['id' => '4', 'name_en' => 'Other', 'name_ar' => 'أخرى'],
+            self::FIVE_POINTS => ['id' => '1', 'name' => app()->getLocale() === 'en' ? '5 Point Scale' : 'نظام المعدل التراكمي المكون من خمس نقاط'],
+            self::FOUR_POINTS => ['id' => '2', 'name' => app()->getLocale() === 'en' ? '4 Point Scale' : 'نظام المعدل التراكمي المكون من أربع نقاط'],
+            self::PERCENTAGE => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Percentage' : 'نظام المعدل التراكمي المئوي'],
+            self::OTHER => ['id' => '4', 'name' => app()->getLocale() === 'en' ? 'Other' : 'أخرى'],
         };
     }
 }

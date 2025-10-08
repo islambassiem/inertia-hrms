@@ -33,6 +33,7 @@ export interface Employee {
     qualification: Resource[];
     entities: Resource[];
     colleges: Resource[];
+    qualifications: Qualification[];
 }
 
 interface Idnetification {
@@ -67,6 +68,27 @@ interface Position extends Resource {
     start_date: string;
     end_date: string | null;
     is_current: boolean;
+}
+
+export interface Qualification {
+    city: string | null;
+    created_at: string | null;
+    gpa: number | null;
+    gpa_type: Resource;
+    graduation_college: string | null;
+    graduation_country: number | null;
+    graduation_date: string | null;
+    graduation_university: string | null;
+    id: string;
+    is_active: boolean;
+    is_attested: boolean;
+    major: Resource;
+    minor: Resource;
+    qualification: Resource;
+    rating: Resource;
+    study_nature: Resource;
+    thesis: string | null;
+    updated_at: string | null;
 }
 
 export interface EmployeeData {
