@@ -35,6 +35,7 @@ export interface Employee {
     colleges: Resource[];
     qualifications: Qualification[];
     academic_experiences: AcademicExperience[];
+    experiences: Experience[];
 }
 
 interface Idnetification {
@@ -111,6 +112,19 @@ export interface AcademicExperience {
     tasks: string | null;
     job_nature: Resource | null;
     accommodation_status: Resource | null;
+}
+
+export interface Experience {
+    id: string;
+    profession: string | null;
+    organization_name: string | null;
+    city: string | null;
+    country: Resource | null;
+    department: string | null;
+    section: string | null;
+    start_date: string | null;
+    end_date: string | null;
+    functional_tasks: string | null;
 }
 
 export interface EmployeeData {

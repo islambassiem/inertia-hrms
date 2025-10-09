@@ -3,7 +3,7 @@ import { dateFormatter } from '@/lib/utils';
 import { AcademicExperience } from '@/types/hr';
 import { t } from 'i18next';
 import {
-    Briefcase,
+    BookMarked,
     Calendar,
     FileText,
     Home,
@@ -33,7 +33,7 @@ const AcademicExperienceCard = ({
             {/* Header Section */}
             <div className="flex items-start gap-4 mb-5 pb-5 border-b border-ash-100 dark:border-ash-700">
                 <div className="p-3 bg-primary-50 dark:bg-primary-900/20 rounded-lg">
-                    <Briefcase className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                    <BookMarked className="w-6 h-6 text-primary-600 dark:text-primary-400" />
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -120,7 +120,7 @@ const AcademicExperienceCard = ({
                 {/* Column 2: Employment Details */}
                 <div className="space-y-4">
                     <div>
-                        <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider block mb-1 flex items-center gap-1">
+                        <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
                             {t('Hiring Date')}
                         </label>
@@ -130,7 +130,7 @@ const AcademicExperienceCard = ({
                     </div>
 
                     <div>
-                        <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider block mb-1 flex items-center gap-1">
+                        <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
                             {t('Joining Date')}
                         </label>
@@ -141,7 +141,7 @@ const AcademicExperienceCard = ({
 
                     {hasResigned && (
                         <div>
-                            <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider block mb-1 flex items-center gap-1">
+                            <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                                 <Calendar className="w-3 h-3" />
                                 {t('Resignation Date')}
                             </label>
@@ -177,7 +177,7 @@ const AcademicExperienceCard = ({
 
                     {experience.accommodation_status && (
                         <div>
-                            <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider block mb-1 flex items-center gap-1">
+                            <label className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                                 <Home className="w-3 h-3" />
                                 {t('Accommodation')}
                             </label>

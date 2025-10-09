@@ -4,7 +4,7 @@ import AcademicExperienceCard from './AcademicExperienceCard';
 import { AcademicExperience } from '@/types/hr';
 import { t } from 'i18next';
 import NoRecords from '@/components/ui/NoRecords';
-import { Briefcase } from 'lucide-react';
+import { BookMarked } from 'lucide-react';
 import Section from './Section';
 
 const EmployeeAcademicExperience = () => {
@@ -30,7 +30,7 @@ const EmployeeAcademicExperience = () => {
                     body={t(
                         'This employee has no academic experience records.'
                     )}
-                    icon={Briefcase}
+                    icon={BookMarked}
                 />
             )}
         </Section>
