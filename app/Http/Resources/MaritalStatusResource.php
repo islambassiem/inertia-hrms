@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Models\Category
+ * @mixin \App\Enums\MaritalStatus
  */
-final class CategoryListResource extends JsonResource
+final class MaritalStatusResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,9 +19,6 @@ final class CategoryListResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
-            'id' => $this->id,
-            'name' => app()->getLocale() === 'ar' ? $this->category_ar : $this->category_en,
-        ];
+        return $this->label();
     }
 }

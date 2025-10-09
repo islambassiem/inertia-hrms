@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Enums\Qualification
+ * @mixin \App\Models\College
  */
-final class QualificationListResource extends JsonResource
+final class CollegeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,6 +19,9 @@ final class QualificationListResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return $this->label();
+        return [
+            'id' => $this->id,
+            'name' => app()->getLocale() === 'ar' ? $this->college_ar : $this->college_en,
+        ];
     }
 }

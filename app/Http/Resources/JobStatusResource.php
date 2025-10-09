@@ -10,7 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @mixin \App\Enums\JobStatus
  */
-final class JobStatusListResource extends JsonResource
+final class JobStatusResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

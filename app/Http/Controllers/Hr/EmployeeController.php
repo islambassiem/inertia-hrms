@@ -11,17 +11,17 @@ use App\Enums\MaritalStatus;
 use App\Enums\Qualification;
 use App\Exports\EmployeesExport;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CategoryListResource;
-use App\Http\Resources\CollegeListResource;
-use App\Http\Resources\CountryListResource;
-use App\Http\Resources\DepartmentListResource;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\CollegeResource;
+use App\Http\Resources\CountryResource;
+use App\Http\Resources\DepartmentResource;
 use App\Http\Resources\EmployeeResource;
-use App\Http\Resources\EntityListResource;
-use App\Http\Resources\GenderListResource;
-use App\Http\Resources\JobStatusListResource;
-use App\Http\Resources\MaritalStatusListResource;
-use App\Http\Resources\QualificationListResource;
-use App\Http\Resources\SponsorshipListResource;
+use App\Http\Resources\EntityResource;
+use App\Http\Resources\GenderResource;
+use App\Http\Resources\JobStatusResource;
+use App\Http\Resources\MaritalStatusResource;
+use App\Http\Resources\QualificationResource;
+use App\Http\Resources\SponsorshipResource;
 use App\Models\Category;
 use App\Models\College;
 use App\Models\Country;
@@ -46,16 +46,16 @@ final class EmployeeController extends Controller
             ->onEachSide(1);
 
         return Inertia::render('Hr/Employees', [
-            'status' => JobStatusListResource::collection(JobStatus::cases()),
-            'genders' => GenderListResource::collection(Gender::cases()),
+            'status' => JobStatusResource::collection(JobStatus::cases()),
+            'genders' => GenderResource::collection(Gender::cases()),
             'employees' => EmployeeResource::collection($employees),
-            'departments' => DepartmentListResource::collection(Department::all()),
-            'categories' => CategoryListResource::collection(Category::all()),
-            'countries' => CountryListResource::collection(Country::all()),
-            'sponsorships' => SponsorshipListResource::collection(Sponsorship::all()),
-            'qualifications' => QualificationListResource::collection(Qualification::cases()),
-            'entities' => EntityListResource::collection(Entity::all()),
-            'colleges' => CollegeListResource::collection(College::all()),
+            'departments' => DepartmentResource::collection(Department::all()),
+            'categories' => CategoryResource::collection(Category::all()),
+            'countries' => CountryResource::collection(Country::all()),
+            'sponsorships' => SponsorshipResource::collection(Sponsorship::all()),
+            'qualifications' => QualificationResource::collection(Qualification::cases()),
+            'entities' => EntityResource::collection(Entity::all()),
+            'colleges' => CollegeResource::collection(College::all()),
         ]);
     }
 
@@ -126,8 +126,8 @@ final class EmployeeController extends Controller
                 'third_name_en' => $employee->third_name_en,
                 'family_name_en' => $employee->family_name_en,
             ],
-            'genders' => GenderListResource::collection(Gender::cases()),
-            'maritalStatus' => MaritalStatusListResource::collection(MaritalStatus::cases()),
+            'genders' => GenderResource::collection(Gender::cases()),
+            'maritalStatus' => MaritalStatusResource::collection(MaritalStatus::cases()),
         ]);
     }
 

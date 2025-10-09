@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * @mixin \App\Enums\Gender
+ * @mixin \App\Models\Entity
  */
-final class GenderListResource extends JsonResource
+final class EntityResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,6 +19,9 @@ final class GenderListResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return $this->label();
+        return [
+            'id' => $this->id,
+            'name' => app()->getLocale() === 'ar' ? $this->entity_ar : $this->entity_en,
+        ];
     }
 }

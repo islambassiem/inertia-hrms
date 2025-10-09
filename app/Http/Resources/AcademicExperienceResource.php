@@ -22,7 +22,7 @@ final class AcademicExperienceResource extends JsonResource
         return [
             'id' => $this->id,
             'position' => $this->position,
-            'institution' => new InstitutionListResource($this->whenLoaded('institution')),
+            'institution' => new InstitutionResource($this->whenLoaded('institution')),
             'city' => new CityResource($this->whenLoaded('city')),
             'section' => new SectionResource($this->whenLoaded(relationship: 'section')),
             'faculty' => new FacultyResource($this->whenLoaded('faculty')),
