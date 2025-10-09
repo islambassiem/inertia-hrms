@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\Hr\Employee\EmployeeAcademicExperienceController;
 use App\Http\Controllers\Hr\Employee\EmployeeExperienceController;
 use App\Http\Controllers\Hr\Employee\EmployeeQualificationConroller;
+use App\Http\Controllers\Hr\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Hr\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,9 @@ Route::group([
 
         Route::get('/{employee}/experiences', [EmployeeExperienceController::class, 'index'])
             ->name('experiences.index');
+
+        Route::get('/{employee}/salaries', [EmployeeSalaryController::class, 'index'])
+            ->name('salary.index');
 
         Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('edit.info');
     });

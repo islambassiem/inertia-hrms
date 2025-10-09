@@ -151,5 +151,17 @@
     "Accommodation": "السكن",
     "Duration": "المدة",
     "Responsibilities & Tasks": "المسؤوليات والمهام",
+    "Salary History": "تاريخ الراتب",
+    "View employee compensation and salary progression": "عرض التعويضات وتقدمات الراتب للموظف",
+    "No salary records found": "لم يتم العثور على سجلات راتب",
+    "This employee has no salary history records.": "هذا الموظف ليس لديه سجلات تاريخ الراتب.",
+    "Current Salary": "الراتب الحالي",
+    "Total Package": "الراتب الاجمالي",
+    "Effective from": "اعتباراً من",
+    "Basic Salary": "الراتب الاساسي",
+    "Housing Allowance": "بدل السكن",
+    "Transportation": "بدل المواصلات",
+    "Food": "بدل الطعام",
+    "Allowances": "البدلات",
     "Logout": "تسجيل الخروج"
 }

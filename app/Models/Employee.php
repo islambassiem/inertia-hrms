@@ -348,6 +348,15 @@ final class Employee extends Model
     }
 
     /**
+     * @return HasMany<Salary, $this>
+     */
+    public function salaries(): HasMany
+    {
+        return $this->hasMany(Salary::class)
+            ->orderBy('effective', 'desc');
+    }
+
+    /**
      * @param  Builder<Employee>  $query
      */
     #[Scope]

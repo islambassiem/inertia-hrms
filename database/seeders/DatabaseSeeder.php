@@ -56,6 +56,7 @@ final class DatabaseSeeder extends Seeder
             AddressSeeder::class,
             EmergencyContactSeeder::class,
             ExperienceSeeder::class,
+            SalarySeeder::class,
         ]);
 
         $employees = Employee::all(['id', 'head_id']);

@@ -5,10 +5,8 @@ import {
     Briefcase,
     Clock,
     DollarSign,
-    FileText,
     GraduationCap,
     Mail,
-    Settings,
     User,
 } from 'lucide-react';
 import { dateFormatter } from '@/lib/utils';
@@ -23,6 +21,7 @@ import {
 import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeQualificationConroller';
 import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAcademicExperienceController';
 import { index as experience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeExperienceController';
+import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeSalaryController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -69,10 +68,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             href: experience(employee.data.id).url,
             active: url === experience(employee.data.id).url,
         },
-        { id: 'documents', label: t('Documents'), icon: FileText },
-        { id: 'compensation', label: t('Compensation'), icon: DollarSign },
-        { id: 'attendance', label: t('Attendance'), icon: Clock },
-        { id: 'settings', label: t('Settings'), icon: Settings },
+        {
+            id: 'compensation',
+            label: t('Compensation'),
+            icon: DollarSign,
+            href: salary(employee.data.id).url,
+            active: url === salary(employee.data.id).url,
+        },
     ];
 
     return (
