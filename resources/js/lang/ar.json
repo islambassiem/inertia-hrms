@@ -58,7 +58,7 @@
     "This employee has no experience records.": "هذا الموظف لا يحتوي على سجلات خبرات.",
     "Certifications": "الشهادات",
     "Documents": "الوثائق",
-    "Compensation": "التعويضات",
+    "Salary": "الراتب",
     "Attendance": "الحضور",
     "Settings": "الإعدادات",
     "Basic Info": "المعلومات الاساسية",
@@ -181,11 +181,21 @@
     "Research Nature": "طبيعة البحث",
     "Progress": "التقدم",
     "Citation Style": "نمط الاقتباس",
-    "Location": "مكان النشر",
+    "Publication Location": "مكان النشر",
     "URL": "الرابط",
     "View Publication": "عرض المنشور",
     "Domain": "المجال",
     "Summary": "الملخص",
     "Keywords": "الكلمات المفتاحية",
+
+    "Courses": "الدورات",
+    "No courses found.": "لم يتم العثور على دورات",
+    "This employee has no recorded courses or training programs.": "هذا الموظف ليس لديه دورات او برامج تدريبية مسجلة.",
+    "Courses & Training": "الدورات والتدريب",
+    "Professional development courses, certifications, and training programs": "دورات التطوير المهني، الشهادات، وبرامج التدريب",
+    "Issuer": "الجهة المانحة",
+    "Date": "التاريخ",
+    "Course Location": "مكان الدورة",
+
     "Logout": "تسجيل الخروج"
 }

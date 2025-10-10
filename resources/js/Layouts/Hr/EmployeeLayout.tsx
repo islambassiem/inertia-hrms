@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import {
     ArrowLeft,
+    Award,
     Binoculars,
     BookMarked,
     Briefcase,
@@ -26,6 +27,7 @@ import { index as experience } from '@/actions/App/Http/Controllers/Hr/Employee/
 import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeSalaryController';
 import { index as achievement } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAchievementController';
 import { index as research } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeResearchController';
+import { index as courses } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeCourseController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -73,6 +75,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             active: url === experience(employee.data.id).url,
         },
         {
+            id: 'courses',
+            label: t('Courses'),
+            icon: Award,
+            href: courses(employee.data.id).url,
+            active: url === courses(employee.data.id).url,
+        },
+        {
             id: 'research',
             label: t('Research'),
             icon: Binoculars,
@@ -87,8 +96,8 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             active: url === achievement(employee.data.id).url,
         },
         {
-            id: 'compensation',
-            label: t('Compensation'),
+            id: 'salary',
+            label: t('Salary'),
             icon: DollarSign,
             href: salary(employee.data.id).url,
             active: url === salary(employee.data.id).url,

@@ -39,6 +39,7 @@ export interface Employee {
     salaries: Salary[];
     achievements: Achievement[];
     research: Research[];
+    courses: Course[];
 }
 
 interface Idnetification {
@@ -157,6 +158,17 @@ export interface Research {
     summary: string | null;
     key_words: string | null;
     pages_number: string | null;
+}
+
+export interface Course {
+    id: string;
+    name: string | null;
+    type: Resource | null;
+    issuer: string | null;
+    date_of_issue: string | null;
+    period: string | null;
+    city: string | null;
+    Country: Resource | null;
 }
 
 export interface Salary {

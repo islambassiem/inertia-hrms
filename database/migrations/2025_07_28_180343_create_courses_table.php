@@ -21,7 +21,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Employee::class)->constrained();
             $table->string('name', 100);
-            $table->enum('status', CourseType::toArray())->default('active');
+            $table->enum('type', CourseType::toArray());
             $table->string('issuer', 100);
             $table->date('date_of_issue');
             $table->string('period', 100)->nullable();

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Hr\Employee\EmployeeAcademicExperienceController;
 use App\Http\Controllers\Hr\Employee\EmployeeAchievementController;
+use App\Http\Controllers\Hr\Employee\EmployeeCourseController;
 use App\Http\Controllers\Hr\Employee\EmployeeExperienceController;
 use App\Http\Controllers\Hr\Employee\EmployeeQualificationConroller;
 use App\Http\Controllers\Hr\Employee\EmployeeResearchController;
@@ -54,6 +55,9 @@ Route::group([
 
         Route::get('/{employee}/researches', [EmployeeResearchController::class, 'index'])
             ->name('researches.index');
+
+        Route::get('/{employee}/courses', [EmployeeCourseController::class, 'index'])
+            ->name('courses.index');
 
         Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])
             ->name('edit.info');

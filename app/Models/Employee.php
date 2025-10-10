@@ -374,6 +374,15 @@ final class Employee extends Model
     }
 
     /**
+     * @return HasMany<Course, $this>
+     */
+    public function courses(): HasMany
+    {
+        return $this->hasMany(Course::class);
+
+    }
+
+    /**
      * @param  Builder<Employee>  $query
      */
     #[Scope]

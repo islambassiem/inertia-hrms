@@ -8,6 +8,7 @@ use App\Enums\CourseType;
 use App\Traits\TracksUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Course extends Model
 {
@@ -17,7 +18,7 @@ final class Course extends Model
     protected $fillable = [
         'employee_id',
         'name',
-        'status',
+        'type',
         'issuer',
         'date_of_issue',
         'period',
@@ -30,8 +31,16 @@ final class Course extends Model
     public function casts(): array
     {
         return [
-            'status' => CourseType::class,
+            'type' => CourseType::class,
             'date_of_issue' => 'date',
         ];
+    }
+
+    /**
+     * @return BelongsTo<Country, $this>
+     */
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
     }
 }

@@ -24,7 +24,7 @@ final class CourseFactory extends Factory
         return [
             'employee_id' => Employee::inRandomOrder()->first('id')->id,
             'name' => fake()->text(50),
-            'status' => fake()->randomElement(CourseType::toArray()),
+            'type' => fake()->randomElement(CourseType::toArray()),
             'issuer' => fake()->text(50),
             'date_of_issue' => fake()->date(),
             'period' => fake()->text(10),

@@ -184,7 +184,7 @@ const ResearchCard = ({ research }: { research: Research }) => {
                         <div>
                             <div className="text-xs font-semibold text-ash-500 dark:text-ash-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                                 <MapPin className="w-3 h-3" />
-                                {t('Location')}
+                                {t('Publication Location')}
                             </div>
                             <p className="text-sm text-ash-900 dark:text-ash-100">
                                 {research.publication_location}
