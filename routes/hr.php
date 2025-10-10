@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Hr\Employee\EmployeeAcademicExperienceController;
-use App\Http\Controllers\Hr\Employee\EmployeeAchievementController;
-use App\Http\Controllers\Hr\Employee\EmployeeCourseController;
-use App\Http\Controllers\Hr\Employee\EmployeeExperienceController;
-use App\Http\Controllers\Hr\Employee\EmployeeQualificationConroller;
-use App\Http\Controllers\Hr\Employee\EmployeeResearchController;
-use App\Http\Controllers\Hr\Employee\EmployeeSalaryController;
+use App\Http\Controllers\Hr\Employee\AcademicExperienceController;
+use App\Http\Controllers\Hr\Employee\AchievementController;
+use App\Http\Controllers\Hr\Employee\CourseController;
+use App\Http\Controllers\Hr\Employee\ExperienceController;
+use App\Http\Controllers\Hr\Employee\QualificationConroller;
+use App\Http\Controllers\Hr\Employee\ResearchController;
+use App\Http\Controllers\Hr\Employee\SalaryController;
 use App\Http\Controllers\Hr\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,25 +38,25 @@ Route::group([
         Route::get('/{employee}/official', [EmployeeController::class, 'official'])
             ->name('official');
 
-        Route::get('/{employee}/qualifications', [EmployeeQualificationConroller::class, 'index'])
+        Route::get('/{employee}/qualifications', [QualificationConroller::class, 'index'])
             ->name('qualifications.index');
 
-        Route::get('/{employee}/academic-experiences', [EmployeeAcademicExperienceController::class, 'index'])
+        Route::get('/{employee}/academic-experiences', [AcademicExperienceController::class, 'index'])
             ->name('academic-experiences.index');
 
-        Route::get('/{employee}/experiences', [EmployeeExperienceController::class, 'index'])
+        Route::get('/{employee}/experiences', [ExperienceController::class, 'index'])
             ->name('experiences.index');
 
-        Route::get('/{employee}/salaries', [EmployeeSalaryController::class, 'index'])
+        Route::get('/{employee}/salaries', [SalaryController::class, 'index'])
             ->name('salary.index');
 
-        Route::get('/{employee}/achievements', [EmployeeAchievementController::class, 'index'])
+        Route::get('/{employee}/achievements', [AchievementController::class, 'index'])
             ->name('achievements.index');
 
-        Route::get('/{employee}/researches', [EmployeeResearchController::class, 'index'])
+        Route::get('/{employee}/researches', [ResearchController::class, 'index'])
             ->name('researches.index');
 
-        Route::get('/{employee}/courses', [EmployeeCourseController::class, 'index'])
+        Route::get('/{employee}/courses', [CourseController::class, 'index'])
             ->name('courses.index');
 
         Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])

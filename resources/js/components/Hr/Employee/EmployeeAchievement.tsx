@@ -1,12 +1,9 @@
-import EmployeeContext from '@/contexts/EmployeeContext';
 import { Trophy } from 'lucide-react';
-import { useContext } from 'react';
 import AchievementCard from './AchievementCard';
 import NoRecords from '@/components/ui/NoRecords';
 import { t } from 'i18next';
 
-const EmployeeAchievement = () => {
-    const employee = useContext(EmployeeContext);
+const EmployeeAchievement = ({ achievements }: { achievements: any[] }) => {
     return (
         <div className="max-w-6xl mx-auto p-6">
             {/* Header Section */}
@@ -25,9 +22,9 @@ const EmployeeAchievement = () => {
                 </div>
             </div>
 
-            {employee.data.achievements.length > 0 ? (
+            {achievements.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {employee.data.achievements.map((achievement) => (
+                    {achievements.map((achievement) => (
                         <AchievementCard
                             key={achievement.id}
                             achievement={achievement}

@@ -1,13 +1,10 @@
-import EmployeeContext from '@/contexts/EmployeeContext';
 import { DollarSign } from 'lucide-react';
-import { useContext } from 'react';
 import SalaryCard from './SalaryCard';
 import { t } from 'i18next';
 import NoRecords from '@/components/ui/NoRecords';
+import { Salary } from '@/types/hr';
 
-const EmployeeSalary = () => {
-    const employee = useContext(EmployeeContext);
-    const salaries = employee.data.salaries;
+const EmployeeSalary = ({ salaries }: { salaries: Salary[] }) => {
     return (
         <div className="max-w-6xl mx-auto p-6">
             <div className="mb-6">

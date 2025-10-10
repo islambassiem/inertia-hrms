@@ -33,28 +33,28 @@ export interface Employee {
     qualification: Resource[];
     entities: Resource[];
     colleges: Resource[];
-    qualifications: Qualification[];
-    academic_experiences: AcademicExperience[];
-    experiences: Experience[];
-    salaries: Salary[];
-    achievements: Achievement[];
-    research: Research[];
-    courses: Course[];
+    // qualifications: Qualification[];
+    // academic_experiences: AcademicExperience[];
+    // experiences: Experience[];
+    // salaries: Salary[];
+    // achievements: Achievement[];
+    // research: Research[];
+    // courses: Course[];
 }
 
-interface Idnetification {
+export interface Idnetification {
     id_number: string;
     place_of_issue: string | null;
     date_of_issue: string | null;
     date_of_expiry: string | null;
 }
 
-interface Bank {
+export interface Bank {
     account: number;
     bank: Resource;
 }
 
-interface Address {
+export interface Address {
     building_number: string;
     city: string;
     district: string;
@@ -63,14 +63,14 @@ interface Address {
     street: string;
 }
 
-interface EmergencyContacts {
+export interface EmergencyContacts {
     name: string;
     mobile: string;
     email: string;
     relation: string;
 }
 
-interface Position extends Resource {
+export interface Position extends Resource {
     start_date: string;
     end_date: string | null;
     is_current: boolean;

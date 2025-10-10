@@ -1,15 +1,15 @@
-import EmployeeContext from '@/contexts/EmployeeContext';
+// import EmployeeContext from '@/contexts/EmployeeContext';
 import { Experience } from '@/types/hr';
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import Section from './Section';
 import { t } from 'i18next';
 import NoRecords from '@/components/ui/NoRecords';
 import { Briefcase } from 'lucide-react';
 import ExperienceCard from './ExperienceCard';
 
-const EmployeeExperience = () => {
-    const employee = useContext(EmployeeContext);
-    const experiences = employee.data.experiences as Experience[];
+const EmployeeExperience = ({ experiences }: { experiences: Experience[] }) => {
+    // const employee = useContext(EmployeeContext);
+    // const experiences = employee.data.experiences as Experience[];
     return (
         <Section
             title={t('Experiences')}

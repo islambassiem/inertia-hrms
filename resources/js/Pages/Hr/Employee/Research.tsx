@@ -2,18 +2,24 @@ import EmployeeResearch from '@/components/Hr/Employee/EmployeeResearch';
 import EmployeeContext from '@/contexts/EmployeeContext';
 import AppLayout from '@/Layouts/AppLayout';
 import EmployeeLayout from '@/Layouts/Hr/EmployeeLayout';
-import { EmployeeData } from '@/types/hr';
+import { EmployeeData, Research as ResearchType } from '@/types/hr';
 
-const Qualifications = ({ employee }: { employee: EmployeeData }) => {
+const Research = ({
+    employee,
+    researches,
+}: {
+    employee: EmployeeData;
+    researches: { data: ResearchType[] };
+}) => {
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>
                 <EmployeeLayout>
-                    <EmployeeResearch />
+                    <EmployeeResearch researches={researches.data} />
                 </EmployeeLayout>
             </EmployeeContext.Provider>
         </AppLayout>
     );
 };
 
-export default Qualifications;
+export default Research;

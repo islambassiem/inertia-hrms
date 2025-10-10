@@ -27,7 +27,7 @@ const AcademicExperienceCard = ({
             return 'bg-ash-100 dark:bg-ash-700 text-ash-700 dark:text-ash-400';
         return 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400';
     };
-    console.log(experience);
+
     return (
         <div className="border border-ash-200 dark:border-ash-700 rounded-lg p-6 bg-white dark:bg-ash-800 shadow-sm hover:shadow-md transition-shadow">
             {/* Header Section */}

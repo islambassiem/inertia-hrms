@@ -6,20 +6,22 @@ namespace App\Http\Controllers\Hr\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
+use App\Http\Resources\SalaryResource;
 use App\Models\Employee;
 
-final class EmployeeAcademicExperienceController extends Controller
+final class SalaryController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
         $employee->load([
             'departments',
             'positions',
-            'academicExperience.institution',
+            'salaries',
         ]);
 
-        return inertia('Hr/Employee/AcademicExperience', [
+        return inertia('Hr/Employee/Salary', [
             'employee' => new EmployeeResource($employee),
+            'salaries' => SalaryResource::collection($employee->salaries),
         ]);
     }
 }

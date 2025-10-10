@@ -1,22 +1,23 @@
-import EmployeeContext from '@/contexts/EmployeeContext';
-import React, { useContext } from 'react';
 import Section from './Section';
 import { t } from 'i18next';
 import NoRecords from '@/components/ui/NoRecords';
 import QualificationCard from './QualificationCard';
 import { GraduationCap } from 'lucide-react';
+import { Qualification } from '@/types/hr';
 
-const EmployeeQualifications = () => {
-    const employee = useContext(EmployeeContext);
-
+const EmployeeQualifications = ({
+    qualifications,
+}: {
+    qualifications: Qualification[];
+}) => {
     return (
         <Section
             title={t('Qualifications')}
             body={t('Employee Qualifications')}
         >
-            {employee.data.qualifications.length > 0 ? (
+            {qualifications.length > 0 ? (
                 <div className="space-y-4">
-                    {employee.data.qualifications.map((q) => (
+                    {qualifications.map((q) => (
                         <QualificationCard key={q.id} qualification={q} />
                     ))}
                 </div>

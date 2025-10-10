@@ -21,13 +21,13 @@ import {
     show,
     official,
 } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
-import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeQualificationConroller';
-import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAcademicExperienceController';
-import { index as experience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeExperienceController';
-import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeSalaryController';
-import { index as achievement } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAchievementController';
-import { index as research } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeResearchController';
-import { index as courses } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeCourseController';
+import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Employee/QualificationConroller';
+import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/Employee/AcademicExperienceController';
+import { index as experience } from '@/actions/App/Http/Controllers/Hr/Employee/ExperienceController';
+import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/SalaryController';
+import { index as achievement } from '@/actions/App/Http/Controllers/Hr/Employee/AchievementController';
+import { index as research } from '@/actions/App/Http/Controllers/Hr/Employee/ResearchController';
+import { index as courses } from '@/actions/App/Http/Controllers/Hr/Employee/CourseController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -198,6 +198,7 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                             {pages.map((page) => (
                                 <Link
                                     key={page.id}
+                                    preserveScroll
                                     href={page.href}
                                     className={`flex items-center gap-2 py-4 px-6 text-sm font-medium ${page.active ? 'text-primary-600 dark:text-primary-400 border-b border-b-primary-400' : 'text-ash-900 dark:text-ash-100'} hover:text-primary-600 dark:hover:text-primary-400 transition-colors whitespace-nowrap`}
                                 >

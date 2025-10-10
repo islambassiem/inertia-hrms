@@ -2,14 +2,22 @@ import EmployeeQualifications from '@/components/Hr/Employee/EmployeeQualificati
 import EmployeeContext from '@/contexts/EmployeeContext';
 import AppLayout from '@/Layouts/AppLayout';
 import EmployeeLayout from '@/Layouts/Hr/EmployeeLayout';
-import { EmployeeData } from '@/types/hr';
+import { EmployeeData, Qualification } from '@/types/hr';
 
-const Qualifications = ({ employee }: { employee: EmployeeData }) => {
+const Qualifications = ({
+    employee,
+    qualifications,
+}: {
+    employee: EmployeeData;
+    qualifications: { data: Qualification[] };
+}) => {
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>
                 <EmployeeLayout>
-                    <EmployeeQualifications />
+                    <EmployeeQualifications
+                        qualifications={qualifications.data}
+                    />
                 </EmployeeLayout>
             </EmployeeContext.Provider>
         </AppLayout>

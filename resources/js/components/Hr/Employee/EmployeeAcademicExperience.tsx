@@ -1,5 +1,3 @@
-import EmployeeContext from '@/contexts/EmployeeContext';
-import { useContext } from 'react';
 import AcademicExperienceCard from './AcademicExperienceCard';
 import { AcademicExperience } from '@/types/hr';
 import { t } from 'i18next';
@@ -7,10 +5,12 @@ import NoRecords from '@/components/ui/NoRecords';
 import { BookMarked } from 'lucide-react';
 import Section from './Section';
 
-const EmployeeAcademicExperience = () => {
-    const employee = useContext(EmployeeContext);
-    const experiences = employee.data
-        .academic_experiences as AcademicExperience[];
+const EmployeeAcademicExperience = ({
+    academicExperiences,
+}: {
+    academicExperiences: AcademicExperience[];
+}) => {
+    const experiences = academicExperiences as AcademicExperience[];
     return (
         <Section
             title={t('Academic Experiences')}

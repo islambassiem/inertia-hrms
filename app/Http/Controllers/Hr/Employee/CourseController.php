@@ -5,21 +5,23 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Hr\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CourseResource;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 
-final class EmployeeExperienceController extends Controller
+final class CourseController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
         $employee->load([
             'departments',
             'positions',
-            'experiences.country',
+            'courses.country',
         ]);
 
-        return inertia('Hr/Employee/Experience', [
+        return inertia('Hr/Employee/Course', [
             'employee' => new EmployeeResource($employee),
+            'courses' => CourseResource::collection($employee->courses),
         ]);
     }
 }

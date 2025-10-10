@@ -5,21 +5,24 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Hr\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EmployeeQualificationResource;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 
-final class EmployeeAchievementController extends Controller
+final class QualificationConroller extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
         $employee->load([
             'departments',
             'positions',
-            'achievements',
+            'qualifications.major',
+            'qualifications.minor',
         ]);
 
-        return inertia('Hr/Employee/Achievement', [
+        return inertia('Hr/Employee/Qualifications', [
             'employee' => new EmployeeResource($employee),
+            'qualifications' => EmployeeQualificationResource::collection($employee->qualifications),
         ]);
     }
 }

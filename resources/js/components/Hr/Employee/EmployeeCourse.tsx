@@ -1,14 +1,10 @@
-import EmployeeContext from '@/contexts/EmployeeContext';
 import { Award } from 'lucide-react';
-import { useContext } from 'react';
 import CourseCard from './CourseCard';
 import NoRecords from '@/components/ui/NoRecords';
 import { t } from 'i18next';
+import { Course } from '@/types/hr';
 
-const EmployeeCourse = () => {
-    const employee = useContext(EmployeeContext);
-    console.log(employee);
-
+const EmployeeCourse = ({ courses }: { courses: Course[] }) => {
     return (
         <div className="max-w-6xl mx-auto p-6">
             {/* Header Section */}
@@ -27,9 +23,9 @@ const EmployeeCourse = () => {
                 </div>
             </div>
 
-            {employee.data.courses.length > 0 ? (
+            {courses.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {employee.data.courses.map((course) => (
+                    {courses.map((course) => (
                         <CourseCard key={course.id} course={course} />
                     ))}
                 </div>

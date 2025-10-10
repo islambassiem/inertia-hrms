@@ -1,14 +1,10 @@
-import EmployeeContext from '@/contexts/EmployeeContext';
-import { useContext } from 'react';
 import ResearchCard from './ResearchCard';
 import { Binoculars } from 'lucide-react';
 import NoRecords from '@/components/ui/NoRecords';
 import { t } from 'i18next';
+import { Research } from '@/types/hr';
 
-const EmployeeResearch = () => {
-    const employee = useContext(EmployeeContext);
-    console.log(employee);
-
+const EmployeeResearch = ({ researches }: { researches: Research[] }) => {
     return (
         <div className="max-w-6xl mx-auto p-6">
             {/* Header Section */}
@@ -27,9 +23,9 @@ const EmployeeResearch = () => {
                 </div>
             </div>
 
-            {employee.data.research.length > 0 ? (
+            {researches.length > 0 ? (
                 <div className="space-y-4">
-                    {employee.data.research.map((item) => (
+                    {researches.map((item) => (
                         <ResearchCard key={item.id} research={item} />
                     ))}
                 </div>

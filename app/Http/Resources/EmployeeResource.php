@@ -66,13 +66,13 @@ final class EmployeeResource extends JsonResource
             'departments' => DepartmentResource::collection($this->whenLoaded('departments')),
             'entities' => EntityResource::collection($this->whenLoaded('entities')),
             'colleges' => CollegeResource::collection($this->whenLoaded('colleges')),
-            'qualifications' => EmployeeQualificationResource::collection($this->whenLoaded('qualifications')),
-            'academic_experiences' => AcademicExperienceResource::collection($this->whenLoaded('academicExperience')),
-            'experiences' => ExperienceResource::collection($this->whenLoaded('experiences')),
-            'salaries' => SalaryResource::collection($this->whenLoaded('salaries')),
-            'achievements' => AchievementResource::collection($this->whenLoaded('achievements')),
-            'research' => ResearchResource::collection($this->whenLoaded('researches')),
-            'courses' => CourseResource::collection($this->whenLoaded('courses')),
+            // 'qualifications' => EmployeeQualificationResource::collection($this->whenLoaded('qualifications')),
+            // 'academic_experiences' => AcademicExperienceResource::collection($this->whenLoaded('academicExperience')),
+            // 'experiences' => ExperienceResource::collection($this->whenLoaded('experiences')),
+            // 'salaries' => SalaryResource::collection($this->whenLoaded('salaries')),
+            // 'achievements' => AchievementResource::collection($this->whenLoaded('achievements')),
+            // 'research' => ResearchResource::collection($this->whenLoaded('researches')),
+            // 'courses' => CourseResource::collection($this->whenLoaded('courses')),
         ];
     }
 }
