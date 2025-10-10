@@ -6,6 +6,7 @@ use App\Http\Controllers\Hr\Employee\AcademicExperienceController;
 use App\Http\Controllers\Hr\Employee\AchievementController;
 use App\Http\Controllers\Hr\Employee\CourseController;
 use App\Http\Controllers\Hr\Employee\ExperienceController;
+use App\Http\Controllers\Hr\Employee\OfficialController;
 use App\Http\Controllers\Hr\Employee\QualificationConroller;
 use App\Http\Controllers\Hr\Employee\ResearchController;
 use App\Http\Controllers\Hr\Employee\SalaryController;
@@ -35,8 +36,8 @@ Route::group([
         Route::get('/{employee}/info', [EmployeeController::class, 'show'])
             ->name('show');
 
-        Route::get('/{employee}/official', [EmployeeController::class, 'official'])
-            ->name('official');
+        Route::get('/{employee}/official', [OfficialController::class, 'index'])
+            ->name('official.index');
 
         Route::get('/{employee}/qualifications', [QualificationConroller::class, 'index'])
             ->name('qualifications.index');

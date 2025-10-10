@@ -51,14 +51,9 @@ final class EmployeeResource extends JsonResource
             'address' => AddressResource::make($this->whenLoaded('address')),
             'emergency_contacts' => EmergencyContactResource::collection($this->whenLoaded('contacts', fn () => $this->contacts)),
             'is_active' => $this->is_active,
-            'has_salary' => $this->has_salary,
-            'has_biometric' => $this->has_biometric,
             'works_on_saturday' => $this->works_on_saturday,
             'joining_date' => $this->joining_date,
             'resignation_date' => $this->resignation_date,
-            'has_married_contract' => $this->has_married_contract,
-            'vacation_class' => $this->vacation_class,
-            'special_needs' => $this->special_needs,
             'nationality' => $this->whenLoaded('nationality', app()->getLocale() === 'ar' ? $this->nationality->country_ar : $this->nationality->country_en),
             'sponsorship' => $this->whenLoaded('sponsorship', app()->getLocale() === 'ar' ? $this->sponsorship->sponsorship_ar : $this->sponsorship->sponsorship_en),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
@@ -66,13 +61,6 @@ final class EmployeeResource extends JsonResource
             'departments' => DepartmentResource::collection($this->whenLoaded('departments')),
             'entities' => EntityResource::collection($this->whenLoaded('entities')),
             'colleges' => CollegeResource::collection($this->whenLoaded('colleges')),
-            // 'qualifications' => EmployeeQualificationResource::collection($this->whenLoaded('qualifications')),
-            // 'academic_experiences' => AcademicExperienceResource::collection($this->whenLoaded('academicExperience')),
-            // 'experiences' => ExperienceResource::collection($this->whenLoaded('experiences')),
-            // 'salaries' => SalaryResource::collection($this->whenLoaded('salaries')),
-            // 'achievements' => AchievementResource::collection($this->whenLoaded('achievements')),
-            // 'research' => ResearchResource::collection($this->whenLoaded('researches')),
-            // 'courses' => CourseResource::collection($this->whenLoaded('courses')),
         ];
     }
 }

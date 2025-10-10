@@ -19,7 +19,6 @@ import {
     index,
     infoEdit,
     show,
-    official,
 } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
 import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Employee/QualificationConroller';
 import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/Employee/AcademicExperienceController';
@@ -28,6 +27,7 @@ import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/Sala
 import { index as achievement } from '@/actions/App/Http/Controllers/Hr/Employee/AchievementController';
 import { index as research } from '@/actions/App/Http/Controllers/Hr/Employee/ResearchController';
 import { index as courses } from '@/actions/App/Http/Controllers/Hr/Employee/CourseController';
+import { index as official } from '@/actions/App/Http/Controllers/Hr/Employee/OfficialController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -106,7 +106,8 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <>
-            <section className="md:sticky md:top-0 md:z-40">
+            {/* md:sticky md:top-0 md:z-40 */}
+            <section className="">
                 <div className="bg-gradient-to-l from-primary-200 to-primary-400 dark:from-primary-700 dark:to-primary-950 text">
                     <div className="max-w-7xl mx-auto px-6 py-8 ">
                         {/* Back Button */}
