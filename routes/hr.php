@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Hr\Employee\EmployeeAcademicExperienceController;
+use App\Http\Controllers\Hr\Employee\EmployeeAchievementController;
 use App\Http\Controllers\Hr\Employee\EmployeeExperienceController;
 use App\Http\Controllers\Hr\Employee\EmployeeQualificationConroller;
 use App\Http\Controllers\Hr\Employee\EmployeeSalaryController;
@@ -38,6 +39,9 @@ Route::group([
 
         Route::get('/{employee}/salaries', [EmployeeSalaryController::class, 'index'])
             ->name('salary.index');
+
+        Route::get('/{employee}/achievements', [EmployeeAchievementController::class, 'index'])
+            ->name('achievements.index');
 
         Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('edit.info');
     });

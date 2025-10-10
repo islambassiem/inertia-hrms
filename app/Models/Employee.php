@@ -357,6 +357,15 @@ final class Employee extends Model
     }
 
     /**
+     * @return HasMany<Achievement, $this>
+     */
+    public function achievements(): HasMany
+    {
+        return $this->hasMany(Achievement::class)
+            ->orderBy('year', 'desc');
+    }
+
+    /**
      * @param  Builder<Employee>  $query
      */
     #[Scope]

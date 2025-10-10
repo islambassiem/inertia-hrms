@@ -7,6 +7,7 @@ import {
     DollarSign,
     GraduationCap,
     Mail,
+    Trophy,
     User,
 } from 'lucide-react';
 import { dateFormatter } from '@/lib/utils';
@@ -22,6 +23,7 @@ import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Emplo
 import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAcademicExperienceController';
 import { index as experience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeExperienceController';
 import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeSalaryController';
+import { index as achievement } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAchievementController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -67,6 +69,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             icon: Briefcase,
             href: experience(employee.data.id).url,
             active: url === experience(employee.data.id).url,
+        },
+        {
+            id: 'achievements',
+            label: t('Achievements'),
+            icon: Trophy,
+            href: achievement(employee.data.id).url,
+            active: url === achievement(employee.data.id).url,
         },
         {
             id: 'compensation',

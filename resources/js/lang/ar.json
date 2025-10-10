@@ -163,5 +163,11 @@
     "Transportation": "بدل المواصلات",
     "Food": "بدل الطعام",
     "Allowances": "البدلات",
+    "Achievements": "الانجازات",
+    "Achievements & Awards": "الانجازات والجوائز",
+    "Recognition and honors received throughout career": "التكريم والجوائز التي تم الحصول عليها طوال المسيرة المهنية",
+    "No achievements found": "لم يتم العثور على انجازات",
+    "This employee has no recorded achievements or awards.": "هذا الموظف ليس لديه انجازات او جوائز مسجلة.",
+    "Total Awards": "مجموع الجوائز",
     "Logout": "تسجيل الخروج"
 }

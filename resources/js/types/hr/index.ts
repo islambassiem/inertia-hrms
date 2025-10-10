@@ -37,6 +37,7 @@ export interface Employee {
     academic_experiences: AcademicExperience[];
     experiences: Experience[];
     salaries: Salary[];
+    achievements: Achievement[];
 }
 
 interface Idnetification {
@@ -126,6 +127,13 @@ export interface Experience {
     start_date: string | null;
     end_date: string | null;
     functional_tasks: string | null;
+}
+
+export interface Achievement {
+    id: string;
+    title: string | null;
+    donor: string | null;
+    year: string | null;
 }
 
 export interface Salary {
