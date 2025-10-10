@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import {
     ArrowLeft,
+    Binoculars,
     BookMarked,
     Briefcase,
     Clock,
@@ -24,6 +25,7 @@ import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/E
 import { index as experience } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeExperienceController';
 import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeSalaryController';
 import { index as achievement } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeAchievementController';
+import { index as research } from '@/actions/App/Http/Controllers/Hr/Employee/EmployeeResearchController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -69,6 +71,13 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             icon: Briefcase,
             href: experience(employee.data.id).url,
             active: url === experience(employee.data.id).url,
+        },
+        {
+            id: 'research',
+            label: t('Research'),
+            icon: Binoculars,
+            href: research(employee.data.id).url,
+            active: url === research(employee.data.id).url,
         },
         {
             id: 'achievements',

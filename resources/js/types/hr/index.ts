@@ -38,6 +38,7 @@ export interface Employee {
     experiences: Experience[];
     salaries: Salary[];
     achievements: Achievement[];
+    research: Research[];
 }
 
 interface Idnetification {
@@ -134,6 +135,28 @@ export interface Achievement {
     title: string | null;
     donor: string | null;
     year: string | null;
+}
+
+export interface Research {
+    id: string;
+    type: Resource | null;
+    status: Resource | null;
+    progress: Resource | null;
+    nature: Resource | null;
+    domain: Resource | null;
+    citation: Resource | null;
+    language: Resource | null;
+    title: string | null;
+    publication_location: string | null;
+    publication_date: string | null;
+    publisher: string | null;
+    edition: string | null;
+    isbn: string | null;
+    magazine: string | null;
+    publishing_url: string | null;
+    summary: string | null;
+    key_words: string | null;
+    pages_number: string | null;
 }
 
 export interface Salary {

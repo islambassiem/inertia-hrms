@@ -36,16 +36,16 @@ enum ResearchLanguage: string
     public function lable(): array
     {
         return match ($this) {
-            self::ARABIC => ['id' => '1', 'name_en' => 'Arabic', 'name_ar' => 'العربية'],
-            self::ENGLISH => ['id' => '2', 'name_en' => 'English', 'name_ar' => 'الإنجليزية'],
-            self::FRENCH => ['id' => '3', 'name_en' => 'French', 'name_ar' => 'الفرنسية'],
-            self::CHINESE => ['id' => '4', 'name_en' => 'Chinese', 'name_ar' => 'الصينية'],
-            self::GERMAN => ['id' => '5', 'name_en' => 'German', 'name_ar' => 'الألمانية'],
-            self::INDIAN => ['id' => '6', 'name_en' => 'Indian', 'name_ar' => 'الهندية'],
-            self::SPANISH => ['id' => '7', 'name_en' => 'Spanish', 'name_ar' => 'الإسبانية'],
-            self::BENGALI => ['id' => '8', 'name_en' => 'Bengali', 'name_ar' => 'البنجالية'],
-            self::PORTOGESE => ['id' => '9', 'name_en' => 'Portuguese', 'name_ar' => 'البرتغالية'],
-            self::OTHER => ['id' => '10', 'name_en' => 'Other', 'name_ar' => 'أخرى'],
+            self::ARABIC => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Arabic' : 'العربية'],
+            self::ENGLISH => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'English' : 'الإنجليزية'],
+            self::FRENCH => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'French' : 'الفرنسية'],
+            self::CHINESE => ['id' => '4', 'name' => app()->getLocale() === 'en' ? 'Chinese' : 'الصينية'],
+            self::GERMAN => ['id' => '5', 'name' => app()->getLocale() === 'en' ? 'German' : 'الألمانية'],
+            self::INDIAN => ['id' => '6', 'name' => app()->getLocale() === 'en' ? 'Indian' : 'الهندية'],
+            self::SPANISH => ['id' => '7', 'name' => app()->getLocale() === 'en' ? 'Spanish' : 'الإسبانية'],
+            self::BENGALI => ['id' => '8', 'name' => app()->getLocale() === 'en' ? 'Bengali' : 'البنجالية'],
+            self::PORTOGESE => ['id' => '9', 'name' => app()->getLocale() === 'en' ? 'Portuguese' : 'البرتغالية'],
+            self::OTHER => ['id' => '10', 'name' => app()->getLocale() === 'en' ? 'Other' : 'أخرى'],
         };
     }
 }

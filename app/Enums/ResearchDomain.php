@@ -34,14 +34,14 @@ enum ResearchDomain: string
     public function lable(): array
     {
         return match ($this) {
-            self::NATURAL => ['id' => '1', 'name_en' => 'Natural science', 'name_ar' => 'العلوم الطبيعية'],
-            self::ENGINEERING => ['id' => '2', 'name_en' => 'Engineering and technology', 'name_ar' => 'الهندسة والتقنية'],
-            self::MEDICINE => ['id' => '3', 'name_en' => 'Medicine, health sciences and health care', 'name_ar' => 'الطب والعلوم الصحية والرعاية الصحية'],
-            self::AGRICULTURE => ['id' => '4', 'name_en' => 'Agricultural Sciences', 'name_ar' => 'العلوم الزراعية'],
-            self::SOCIAL => ['id' => '5', 'name_en' => 'Social sciences, business and law', 'name_ar' => 'العلوم الاجتماعية والأعمال والقانون'],
-            self::ARTS => ['id' => '6', 'name_en' => 'Humanities and arts', 'name_ar' => 'الإنسانيات والفنون'],
-            self::ISLAMIC => ['id' => '7', 'name_en' => 'Islamic studies', 'name_ar' => 'الدراسات الإسلامية'],
-            self::MULTIDISCIPULINARY => ['id' => '8', 'name_en' => 'Multidisciplinary services', 'name_ar' => 'الخدمات متعدد التخصصات'],
+            self::NATURAL => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Natural science' : 'العلوم الطبيعية'],
+            self::ENGINEERING => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Engineering and technology' : 'الهندسة والتقنية'],
+            self::MEDICINE => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Medicine, health sciences and health care' : 'الطب والعلوم الصحية والرعاية الصحية'],
+            self::AGRICULTURE => ['id' => '4', 'name' => app()->getLocale() === 'en' ? 'Agricultural Sciences' : 'العلوم الزراعية'],
+            self::SOCIAL => ['id' => '5', 'name' => app()->getLocale() === 'en' ? 'Social sciences, business and law' : 'العلوم الاجتماعية والأعمال والقانون'],
+            self::ARTS => ['id' => '6', 'name' => app()->getLocale() === 'en' ? 'Humanities and arts' : 'الإنسانيات والفنون'],
+            self::ISLAMIC => ['id' => '7', 'name' => app()->getLocale() === 'en' ? 'Islamic studies' : 'الدراسات الإسلامية'],
+            self::MULTIDISCIPULINARY => ['id' => '8', 'name' => app()->getLocale() === 'en' ? 'Multidisciplinary services' : 'الخدمات متعدد التخصصات'],
         };
     }
 }

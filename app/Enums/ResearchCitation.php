@@ -28,8 +28,8 @@ enum ResearchCitation: string
     public function lable(): array
     {
         return match ($this) {
-            self::SCOUPS => ['id' => '1', 'name_en' => 'SCOPUS', 'name_ar' => 'SCOPUS'],
-            self::ISI => ['id' => '2', 'name_en' => 'ISI', 'name_ar' => 'ISI'],
+            self::SCOUPS => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'SCOPUS' : 'SCOPUS'],
+            self::ISI => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'ISI' : 'ISI'],
         };
     }
 }

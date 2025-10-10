@@ -29,9 +29,9 @@ enum ResearchNature: string
     public function label(): array
     {
         return match ($this) {
-            self::THEORETICAL => ['id' => '1', 'research_nature_en' => 'Theoretical', 'research_nature_ar' => 'أساسي'],
-            self::EMPIRICAL => ['id' => '2', 'research_nature_en' => 'Empirical', 'research_nature_ar' => 'تطبيقي'],
-            self::MIXED => ['id' => '3', 'research_nature_en' => 'Research in empirical development', 'research_nature_ar' => 'بحوث في التطوير التجريبي'],
+            self::THEORETICAL => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Theoretical' : 'أساسي'],
+            self::EMPIRICAL => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Empirical' : 'تطبيقي'],
+            self::MIXED => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Research in empirical development' : 'بحوث في التطوير التجريبي'],
         };
     }
 }

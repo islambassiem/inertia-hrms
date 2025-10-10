@@ -169,5 +169,23 @@
     "No achievements found": "لم يتم العثور على انجازات",
     "This employee has no recorded achievements or awards.": "هذا الموظف ليس لديه انجازات او جوائز مسجلة.",
     "Total Awards": "مجموع الجوائز",
+    "Research": "الابحاث",
+
+    "No research publications found.": "لم يتم العثور على ابحاث",
+    "This employee has no recorded research or publications.": "هذا الموظف ليس لديه ابحاث او منشورات مسجلة.",
+    "Research & Publications": "الابحاث والمنشورات",
+    "Academic publications, research papers, and scholarly work": "المنشورات الاكاديمية، اوراق البحث، والعمل العلمي",
+    "Publisher": "الناشر",
+    "Edition": "الاصدار",
+    "Pages": "الصفحات",
+    "Research Nature": "طبيعة البحث",
+    "Progress": "التقدم",
+    "Citation Style": "نمط الاقتباس",
+    "Location": "مكان النشر",
+    "URL": "الرابط",
+    "View Publication": "عرض المنشور",
+    "Domain": "المجال",
+    "Summary": "الملخص",
+    "Keywords": "الكلمات المفتاحية",
     "Logout": "تسجيل الخروج"
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Hr\Employee\EmployeeAcademicExperienceController;
 use App\Http\Controllers\Hr\Employee\EmployeeAchievementController;
 use App\Http\Controllers\Hr\Employee\EmployeeExperienceController;
 use App\Http\Controllers\Hr\Employee\EmployeeQualificationConroller;
+use App\Http\Controllers\Hr\Employee\EmployeeResearchController;
 use App\Http\Controllers\Hr\Employee\EmployeeSalaryController;
 use App\Http\Controllers\Hr\EmployeeController;
 use Illuminate\Support\Facades\Route;
@@ -23,13 +24,21 @@ Route::group([
         'prefix' => 'employees',
         'as' => 'employees.',
     ], function () {
-        Route::get('/', [EmployeeController::class, 'index'])->name('index');
-        Route::post('/export', [EmployeeController::class, 'export'])->name('export');
 
-        Route::get('/{employee}/info', [EmployeeController::class, 'show'])->name('show');
-        Route::get('/{employee}/official', [EmployeeController::class, 'official'])->name('official');
+        Route::get('/', [EmployeeController::class, 'index'])
+            ->name('index');
 
-        Route::get('/{employee}/qualifications', [EmployeeQualificationConroller::class, 'index'])->name('qualifications.index');
+        Route::post('/export', [EmployeeController::class, 'export'])
+            ->name('export');
+
+        Route::get('/{employee}/info', [EmployeeController::class, 'show'])
+            ->name('show');
+
+        Route::get('/{employee}/official', [EmployeeController::class, 'official'])
+            ->name('official');
+
+        Route::get('/{employee}/qualifications', [EmployeeQualificationConroller::class, 'index'])
+            ->name('qualifications.index');
 
         Route::get('/{employee}/academic-experiences', [EmployeeAcademicExperienceController::class, 'index'])
             ->name('academic-experiences.index');
@@ -43,6 +52,10 @@ Route::group([
         Route::get('/{employee}/achievements', [EmployeeAchievementController::class, 'index'])
             ->name('achievements.index');
 
-        Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])->name('edit.info');
+        Route::get('/{employee}/researches', [EmployeeResearchController::class, 'index'])
+            ->name('researches.index');
+
+        Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])
+            ->name('edit.info');
     });
 });

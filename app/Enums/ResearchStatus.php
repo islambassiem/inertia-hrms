@@ -28,8 +28,8 @@ enum ResearchStatus: string
     public function lable(): array
     {
         return match ($this) {
-            self::INDIVIDUAL => ['id' => '1', 'name_en' => 'Individual', 'name_ar' => 'فردي'],
-            self::COLLECTIVE => ['id' => '2', 'name_en' => 'Collaborative', 'name_ar' => 'مشترك مع آخرون'],
+            self::INDIVIDUAL => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Individual' : 'فردي'],
+            self::COLLECTIVE => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Collaborative' : 'مشترك مع آخرون'],
         };
     }
 }

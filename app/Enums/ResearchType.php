@@ -29,9 +29,9 @@ enum ResearchType: string
     public function lable(): array
     {
         return match ($this) {
-            self::BOOK => ['id' => '1', 'name_en' => 'Book', 'name_ar' => 'كتاب'],
-            self::RESEARCH => ['id' => '2', 'name_en' => 'Research', 'name_ar' => 'بحث علمي'],
-            self::PAPER => ['id' => '3', 'name_en' => 'Paper', 'name_ar' => 'ورقة علمية'],
+            self::BOOK => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Book' : 'كتاب'],
+            self::RESEARCH => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Research' : 'بحث علمي'],
+            self::PAPER => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Paper' : 'ورقة علمية'],
         };
     }
 }

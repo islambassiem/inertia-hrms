@@ -366,6 +366,14 @@ final class Employee extends Model
     }
 
     /**
+     * @return HasMany<Research, $this>
+     */
+    public function researches()
+    {
+        return $this->hasMany(Research::class);
+    }
+
+    /**
      * @param  Builder<Employee>  $query
      */
     #[Scope]

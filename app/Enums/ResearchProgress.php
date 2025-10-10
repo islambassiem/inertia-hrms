@@ -29,9 +29,9 @@ enum ResearchProgress: string
     public function label(): array
     {
         return match ($this) {
-            self::FINISHED => ['id' => '1', 'progress_en' => 'Finished', 'progress_ar' => 'منجز'],
-            self::IN_PROGRESS => ['id' => '2', 'progress_en' => 'In Progress', 'progress_ar' => 'جاري تنفيذه'],
-            self::APPROVED => ['id' => '3', 'progress_en' => 'Approved and has not started', 'progress_ar' => 'موافق عليه ولم يبدأ'],
+            self::FINISHED => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Finished' : 'منجز'],
+            self::IN_PROGRESS => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'In Progress' : 'جاري تنفيذه'],
+            self::APPROVED => ['id' => '3', 'name' => app()->getLocale() === 'en' ? 'Approved and has not started' : 'موافق عليه ولم يبدأ'],
         };
     }
 }
