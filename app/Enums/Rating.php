@@ -33,7 +33,7 @@ enum Rating: string
     /**
      * @return array<string, string>
      */
-    public function lable(): array
+    public function label(): array
     {
         return match ($this) {
             self::VERY_GOOD_THIRD_DISTINCT => ['id' => '0', 'name' => app()->getLocale() === 'en' ? 'Very Good Third Distinct' : 'جيد جداً مع مرتبة الشرف الثالثة'],

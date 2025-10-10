@@ -25,7 +25,7 @@ enum ResearchStatus: string
     /**
      * @return array<string, string>
      */
-    public function lable(): array
+    public function label(): array
     {
         return match ($this) {
             self::INDIVIDUAL => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Individual' : 'فردي'],

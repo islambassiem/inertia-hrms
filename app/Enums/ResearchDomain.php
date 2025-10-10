@@ -31,7 +31,7 @@ enum ResearchDomain: string
     /**
      * @return array<string, string>
      */
-    public function lable(): array
+    public function label(): array
     {
         return match ($this) {
             self::NATURAL => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Natural science' : 'العلوم الطبيعية'],

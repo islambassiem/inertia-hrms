@@ -33,7 +33,7 @@ enum ResearchLanguage: string
     /**
      * @return array<string, string>
      */
-    public function lable(): array
+    public function label(): array
     {
         return match ($this) {
             self::ARABIC => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Arabic' : 'العربية'],

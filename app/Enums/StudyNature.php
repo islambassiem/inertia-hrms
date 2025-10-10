@@ -26,7 +26,7 @@ enum StudyNature: string
     /**
      * @return array<string, string>
      */
-    public function lable(): array
+    public function label(): array
     {
         return match ($this) {
             self::RESEARCH => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Research Only' : 'بحث فقط'],

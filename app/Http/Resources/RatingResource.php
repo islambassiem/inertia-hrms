@@ -19,6 +19,6 @@ final class RatingResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return $this->lable();
+        return $this->label();
     }
 }
