@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Hr\Employee\AcademicExperienceController;
-use App\Http\Controllers\Hr\Employee\AchievementController;
-use App\Http\Controllers\Hr\Employee\CourseController;
-use App\Http\Controllers\Hr\Employee\ExperienceController;
-use App\Http\Controllers\Hr\Employee\OfficialController;
-use App\Http\Controllers\Hr\Employee\QualificationConroller;
-use App\Http\Controllers\Hr\Employee\ResearchController;
-use App\Http\Controllers\Hr\Employee\SalaryController;
-use App\Http\Controllers\Hr\EmployeeController;
+use App\Http\Controllers\AcademicExperienceController;
+use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\OfficialController;
+use App\Http\Controllers\QualificationConroller;
+use App\Http\Controllers\ResearchController;
+use App\Http\Controllers\SalaryController;
 use Illuminate\Support\Facades\Route;
 
 Route::group([
@@ -27,13 +27,13 @@ Route::group([
         'as' => 'employees.',
     ], function () {
 
-        Route::get('/', [EmployeeController::class, 'index'])
+        Route::get('/', [EmployeesController::class, 'index'])
             ->name('index');
 
-        Route::post('/export', [EmployeeController::class, 'export'])
+        Route::post('/export', [EmployeesController::class, 'export'])
             ->name('export');
 
-        Route::get('/{employee}/info', [EmployeeController::class, 'show'])
+        Route::get('/{employee}/info', [EmployeesController::class, 'show'])
             ->name('show');
 
         Route::get('/{employee}/official', [OfficialController::class, 'index'])
@@ -60,7 +60,7 @@ Route::group([
         Route::get('/{employee}/courses', [CourseController::class, 'index'])
             ->name('courses.index');
 
-        Route::get('/{employee}/edit/info', [EmployeeController::class, 'infoEdit'])
+        Route::get('/{employee}/edit/info', [EmployeesController::class, 'infoEdit'])
             ->name('edit.info');
     });
 });

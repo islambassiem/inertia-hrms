@@ -1,10 +1,11 @@
-import { show } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
+import { show } from '@/actions/App/Http/Controllers/EmployeesController';
 import NoRecords from '@/components/ui/NoRecords';
 import { useLanguage } from '@/hooks/useLanguage';
 import { dateFormatter } from '@/lib/utils';
 import { Employee } from '@/types/hr';
 import { Link } from '@inertiajs/react';
 import { t } from 'i18next';
+import { UserRoundX } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 const colums = [
@@ -159,7 +160,9 @@ const EmployeesTable = ({ employees }: { employees: { data: Employee[] } }) => {
                 <Table employees={employees} />
             ) : (
                 <NoRecords
-                    message={t('There are not record matching this criteria')}
+                    title={t('There are not record matching this criteria')}
+                    body={t('Try changing the filters or search term')}
+                    icon={UserRoundX}
                 />
             )}
         </section>

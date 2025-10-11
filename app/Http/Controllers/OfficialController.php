@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Hr\Employee;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeeResource;
-use App\Http\Resources\SalaryResource;
 use App\Models\Employee;
+use Inertia\Inertia;
 
-final class SalaryController extends Controller
+final class OfficialController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
         $employee->load([
             'departments',
+            'categories',
+            'entities',
+            'colleges',
             'positions',
-            'salaries',
         ]);
 
-        return inertia('Hr/Employee/Salary', [
+        return Inertia::render('Hr/Employee/Official', [
             'employee' => new EmployeeResource($employee),
-            'salaries' => SalaryResource::collection($employee->salaries),
         ]);
     }
 }

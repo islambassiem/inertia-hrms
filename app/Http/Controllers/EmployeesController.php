@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Hr;
+namespace App\Http\Controllers;
 
 use App\Dtos\EmployeeFilterDto;
 use App\Enums\Gender;
@@ -10,7 +10,6 @@ use App\Enums\JobStatus;
 use App\Enums\MaritalStatus;
 use App\Enums\Qualification;
 use App\Exports\EmployeesExport;
-use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\CollegeResource;
 use App\Http\Resources\CountryResource;
@@ -36,7 +35,7 @@ use Illuminate\Http\Response;
 use Inertia\Inertia;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
-final class EmployeeController extends Controller
+final class EmployeesController extends Controller
 {
     public function index(EmployeeListQuery $query, Request $request): \Inertia\Response
     {

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Hr\Employee;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\AchievementResource;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;

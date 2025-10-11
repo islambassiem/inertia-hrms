@@ -19,15 +19,15 @@ import {
     index,
     infoEdit,
     show,
-} from '@/actions/App/Http/Controllers/Hr/EmployeeController';
-import { index as qualifications } from '@/actions/App/Http/Controllers/Hr/Employee/QualificationConroller';
-import { index as academicExperience } from '@/actions/App/Http/Controllers/Hr/Employee/AcademicExperienceController';
-import { index as experience } from '@/actions/App/Http/Controllers/Hr/Employee/ExperienceController';
-import { index as salary } from '@/actions/App/Http/Controllers/Hr/Employee/SalaryController';
-import { index as achievement } from '@/actions/App/Http/Controllers/Hr/Employee/AchievementController';
-import { index as research } from '@/actions/App/Http/Controllers/Hr/Employee/ResearchController';
-import { index as courses } from '@/actions/App/Http/Controllers/Hr/Employee/CourseController';
-import { index as official } from '@/actions/App/Http/Controllers/Hr/Employee/OfficialController';
+} from '@/actions/App/Http/Controllers/EmployeesController';
+import { index as qualifications } from '@/actions/App/Http/Controllers/QualificationConroller';
+import { index as academicExperience } from '@/actions/App/Http/Controllers/AcademicExperienceController';
+import { index as experience } from '@/actions/App/Http/Controllers/ExperienceController';
+import { index as salary } from '@/actions/App/Http/Controllers/SalaryController';
+import { index as achievement } from '@/actions/App/Http/Controllers/AchievementController';
+import { index as research } from '@/actions/App/Http/Controllers/ResearchController';
+import { index as courses } from '@/actions/App/Http/Controllers/CourseController';
+import { index as official } from '@/actions/App/Http/Controllers/OfficialController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';

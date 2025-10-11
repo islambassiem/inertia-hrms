@@ -1,4 +1,4 @@
-import { index } from '@/actions/App/Http/Controllers/Hr/EmployeeController';
+import { index } from '@/actions/App/Http/Controllers/EmployeesController';
 import { FaUser, FaUsersCog, FaUserTie } from 'react-icons/fa';
 
 const roles = {
