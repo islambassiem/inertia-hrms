@@ -15,11 +15,7 @@ import {
 import { dateFormatter } from '@/lib/utils';
 import { useLanguage } from '@/hooks/useLanguage';
 import { t } from 'i18next';
-import {
-    index,
-    infoEdit,
-    show,
-} from '@/actions/App/Http/Controllers/EmployeesController';
+import { index as employees } from '@/actions/App/Http/Controllers/EmployeesController';
 import { index as qualifications } from '@/actions/App/Http/Controllers/QualificationConroller';
 import { index as academicExperience } from '@/actions/App/Http/Controllers/AcademicExperienceController';
 import { index as experience } from '@/actions/App/Http/Controllers/ExperienceController';
@@ -28,6 +24,12 @@ import { index as achievement } from '@/actions/App/Http/Controllers/Achievement
 import { index as research } from '@/actions/App/Http/Controllers/ResearchController';
 import { index as courses } from '@/actions/App/Http/Controllers/CourseController';
 import { index as official } from '@/actions/App/Http/Controllers/OfficialController';
+import { index as info } from '@/actions/App/Http/Controllers/BasicInfoController';
+import { index as nationalId } from '@/actions/App/Http/Controllers/IdentificationController';
+import { index as passport } from '@/actions/App/Http/Controllers/PassportController';
+import { index as bank } from '@/actions/App/Http/Controllers/BankController';
+import { index as nationalAddress } from '@/actions/App/Http/Controllers/NationalddressController';
+import { index as contacts } from '@/actions/App/Http/Controllers/EmergencyContactController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -41,10 +43,14 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             id: 'info',
             label: t('Personal Information'),
             icon: GrInfo,
-            href: show(employee.data.id).url,
+            href: info(employee.data.id).url,
             active:
-                url === show(employee.data.id).url ||
-                url === infoEdit(employee.data.id).url,
+                url === info(employee.data.id).url ||
+                url === nationalId(employee.data.id).url ||
+                url === passport(employee.data.id).url ||
+                url === bank(employee.data.id).url ||
+                url === nationalAddress(employee.data.id).url ||
+                url === contacts(employee.data.id).url,
         },
         {
             id: 'official',
@@ -112,7 +118,7 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
                     <div className="max-w-7xl mx-auto px-6 py-8 ">
                         {/* Back Button */}
                         <Link
-                            href={index().url}
+                            href={employees().url}
                             className="flex items-center gap-2 hover:text-ash-500 mb-6 transition-colors group"
                         >
                             <ArrowLeft

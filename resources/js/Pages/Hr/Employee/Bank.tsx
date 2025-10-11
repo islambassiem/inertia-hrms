@@ -1,17 +1,24 @@
 import AppLayout from '@/Layouts/AppLayout';
 import EmployeeLayout from '@/Layouts/Hr/EmployeeLayout';
+import { Bank as BankType, EmployeeData } from '@/types/hr';
 import EmployeeContext from '@/contexts/EmployeeContext';
 import InfoLayout from '@/Layouts/Hr/InfoLayout';
-import BasicInfo from '@/components/Hr/Employee/BasicInfo';
-import { EmployeeData } from '@/types/hr';
+import EmployeeBank from '@/components/Hr/Employee/EmployeeBank';
 
-const Info = ({ employee }: { employee: EmployeeData }) => {
+const Bank = ({
+    employee,
+    bank,
+}: {
+    employee: EmployeeData;
+    bank: BankType;
+}) => {
+    console.log(bank);
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>
                 <EmployeeLayout>
                     <InfoLayout>
-                        <BasicInfo employee={employee} />
+                        <EmployeeBank bank={bank || null} />
                     </InfoLayout>
                 </EmployeeLayout>
             </EmployeeContext.Provider>
@@ -19,4 +26,4 @@ const Info = ({ employee }: { employee: EmployeeData }) => {
     );
 };
 
-export default Info;
+export default Bank;

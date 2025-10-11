@@ -12,6 +12,11 @@ require __DIR__.'/hr.php';
 require __DIR__.'/head.php';
 require __DIR__.'/employee.php';
 
-// Route::get('/', function () {
-//     return inertia('App');
-// });
+Route::get('/test', function () {
+    $employee = App\Models\Employee::first();
+    $employee->load([
+        'contacts',
+    ]);
+
+    return $employee;
+});

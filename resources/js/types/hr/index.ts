@@ -9,7 +9,7 @@ export interface Employee {
     passport: Idnetification;
     identification: Idnetification;
     bank: Bank;
-    address: Address;
+    address: NationalAddress;
     emergency_contacts: EmergencyContacts[];
     gender: Resource;
     marital_status: Resource;
@@ -43,31 +43,41 @@ export interface Employee {
 }
 
 export interface Idnetification {
-    id_number: string;
-    place_of_issue: string | null;
-    date_of_issue: string | null;
-    date_of_expiry: string | null;
+    data: {
+        id_number: string;
+        place_of_issue: string | null;
+        date_of_issue: string | null;
+        date_of_expiry: string | null;
+    };
 }
 
 export interface Bank {
-    account: number;
-    bank: Resource;
+    data: {
+        account: number;
+        bank: Resource;
+    };
 }
 
-export interface Address {
-    building_number: string;
-    city: string;
-    district: string;
-    postal_code: string;
-    secondary_number: string;
-    street: string;
+export interface NationalAddress {
+    data: {
+        building_number: string;
+        city: string;
+        district: string;
+        postal_code: string;
+        secondary_number: string;
+        street: string;
+    };
 }
 
 export interface EmergencyContacts {
-    name: string;
-    mobile: string;
-    email: string;
-    relation: string;
+    data:
+        | {
+              name: string;
+              mobile: string;
+              email: string;
+              relation: string;
+          }[]
+        | null;
 }
 
 export interface Position extends Resource {

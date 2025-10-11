@@ -1,17 +1,23 @@
 import AppLayout from '@/Layouts/AppLayout';
 import EmployeeLayout from '@/Layouts/Hr/EmployeeLayout';
+import { EmployeeData, Idnetification } from '@/types/hr';
 import EmployeeContext from '@/contexts/EmployeeContext';
 import InfoLayout from '@/Layouts/Hr/InfoLayout';
-import BasicInfo from '@/components/Hr/Employee/BasicInfo';
-import { EmployeeData } from '@/types/hr';
+import NationalID from '@/components/Hr/Employee/NationalID';
 
-const Info = ({ employee }: { employee: EmployeeData }) => {
+const Identification = ({
+    employee,
+    identification,
+}: {
+    employee: EmployeeData;
+    identification: Idnetification;
+}) => {
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>
                 <EmployeeLayout>
                     <InfoLayout>
-                        <BasicInfo employee={employee} />
+                        <NationalID identification={identification || null} />
                     </InfoLayout>
                 </EmployeeLayout>
             </EmployeeContext.Provider>
@@ -19,4 +25,4 @@ const Info = ({ employee }: { employee: EmployeeData }) => {
     );
 };
 
-export default Info;
+export default Identification;

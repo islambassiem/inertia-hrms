@@ -3,17 +3,15 @@ import Section from './Section';
 import InfoField from './InfoField';
 import { Hash, Home, MapPin, MapPinHouse } from 'lucide-react';
 import NoRecords from '@/components/ui/NoRecords';
-import EmployeeContext from '@/contexts/EmployeeContext';
-import { useContext } from 'react';
+import { NationalAddress } from '@/types/hr';
 
-const Address = () => {
-    const employee = useContext(EmployeeContext);
+const EmployeeNationalAddress = ({ address }: { address: NationalAddress }) => {
     return (
         <Section
             title={t('National Address Information')}
             body={t('National Address Information')}
         >
-            {employee.data.address === null ? (
+            {address === null ? (
                 <NoRecords
                     title={t('No national address information added yet.')}
                     body={t(
@@ -26,32 +24,32 @@ const Address = () => {
                     <InfoField
                         icon={Home}
                         label={t('Building Number')}
-                        value={employee.data.address.building_number}
+                        value={address.data.building_number}
                     />
                     <InfoField
                         icon={Home}
                         label={t('Street Name')}
-                        value={employee.data.address.street}
+                        value={address.data.street}
                     />
                     <InfoField
                         icon={Home}
                         label={t('District')}
-                        value={employee.data.address.district}
+                        value={address.data.district}
                     />
                     <InfoField
                         icon={MapPin}
                         label={t('City')}
-                        value={employee.data.address.city}
+                        value={address.data.city}
                     />
                     <InfoField
                         icon={Hash}
                         label={t('Postal Code')}
-                        value={employee.data.address.postal_code}
+                        value={address.data.postal_code}
                     />
                     <InfoField
                         icon={Hash}
                         label={t('Secondary Number')}
-                        value={employee.data.address.secondary_number}
+                        value={address.data.secondary_number}
                     />
                 </div>
             )}
@@ -59,4 +57,4 @@ const Address = () => {
     );
 };
 
-export default Address;
+export default EmployeeNationalAddress;

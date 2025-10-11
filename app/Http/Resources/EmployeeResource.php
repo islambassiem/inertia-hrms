@@ -45,10 +45,10 @@ final class EmployeeResource extends JsonResource
             // @phpstan-ignore nullsafe.neverNull
             'marital_status' => $marital_status?->label(),
             'date_of_birth' => $this->date_of_birth,
-            'identification' => IdentificationResource::make($this->whenLoaded('nationalId')),
+            'identification' => new IdentificationResource($this->whenLoaded('nationalId')),
             'passport' => IdentificationResource::make($this->whenLoaded('passport')),
             'bank' => BankResource::make($this->whenLoaded('bank')),
-            'address' => AddressResource::make($this->whenLoaded('address')),
+            'address' => NationalAddressResource::make($this->whenLoaded('address')),
             'emergency_contacts' => EmergencyContactResource::collection($this->whenLoaded('contacts', fn () => $this->contacts)),
             'is_active' => $this->is_active,
             'works_on_saturday' => $this->works_on_saturday,

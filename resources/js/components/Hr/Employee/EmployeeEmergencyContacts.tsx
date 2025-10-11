@@ -3,18 +3,20 @@ import Section from './Section';
 import InfoField from './InfoField';
 import { Heart, Mail, Phone, User } from 'lucide-react';
 import NoRecords from '@/components/ui/NoRecords';
-import { useContext } from 'react';
-import EmployeeContext from '@/contexts/EmployeeContext';
+import { EmergencyContacts } from '@/types/hr';
 
-const Contacts = () => {
-    const employee = useContext(EmployeeContext);
+const EmployeeEmergencyContacts = ({
+    contacts,
+}: {
+    contacts: EmergencyContacts;
+}) => {
     return (
         <Section
             title={t('Emergency Contacts')}
             body={t('Emergency Contacts Persons')}
         >
             <div className="md:col-span-2 space-y-4">
-                {employee.data.emergency_contacts.length === 0 ? (
+                {contacts.data === null || contacts.data.length === 0 ? (
                     <NoRecords
                         title={t('No emergency contacts added yet.')}
                         body={t(
@@ -23,7 +25,7 @@ const Contacts = () => {
                         icon={Phone}
                     />
                 ) : (
-                    employee.data.emergency_contacts.map((contact, index) => (
+                    contacts.data.map((contact, index) => (
                         <div
                             key={index}
                             className="p-4 rounded-lg border-2 border-ash-200 dark:border-ash-700 bg-ash-50 dark:bg-ash-700/50 transition-colors"
@@ -64,4 +66,4 @@ const Contacts = () => {
     );
 };
 
-export default Contacts;
+export default EmployeeEmergencyContacts;

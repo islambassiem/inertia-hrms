@@ -1,9 +1,9 @@
 import BasicInfo from '@/components/Hr/Employee/BasicInfo';
-import Identification from '@/components/Hr/Employee/Identification';
+import Identification from '@/components/Hr/Employee/NationalID';
 import Passport from '@/components/Hr/Employee/Passport';
-import Bank from '@/components/Hr/Employee/Bank';
-import Address from '@/components/Hr/Employee/Address';
-import Contacts from '@/components/Hr/Employee/Contacts';
+import Bank from '@/components/Hr/Employee/EmployeeBank';
+import Address from '@/components/Hr/Employee/EmployeeNationalAddress';
+import Contacts from '@/components/Hr/Employee/EmployeeEmergencyContacts';
 import { IdCard, Landmark, MapPinHouse } from 'lucide-react';
 import { t } from 'i18next';
 import { useState } from 'react';

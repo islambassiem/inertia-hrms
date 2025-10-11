@@ -4,12 +4,14 @@ import { t } from 'i18next';
 import { dateFormatter } from '@/lib/utils';
 import { useLanguage } from '@/hooks/useLanguage';
 import Section from './Section';
-import { useContext } from 'react';
-import EmployeeContext from '@/contexts/EmployeeContext';
+import { EmployeeData } from '@/types/hr';
+// import { EmployeeData } from '@/types/hr';
+// import EmployeeContext from '@/contexts/EmployeeContext';
+// import { useContext } from 'react';
 
-const BasicInfo = () => {
+const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
     const { language } = useLanguage();
-    const employee = useContext(EmployeeContext);
+    // const employee = useContext(EmployeeContext);
     return (
         <Section
             title={t('Basic Information')}

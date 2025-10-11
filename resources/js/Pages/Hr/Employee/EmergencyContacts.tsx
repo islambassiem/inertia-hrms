@@ -1,17 +1,23 @@
 import AppLayout from '@/Layouts/AppLayout';
 import EmployeeLayout from '@/Layouts/Hr/EmployeeLayout';
+import { EmergencyContacts, EmployeeData } from '@/types/hr';
 import EmployeeContext from '@/contexts/EmployeeContext';
 import InfoLayout from '@/Layouts/Hr/InfoLayout';
-import BasicInfo from '@/components/Hr/Employee/BasicInfo';
-import { EmployeeData } from '@/types/hr';
+import EmployeeEmergencyContacts from '@/components/Hr/Employee/EmployeeEmergencyContacts';
 
-const Info = ({ employee }: { employee: EmployeeData }) => {
+const EmergencyContact = ({
+    employee,
+    contacts,
+}: {
+    employee: EmployeeData;
+    contacts: EmergencyContacts;
+}) => {
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>
                 <EmployeeLayout>
                     <InfoLayout>
-                        <BasicInfo employee={employee} />
+                        <EmployeeEmergencyContacts contacts={contacts} />
                     </InfoLayout>
                 </EmployeeLayout>
             </EmployeeContext.Provider>
@@ -19,4 +25,4 @@ const Info = ({ employee }: { employee: EmployeeData }) => {
     );
 };
 
-export default Info;
+export default EmergencyContact;

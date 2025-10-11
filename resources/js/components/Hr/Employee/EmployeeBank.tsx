@@ -3,14 +3,13 @@ import Section from './Section';
 import InfoField from './InfoField';
 import { BanknoteArrowUp, Hash } from 'lucide-react';
 import NoRecords from '@/components/ui/NoRecords';
-import EmployeeContext from '@/contexts/EmployeeContext';
-import { useContext } from 'react';
+import { Bank as BankType } from '@/types/hr';
 
-const Bank = () => {
-    const employee = useContext(EmployeeContext);
+const EmployeeBank = ({ bank }: { bank: BankType }) => {
+    console.log(bank);
     return (
         <Section title={t('Bank Information')} body={t('Bank Information')}>
-            {employee.data.bank === null ? (
+            {bank === null ? (
                 <NoRecords
                     title={t('No bank information added yet.')}
                     body={t('This employee has no bank information.')}
@@ -21,12 +20,12 @@ const Bank = () => {
                     <InfoField
                         icon={Hash}
                         label={t('Bank Account Number')}
-                        value={String(employee.data.bank.account)}
+                        value={String(bank.data.account)}
                     />
                     <InfoField
                         icon={Hash}
                         label={t('Bank Name')}
-                        value={employee.data.bank.bank.name}
+                        value={bank.data.bank.name}
                     />
                 </div>
             )}
@@ -34,4 +33,4 @@ const Bank = () => {
     );
 };
 
-export default Bank;
+export default EmployeeBank;
