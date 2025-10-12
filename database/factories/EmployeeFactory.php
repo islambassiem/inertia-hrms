@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Enums\Gender;
+use App\Enums\InsuranceClass;
 use App\Enums\MaritalStatus;
 use App\Enums\Religion;
 use App\Enums\SpecialNeeds;
@@ -58,6 +59,7 @@ final class EmployeeFactory extends Factory
             'has_married_contract' => fake()->boolean(30),
             'vacation_class' => fake()->randomElement(VacationClass::toArray()),
             'special_needs' => fake()->randomElement([null, fake()->randomElement(SpecialNeeds::toArray())]),
+            'insurance_class' => fake()->randomElement(InsuranceClass::toArray()),
         ];
     }
 }

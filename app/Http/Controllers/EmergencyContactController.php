@@ -13,6 +13,8 @@ final class EmergencyContactController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
+        $employee->load(['positions', 'departments']);
+
         return Inertia::render('Hr/Employee/EmergencyContacts', [
             'employee' => new EmployeeResource($employee),
             'contacts' => EmergencyContactResource::collection($employee->contacts),

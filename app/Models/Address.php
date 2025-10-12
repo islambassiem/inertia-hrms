@@ -23,5 +23,6 @@ final class Address extends Model
         'city',
         'postal_code',
         'secondary_number',
+        'short_address',
     ];
 }

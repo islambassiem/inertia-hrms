@@ -26,6 +26,7 @@ final class NationalAddressResource extends JsonResource
             'city' => $this->city,
             'postal_code' => $this->postal_code,
             'secondary_number' => $this->secondary_number,
+            'short_address' => $this->short_address,
         ];
     }
 }

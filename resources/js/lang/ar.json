@@ -86,6 +86,7 @@
     "Blood Group": "فصيلة الدم",
     "National Address Information": "معلومات العنوان الوطني",
     "National Address": "العنوان الوطني",
+    "Short Address": "العنوان المختصر",
     "Postal Code": "الرمز البريدي",
     "Emergency Contacts": "اتصال الطوارئ",
     "Contact Email": "البريد الالكتروني",
@@ -200,6 +201,19 @@
     "Issuer": "الجهة المانحة",
     "Date": "التاريخ",
     "Course Location": "مكان الدورة",
+
+    "Contract Information": "معلومات العقد",
+    "Working days per week": "ايام العمل في الاسبوع",
+    "Vacation days per year": " ايام الاجازة في السنة",
+    "Employee Hierarchy": "التسلسل الهرمي للموظفين",
+    "Employee Hierarchy Information": "معلومات التسلسل الهرمي للموظفين",
+    "Department head": "رئيس القسم",
+
+    "Operational Data": "بيانات تشغيلية",
+    "Operational Data Information": "معلومات بيانات تشغيلية",
+    "Salary Status": "حالة الراتب",
+    "Married Contract": "عقد متزوج",
+    "Insurance Class": "فئة التأمين",
 
     "Logout": "تسجيل الخروج"
 }

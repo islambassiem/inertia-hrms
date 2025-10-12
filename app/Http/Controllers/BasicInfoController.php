@@ -13,6 +13,8 @@ final class BasicInfoController extends Controller
     public function index(Employee $employee): \Inertia\Response
     {
         $employee->load([
+            'positions',
+            'departments',
             'email',
             'mobile',
             'phone',

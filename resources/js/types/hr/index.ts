@@ -33,22 +33,15 @@ export interface Employee {
     qualification: Resource[];
     entities: Resource[];
     colleges: Resource[];
-    // qualifications: Qualification[];
-    // academic_experiences: AcademicExperience[];
-    // experiences: Experience[];
-    // salaries: Salary[];
-    // achievements: Achievement[];
-    // research: Research[];
-    // courses: Course[];
+    head: Employee;
+    insurance_class: Resource;
 }
 
 export interface Idnetification {
-    data: {
-        id_number: string;
-        place_of_issue: string | null;
-        date_of_issue: string | null;
-        date_of_expiry: string | null;
-    };
+    id_number: string;
+    place_of_issue: string | null;
+    date_of_issue: string | null;
+    date_of_expiry: string | null;
 }
 
 export interface Bank {
@@ -66,6 +59,7 @@ export interface NationalAddress {
         postal_code: string;
         secondary_number: string;
         street: string;
+        short_address: string;
     };
 }
 
@@ -193,6 +187,12 @@ export interface Salary {
 
 export interface EmployeeData {
     data: Employee;
+}
+
+export interface Contract {
+    joining_date: string;
+    resingnation_date: string | null;
+    positions: Position[];
 }
 export interface ResourceList {
     data: Resource[];

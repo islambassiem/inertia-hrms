@@ -23,13 +23,15 @@ import { index as salary } from '@/actions/App/Http/Controllers/SalaryController
 import { index as achievement } from '@/actions/App/Http/Controllers/AchievementController';
 import { index as research } from '@/actions/App/Http/Controllers/ResearchController';
 import { index as courses } from '@/actions/App/Http/Controllers/CourseController';
-import { index as official } from '@/actions/App/Http/Controllers/OfficialController';
 import { index as info } from '@/actions/App/Http/Controllers/BasicInfoController';
 import { index as nationalId } from '@/actions/App/Http/Controllers/IdentificationController';
 import { index as passport } from '@/actions/App/Http/Controllers/PassportController';
 import { index as bank } from '@/actions/App/Http/Controllers/BankController';
 import { index as nationalAddress } from '@/actions/App/Http/Controllers/NationalddressController';
 import { index as contacts } from '@/actions/App/Http/Controllers/EmergencyContactController';
+import { index as contract } from '@/actions/App/Http/Controllers/ContractContoller';
+import { index as hierarachy } from '@/actions/App/Http/Controllers/HierarchyController';
+import { index as operational } from '@/actions/App/Http/Controllers/OperationalDataController';
 import { Link, usePage } from '@inertiajs/react';
 import { GrInfo } from 'react-icons/gr';
 import EmployeeContext from '@/contexts/EmployeeContext';
@@ -56,8 +58,11 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
             id: 'official',
             label: t('Official Information'),
             icon: TbContract,
-            href: official(employee.data.id).url,
-            active: url === official(employee.data.id).url,
+            href: contract(employee.data.id).url,
+            active:
+                url === contract(employee.data.id).url ||
+                url === hierarachy(employee.data.id).url ||
+                url === operational(employee.data.id).url,
         },
         {
             id: 'qualifications',

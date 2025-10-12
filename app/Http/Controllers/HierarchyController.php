@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BankResource;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
 use Inertia\Inertia;
 
-final class BankController extends Controller
+final class HierarchyController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
-        $employee->load(['positions', 'departments']);
+        $employee->load(['entities', 'departments', 'colleges', 'head', 'positions', 'categories']);
 
-        return Inertia::render('Hr/Employee/Bank', [
+        return Inertia::render('Hr/Employee/Hierarchy', [
             'employee' => new EmployeeResource($employee),
-            'bank' => $employee->bank ? new BankResource($employee->bank) : null,
         ]);
     }
 }

@@ -13,6 +13,8 @@ final class PassportController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
+        $employee->load(['positions', 'departments']);
+
         return Inertia::render('Hr/Employee/Passport', [
             'employee' => new EmployeeResource($employee),
             'passport' => $employee->passport ? new IdentificationResource($employee->passport) : null,

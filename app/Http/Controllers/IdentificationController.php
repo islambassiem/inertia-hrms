@@ -13,6 +13,8 @@ final class IdentificationController extends Controller
 {
     public function index(Employee $employee): \Inertia\Response
     {
+        $employee->load(['positions', 'departments']);
+
         return Inertia::render('Hr/Employee/Identification', [
             'employee' => new EmployeeResource($employee),
             'identification' => $employee->nationalId ? new IdentificationResource($employee->nationalId) : null,

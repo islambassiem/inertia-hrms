@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\ContactType;
 use App\Enums\Gender;
 use App\Enums\IdentificationType;
+use App\Enums\InsuranceClass;
 use App\Enums\MaritalStatus;
 use App\Enums\Religion;
 use App\Enums\SpecialNeeds;
@@ -58,6 +59,7 @@ final class Employee extends Model
         'has_married_contract',
         'vacation_class',
         'special_needs',
+        'insurance_class',
 
         'created_by',
         'updated_by',
@@ -79,6 +81,7 @@ final class Employee extends Model
             'has_married_contract' => 'boolean',
             'vacation_class' => VacationClass::class,
             'special_needs' => SpecialNeeds::class,
+            'insurance_class' => InsuranceClass::class,
         ];
     }
 

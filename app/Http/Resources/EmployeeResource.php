@@ -25,6 +25,9 @@ final class EmployeeResource extends JsonResource
         /** @var \App\Enums\MaritalStatus $marital_status */
         $marital_status = $this->marital_status;
 
+        /** @var \App\Enums\InsuranceClass $insurance_class */
+        $insurance_class = $this->insurance_class;
+
         return [
             'id' => $this->id,
             'empid' => $this->code,
@@ -44,6 +47,7 @@ final class EmployeeResource extends JsonResource
             'gender' => $gender->label(),
             // @phpstan-ignore nullsafe.neverNull
             'marital_status' => $marital_status?->label(),
+            'vacation_class' => $this->vacation_class,
             'date_of_birth' => $this->date_of_birth,
             'identification' => new IdentificationResource($this->whenLoaded('nationalId')),
             'passport' => IdentificationResource::make($this->whenLoaded('passport')),
@@ -51,6 +55,7 @@ final class EmployeeResource extends JsonResource
             'address' => NationalAddressResource::make($this->whenLoaded('address')),
             'emergency_contacts' => EmergencyContactResource::collection($this->whenLoaded('contacts', fn () => $this->contacts)),
             'is_active' => $this->is_active,
+            'head' => self::make($this->whenLoaded('head')),
             'works_on_saturday' => $this->works_on_saturday,
             'joining_date' => $this->joining_date,
             'resignation_date' => $this->resignation_date,
@@ -61,6 +66,7 @@ final class EmployeeResource extends JsonResource
             'departments' => DepartmentResource::collection($this->whenLoaded('departments')),
             'entities' => EntityResource::collection($this->whenLoaded('entities')),
             'colleges' => CollegeResource::collection($this->whenLoaded('colleges')),
+            'insurance_class' => $insurance_class->label(),
         ];
     }
 }

@@ -1,4 +1,4 @@
-import { show } from '@/actions/App/Http/Controllers/EmployeesController';
+import { index as show } from '@/actions/App/Http/Controllers/BasicInfoController';
 import NoRecords from '@/components/ui/NoRecords';
 import { useLanguage } from '@/hooks/useLanguage';
 import { dateFormatter } from '@/lib/utils';
@@ -32,7 +32,6 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
             toast.success(text);
         });
     };
-
     return (
         <>
             <tr

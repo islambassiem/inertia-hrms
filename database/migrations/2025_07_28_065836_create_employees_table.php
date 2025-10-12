@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Enums\Gender;
+use App\Enums\InsuranceClass;
 use App\Enums\MaritalStatus;
 use App\Enums\Religion;
 use App\Enums\SpecialNeeds;
@@ -54,6 +55,7 @@ return new class extends Migration
             $table->boolean('has_married_contract')->default(false);
             $table->enum('vacation_class', VacationClass::toArray())->default(VacationClass::ZERO->value);
             $table->enum('special_needs', SpecialNeeds::toArray())->nullable();
+            $table->enum('insurance_class', InsuranceClass::toArray())->default(InsuranceClass::A->value);
 
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained();
             $table->foreignIdFor(User::class, 'updated_by')->nullable()->constrained();

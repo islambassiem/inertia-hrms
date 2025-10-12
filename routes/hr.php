@@ -6,13 +6,16 @@ use App\Http\Controllers\AcademicExperienceController;
 use App\Http\Controllers\AchievementController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\BasicInfoController;
+use App\Http\Controllers\ContractContoller;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EmergencyContactController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\HierarchyController;
 use App\Http\Controllers\IdentificationController;
 use App\Http\Controllers\NationalddressController;
 use App\Http\Controllers\OfficialController;
+use App\Http\Controllers\OperationalDataController;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\QualificationConroller;
 use App\Http\Controllers\ResearchController;
@@ -62,6 +65,15 @@ Route::group([
 
         Route::get('/{employee}/official', [OfficialController::class, 'index'])
             ->name('official.index');
+
+        Route::get('/{employee}/official/contract', [ContractContoller::class, 'index'])
+            ->name('official.contract.index');
+
+        Route::get('/{employee}/official/hierarchy', [HierarchyController::class, 'index'])
+            ->name('official.hierarchy.index');
+
+        Route::get('/{employee}/official/operational-data', [OperationalDataController::class, 'index'])
+            ->name('official.operational.index');
 
         Route::get('/{employee}/qualifications', [QualificationConroller::class, 'index'])
             ->name('qualifications.index');

@@ -10,6 +10,7 @@ const EmployeeQualifications = ({
 }: {
     qualifications: Qualification[];
 }) => {
+    console.log(qualifications);
     return (
         <Section
             title={t('Qualifications')}

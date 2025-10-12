@@ -13,6 +13,7 @@ const Bank = ({
     bank: BankType;
 }) => {
     console.log(bank);
+
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>

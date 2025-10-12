@@ -1,12 +1,11 @@
 import { t } from 'i18next';
 import Section from './Section';
 import InfoField from './InfoField';
-import { BanknoteArrowUp, Hash } from 'lucide-react';
+import { BanknoteArrowUp, Hash, Landmark } from 'lucide-react';
 import NoRecords from '@/components/ui/NoRecords';
 import { Bank as BankType } from '@/types/hr';
 
 const EmployeeBank = ({ bank }: { bank: BankType }) => {
-    console.log(bank);
     return (
         <Section title={t('Bank Information')} body={t('Bank Information')}>
             {bank === null ? (
@@ -23,7 +22,7 @@ const EmployeeBank = ({ bank }: { bank: BankType }) => {
                         value={String(bank.data.account)}
                     />
                     <InfoField
-                        icon={Hash}
+                        icon={Landmark}
                         label={t('Bank Name')}
                         value={bank.data.bank.name}
                     />

@@ -1,17 +1,21 @@
-import { Calendar, Heart, Mail, Phone, User } from 'lucide-react';
+import {
+    Calendar,
+    Heart,
+    Mail,
+    PhoneCall,
+    Smartphone,
+    Transgender,
+    User,
+} from 'lucide-react';
 import InfoField from './InfoField';
 import { t } from 'i18next';
 import { dateFormatter } from '@/lib/utils';
 import { useLanguage } from '@/hooks/useLanguage';
 import Section from './Section';
 import { EmployeeData } from '@/types/hr';
-// import { EmployeeData } from '@/types/hr';
-// import EmployeeContext from '@/contexts/EmployeeContext';
-// import { useContext } from 'react';
 
 const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
     const { language } = useLanguage();
-    // const employee = useContext(EmployeeContext);
     return (
         <Section
             title={t('Basic Information')}
@@ -34,12 +38,12 @@ const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
                     value={employee.data.email}
                 />
                 <InfoField
-                    icon={Phone}
+                    icon={PhoneCall}
                     label={t('Phone Number')}
                     value={employee.data.phone}
                 />
                 <InfoField
-                    icon={Phone}
+                    icon={Smartphone}
                     label={t('Mobile Number')}
                     value={employee.data.mobile}
                 />
@@ -49,7 +53,7 @@ const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
                     value={dateFormatter(employee.data.date_of_birth, language)}
                 />
                 <InfoField
-                    icon={User}
+                    icon={Transgender}
                     label={t('Gender')}
                     value={employee.data.gender.name}
                 />

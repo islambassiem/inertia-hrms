@@ -7,8 +7,14 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { Idnetification } from '@/types/hr';
 import NoRecords from '@/components/ui/NoRecords';
 
-const NationalID = ({ identification }: { identification: Idnetification }) => {
+const NationalID = ({
+    identification,
+}: {
+    identification: { data: Idnetification };
+}) => {
     const { language } = useLanguage();
+    console.log(identification);
+
     return (
         <Section
             title={t('Identification')}
