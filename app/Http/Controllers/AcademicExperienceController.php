@@ -18,7 +18,7 @@ final class AcademicExperienceController extends Controller
             'academicExperience.institution',
         ]);
 
-        return inertia('Hr/Employee/AcademicExperience', [
+        return inertia('Hr/Employee/Show/AcademicExperience', [
             'employee' => new EmployeeResource($employee),
             'academicExperiences' => AcademicExperienceResource::collection($employee->academicExperience),
         ]);

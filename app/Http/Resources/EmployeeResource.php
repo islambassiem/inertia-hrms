@@ -32,9 +32,18 @@ final class EmployeeResource extends JsonResource
             'id' => $this->id,
             'empid' => $this->code,
             'image' => $this->profileImage(),
+            'first_name_ar' => $this->first_name_ar,
+            'first_name_en' => $this->first_name_en,
+            'family_name_ar' => $this->family_name_ar,
+            'family_name_en' => $this->family_name_en,
+            'middle_name_ar' => $this->middle_name_ar,
+            'middle_name_en' => $this->middle_name_en,
+            'third_name_ar' => $this->third_name_ar,
+            'third_name_en' => $this->third_name_en,
             'name_ar' => $this->resource->arabic_name,
             'name_en' => $this->resource->english_name,
-            'email' => $this->whenLoaded('user', $this->user->email),
+            'official_email' => $this->whenLoaded('user', $this->user->email),
+            'email' => $this->whenLoaded('email', $this->email->first()?->value),
             'phone' => $this->whenLoaded('phone', function () {
                 return $this->phone->first()?->value;
             }, null),
@@ -59,14 +68,14 @@ final class EmployeeResource extends JsonResource
             'works_on_saturday' => $this->works_on_saturday,
             'joining_date' => $this->joining_date,
             'resignation_date' => $this->resignation_date,
-            'nationality' => $this->whenLoaded('nationality', app()->getLocale() === 'ar' ? $this->nationality->country_ar : $this->nationality->country_en),
-            'sponsorship' => $this->whenLoaded('sponsorship', app()->getLocale() === 'ar' ? $this->sponsorship->sponsorship_ar : $this->sponsorship->sponsorship_en),
+            'nationality' => CountryResource::make($this->whenLoaded('nationality')),
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
             'positions' => PositionResource::collection($this->whenLoaded('positions')),
             'departments' => DepartmentResource::collection($this->whenLoaded('departments')),
             'entities' => EntityResource::collection($this->whenLoaded('entities')),
             'colleges' => CollegeResource::collection($this->whenLoaded('colleges')),
-            'insurance_class' => $insurance_class->label(),
+            // @phpstan-ignore nullsafe.neverNull
+            'insurance_class' => $insurance_class?->label(),
         ];
     }
 }

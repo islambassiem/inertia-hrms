@@ -14,7 +14,7 @@ final class ContractContoller extends Controller
     {
         $employee->load(['positions', 'departments']);
 
-        return Inertia::render('Hr/Employee/Contract', [
+        return Inertia::render('Hr/Employee/Show/Contract', [
             'employee' => new EmployeeResource($employee),
         ]);
     }

@@ -15,7 +15,7 @@ final class NationalddressController extends Controller
     {
         $employee->load(['positions', 'departments']);
 
-        return Inertia::render('Hr/Employee/NationalAddress', [
+        return Inertia::render('Hr/Employee/Show/NationalAddress', [
             'employee' => new EmployeeResource($employee),
             'nationalAddress' => $employee->address ? new NationalAddressResource($employee->address) : null,
         ]);

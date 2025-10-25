@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Enums;
 
-enum MaritalStatus: string
+enum MaritalStatus: int
 {
-    case SINGLE = '1';
-    case MARRIED = '2';
-    case OTHER = '9';
+    case SINGLE = 1;
+    case MARRIED = 2;
+    case OTHER = 9;
 
     /**
-     * @return array<string>
+     * @return array<int>
      */
     public static function toArray(): array
     {
@@ -24,14 +24,23 @@ enum MaritalStatus: string
     }
 
     /**
-     * @return array<string, string>
+     * @return array<string, string|int>
      */
     public function label(): array
     {
         return match ($this) {
-            self::SINGLE => ['id' => '1', 'name' => app()->getLocale() === 'en' ? 'Single' : 'أعزب'],
-            self::MARRIED => ['id' => '2', 'name' => app()->getLocale() === 'en' ? 'Married' : 'متزوج'],
-            self::OTHER => ['id' => '9', 'name' => app()->getLocale() === 'en' ? 'Other' : 'أخرى'],
+            self::SINGLE => ['id' => 1, 'name' => app()->getLocale() === 'en' ? 'Single' : 'أعزب'],
+            self::MARRIED => ['id' => 2, 'name' => app()->getLocale() === 'en' ? 'Married' : 'متزوج'],
+            self::OTHER => ['id' => 9, 'name' => app()->getLocale() === 'en' ? 'Other' : 'أخرى'],
+        };
+    }
+
+    public function value(): string
+    {
+        return match ($this) {
+            self::SINGLE => app()->getLocale() === 'en' ? 'Single' : 'أعزب',
+            self::MARRIED => app()->getLocale() === 'en' ? 'Married' : 'متزوج',
+            self::OTHER => app()->getLocale() === 'en' ? 'Other' : 'أخرى',
         };
     }
 }

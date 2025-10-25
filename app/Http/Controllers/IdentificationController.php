@@ -15,7 +15,7 @@ final class IdentificationController extends Controller
     {
         $employee->load(['positions', 'departments']);
 
-        return Inertia::render('Hr/Employee/Identification', [
+        return Inertia::render('Hr/Employee/Show/Identification', [
             'employee' => new EmployeeResource($employee),
             'identification' => $employee->nationalId ? new IdentificationResource($employee->nationalId) : null,
         ]);

@@ -17,7 +17,7 @@ final class OperationalDataController extends Controller
             'departments',
         ]);
 
-        return Inertia::render('Hr/Employee/OperationalData', [
+        return Inertia::render('Hr/Employee/Show/OperationalData', [
             'employee' => new EmployeeResource($employee),
         ]);
     }

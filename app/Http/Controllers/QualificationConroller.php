@@ -19,7 +19,7 @@ final class QualificationConroller extends Controller
             'qualifications.minor',
         ]);
 
-        return inertia('Hr/Employee/Qualifications', [
+        return inertia('Hr/Employee/Show/Qualifications', [
             'employee' => new EmployeeResource($employee),
             'qualifications' => EmployeeQualificationResource::collection($employee->qualifications),
         ]);

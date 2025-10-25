@@ -15,7 +15,7 @@ final class EmergencyContactController extends Controller
     {
         $employee->load(['positions', 'departments']);
 
-        return Inertia::render('Hr/Employee/EmergencyContacts', [
+        return Inertia::render('Hr/Employee/Show/EmergencyContacts', [
             'employee' => new EmployeeResource($employee),
             'contacts' => EmergencyContactResource::collection($employee->contacts),
         ]);

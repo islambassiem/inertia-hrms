@@ -72,7 +72,10 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                                 {employee.name_en}
                             </button>
                             <button
-                                onClick={() => handleToast(employee.email)}
+                                onClick={() =>
+                                    employee.email &&
+                                    handleToast(employee.email)
+                                }
                                 className={`font-playfair text-muted relative cursor-pointer transition-colors duration-300 truncate text-left rtl:text-right ${employee.is_active ? '' : 'text-danger-500'}`}
                             >
                                 {employee.email}
@@ -90,7 +93,7 @@ function EmployeeRow({ employee, idx }: { employee: Employee; idx: number }) {
                         {employee.identification?.id_number}
                     </button>
                 </td>
-                <td className="px-4">{employee.nationality}</td>
+                <td className="px-4">{employee.nationality.name}</td>
                 <td className="px-4">
                     {dateFormatter(employee.date_of_birth, language)}
                 </td>

@@ -18,7 +18,7 @@ final class CourseController extends Controller
             'courses.country',
         ]);
 
-        return inertia('Hr/Employee/Course', [
+        return inertia('Hr/Employee/Show/Course', [
             'employee' => new EmployeeResource($employee),
             'courses' => CourseResource::collection($employee->courses),
         ]);

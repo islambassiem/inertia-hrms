@@ -18,7 +18,7 @@ final class SalaryController extends Controller
             'salaries',
         ]);
 
-        return inertia('Hr/Employee/Salary', [
+        return inertia('Hr/Employee/Show/Salary', [
             'employee' => new EmployeeResource($employee),
             'salaries' => SalaryResource::collection($employee->salaries),
         ]);

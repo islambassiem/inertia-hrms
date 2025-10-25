@@ -15,7 +15,7 @@ final class PassportController extends Controller
     {
         $employee->load(['positions', 'departments']);
 
-        return Inertia::render('Hr/Employee/Passport', [
+        return Inertia::render('Hr/Employee/Show/Passport', [
             'employee' => new EmployeeResource($employee),
             'passport' => $employee->passport ? new IdentificationResource($employee->passport) : null,
         ]);

@@ -20,7 +20,7 @@ final class OfficialController extends Controller
             'positions',
         ]);
 
-        return Inertia::render('Hr/Employee/Official', [
+        return Inertia::render('Hr/Employee/Show/Official', [
             'employee' => new EmployeeResource($employee),
         ]);
     }

@@ -18,7 +18,7 @@ final class AchievementController extends Controller
             'achievements',
         ]);
 
-        return inertia('Hr/Employee/Achievement', [
+        return inertia('Hr/Employee/Show/Achievement', [
             'employee' => new EmployeeResource($employee),
             'achievements' => AchievementResource::collection($employee->achievements),
         ]);

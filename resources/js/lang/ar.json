@@ -72,6 +72,8 @@
     "Full Name (English)": "الاسم باللغة الانجليزية",
     "Full Name (Arabic)": "الاسم باللغة العربية",
     "Email Address": "عنوان البريد الالكتروني",
+    "Email": "البريد الالكتروني",
+    "Official Email": "البريد الالكتروني الرسمي",
     "Phone Number": "رقم الهاتف",
     "Mobile Number": "رقم الجوال",
     "Full Address": "العنوان",
@@ -214,6 +216,12 @@
     "Salary Status": "حالة الراتب",
     "Married Contract": "عقد متزوج",
     "Insurance Class": "فئة التأمين",
+
+    "Edit": "تعديل",
+    "Contact Information": "معلومات الاتصال",
+    "Mobile": "الجوال",
+    "Save": "حفظ",
+    "Phone": "هاتف",
 
     "Logout": "تسجيل الخروج"
 }

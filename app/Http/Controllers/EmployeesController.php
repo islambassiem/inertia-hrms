@@ -81,7 +81,7 @@ final class EmployeesController extends Controller
             'entities',
         ]);
 
-        return Inertia::render('Hr/Employee/Info', [
+        return Inertia::render('Hr/Employee/Show/Info', [
             'employee' => new EmployeeResource($employee),
         ]);
     }

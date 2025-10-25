@@ -14,7 +14,7 @@ final class HierarchyController extends Controller
     {
         $employee->load(['entities', 'departments', 'colleges', 'head', 'positions', 'categories']);
 
-        return Inertia::render('Hr/Employee/Hierarchy', [
+        return Inertia::render('Hr/Employee/Show/Hierarchy', [
             'employee' => new EmployeeResource($employee),
         ]);
     }

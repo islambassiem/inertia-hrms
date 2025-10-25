@@ -15,7 +15,7 @@ final class BankController extends Controller
     {
         $employee->load(['positions', 'departments']);
 
-        return Inertia::render('Hr/Employee/Bank', [
+        return Inertia::render('Hr/Employee/Show/Bank', [
             'employee' => new EmployeeResource($employee),
             'bank' => $employee->bank ? new BankResource($employee->bank) : null,
         ]);

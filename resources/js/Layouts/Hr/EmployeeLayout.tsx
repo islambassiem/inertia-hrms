@@ -24,11 +24,6 @@ import { index as achievement } from '@/actions/App/Http/Controllers/Achievement
 import { index as research } from '@/actions/App/Http/Controllers/ResearchController';
 import { index as courses } from '@/actions/App/Http/Controllers/CourseController';
 import { index as info } from '@/actions/App/Http/Controllers/BasicInfoController';
-import { index as nationalId } from '@/actions/App/Http/Controllers/IdentificationController';
-import { index as passport } from '@/actions/App/Http/Controllers/PassportController';
-import { index as bank } from '@/actions/App/Http/Controllers/BankController';
-import { index as nationalAddress } from '@/actions/App/Http/Controllers/NationalddressController';
-import { index as contacts } from '@/actions/App/Http/Controllers/EmergencyContactController';
 import { index as contract } from '@/actions/App/Http/Controllers/ContractContoller';
 import { index as hierarachy } from '@/actions/App/Http/Controllers/HierarchyController';
 import { index as operational } from '@/actions/App/Http/Controllers/OperationalDataController';
@@ -40,19 +35,14 @@ const EmployeeLayout = ({ children }: { children: React.ReactNode }) => {
     const { language } = useLanguage();
     const { url } = usePage();
     const employee = useContext(EmployeeContext);
+    const infoRegex = new RegExp(`^/hr/employees/\\d+/info(?:/.*)?$`);
     const pages = [
         {
             id: 'info',
             label: t('Personal Information'),
             icon: GrInfo,
             href: info(employee.data.id).url,
-            active:
-                url === info(employee.data.id).url ||
-                url === nationalId(employee.data.id).url ||
-                url === passport(employee.data.id).url ||
-                url === bank(employee.data.id).url ||
-                url === nationalAddress(employee.data.id).url ||
-                url === contacts(employee.data.id).url,
+            active: infoRegex.test(url),
         },
         {
             id: 'official',

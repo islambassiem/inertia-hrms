@@ -16,48 +16,54 @@ import EmployeeContext from '@/contexts/EmployeeContext';
 const InfoLayout = ({ children }: { children: React.ReactNode }) => {
     const employee = useContext(EmployeeContext);
     const { url } = usePage();
+    const isEmployeeInfoSection = (url: string, section: string) => {
+        const regex = new RegExp(
+            `^(?:https?:\\/\\/[^/]+)?\\/hr\\/employees\\/\\d+\\/info\\/${section}(?:\\/.*)?$`
+        );
+        return regex.test(url);
+    };
     const pages = [
         {
             id: 'basic',
             label: t('Basic Information'),
             icon: GrInfo,
             href: info(employee.data.id).url,
-            active: url === info(employee.data.id).url,
+            active: isEmployeeInfoSection(url, 'basic'),
         },
         {
             id: 'national-id',
             label: t('National ID'),
             icon: IdCard,
             href: nationalId(employee.data.id).url,
-            active: url === nationalId(employee.data.id).url,
+            active: isEmployeeInfoSection(url, 'nationalId'),
         },
         {
             id: 'passport',
             label: t('Passport'),
             icon: LiaPassportSolid,
             href: passport(employee.data.id).url,
-            active: url === passport(employee.data.id).url,
+            active: isEmployeeInfoSection(url, 'passport'),
         },
         {
             id: 'bank',
             label: t('Bank Information'),
             icon: Landmark,
             href: bank(employee.data.id).url,
-            active: url === bank(employee.data.id).url,
+            active: isEmployeeInfoSection(url, 'bank'),
         },
         {
             id: 'address',
             label: t('National Address'),
             icon: MapPinHouse,
             href: nationalAddress(employee.data.id).url,
-            active: url === nationalAddress(employee.data.id).url,
+            active: isEmployeeInfoSection(url, 'national-address'),
         },
         {
             id: 'contacts',
             label: t('Emergency Contacts'),
             icon: MdOutlineContactEmergency,
             href: contacts(employee.data.id).url,
-            active: url === contacts(employee.data.id).url,
+            active: isEmployeeInfoSection(url, 'emergency-contacts'),
         },
     ];
     return (

@@ -18,7 +18,7 @@ final class ResearchController extends Controller
             'researches',
         ]);
 
-        return inertia('Hr/Employee/Research', [
+        return inertia('Hr/Employee/Show/Research', [
             'employee' => new EmployeeResource($employee),
             'researches' => ResearchResource::collection($employee->researches),
         ]);

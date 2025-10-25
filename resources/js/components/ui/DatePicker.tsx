@@ -281,7 +281,7 @@ const DatePicker: React.FC<CalendarProps> = ({
                 className={`
                     flex items-center gap-3 px-4 py-3 border border-primary-300 rounded-lg shadow-sm
                     transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500
-                    focus:border-transparent w-full
+                    focus:border-transparent w-full h-10
                 ${
                     disabled
                         ? 'cursor-not-allowed opacity-50'

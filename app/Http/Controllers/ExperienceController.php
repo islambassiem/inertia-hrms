@@ -18,7 +18,7 @@ final class ExperienceController extends Controller
             'experiences.country',
         ]);
 
-        return inertia('Hr/Employee/Experience', [
+        return inertia('Hr/Employee/Show/Experience', [
             'employee' => new EmployeeResource($employee),
             'experiences' => ExperienceResource::collection($employee->experiences),
         ]);

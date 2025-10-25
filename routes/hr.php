@@ -48,6 +48,12 @@ Route::group([
         Route::get('/{employee}/info/basic', [BasicInfoController::class, 'index'])
             ->name('info.basic.index');
 
+        Route::get('/{employee}/info/basic/edit', [BasicInfoController::class, 'edit'])
+            ->name('info.basic.edit');
+
+        Route::post('/{employee}/info/basic/update', [BasicInfoController::class, 'update'])
+            ->name('info.basic.update');
+
         Route::get('/{employee}/info/nationalId', [IdentificationController::class, 'index'])
             ->name('info.basic.nationalId');
 

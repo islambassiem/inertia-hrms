@@ -2,7 +2,8 @@ export interface Employee {
     id: number;
     empid: number;
     image: string;
-    email: string;
+    email: string | null;
+    official_email: string;
     phone: string | null;
     mobile: string | null;
     personal_email: string | null;
@@ -13,6 +14,14 @@ export interface Employee {
     emergency_contacts: EmergencyContacts[];
     gender: Resource;
     marital_status: Resource;
+    first_name_ar: string;
+    middle_name_ar: string | null;
+    third_name_ar: string | null;
+    family_name_ar: string;
+    first_name_en: string;
+    middle_name_en: string | null;
+    third_name_en: string | null;
+    family_name_en: string;
     name_ar: string;
     name_en: string;
     date_of_birth: string | null;
@@ -25,7 +34,7 @@ export interface Employee {
     has_married_contract: boolean;
     vacation_class: '0' | '21' | '30';
     special_needs: boolean;
-    nationality: string;
+    nationality: Resource;
     sponsorship: string;
     categories: Resource[];
     positions: Position[];
@@ -199,7 +208,7 @@ export interface ResourceList {
 }
 
 export interface Resource {
-    id: string;
+    id: number;
     name: string;
 }
 
