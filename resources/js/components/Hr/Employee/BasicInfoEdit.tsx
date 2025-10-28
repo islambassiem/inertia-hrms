@@ -63,11 +63,11 @@ const BasicInfoEdit = ({
                             label={t('First Name')}
                             name="first_name_ar"
                             required
+                            error={errors.first_name_ar}
                             value={data.first_name_ar}
                             onChange={(e) => {
                                 setData('first_name_ar', e.target.value);
                             }}
-                            className="font-fustat"
                         />
                         <TextInput
                             label={t('Middle Name')}
@@ -91,6 +91,7 @@ const BasicInfoEdit = ({
                             label={t('Family Name')}
                             name="family_name_ar"
                             required
+                            error={errors.family_name_ar}
                             value={data.family_name_ar}
                             onChange={(e) => {
                                 setData('family_name_ar', e.target.value);
@@ -106,6 +107,7 @@ const BasicInfoEdit = ({
                             label={t('First Name')}
                             name="first_name_en"
                             required
+                            error={errors.first_name_en}
                             value={data.first_name_en}
                             onChange={(e) => {
                                 setData('first_name_en', e.target.value);
@@ -134,6 +136,7 @@ const BasicInfoEdit = ({
                             label={t('Family Name')}
                             name="family_name_en"
                             required
+                            error={errors.family_name_en}
                             value={data.family_name_en}
                             onChange={(e) => {
                                 setData('family_name_en', e.target.value);
@@ -152,54 +155,91 @@ const BasicInfoEdit = ({
                                 {t('Date of Birth')}
                                 <span className="text-danger-500">*</span>
                             </div>
-                            <DatePicker
-                                selectedDate={
-                                    data.date_of_birth
-                                        ? new Date(data.date_of_birth)
-                                        : null
-                                }
-                                onDateSelect={(v) =>
-                                    setData(
-                                        'date_of_birth',
-                                        v ? v.toISOString().split('T')[0] : ''
-                                    )
-                                }
-                                direction="start"
-                                placeholder={dateFormatter(
-                                    data.date_of_birth,
-                                    language
+                            <div>
+                                <DatePicker
+                                    selectedDate={
+                                        data.date_of_birth
+                                            ? new Date(data.date_of_birth)
+                                            : null
+                                    }
+                                    onDateSelect={(v) =>
+                                        setData(
+                                            'date_of_birth',
+                                            v
+                                                ? v.toISOString().split('T')[0]
+                                                : ''
+                                        )
+                                    }
+                                    direction="start"
+                                    placeholder={dateFormatter(
+                                        data.date_of_birth,
+                                        language
+                                    )}
+                                />
+                                {errors.date_of_birth && (
+                                    <span className="text-danger-500">
+                                        {errors.date_of_birth}
+                                    </span>
                                 )}
-                            />
+                            </div>
                         </div>
-                        <Select
-                            items={countries.data}
-                            checked={data.nationality}
-                            title={t('Nationality')}
-                            required
-                            name="nationality"
-                            onChange={(id) => {
-                                setData('nationality', id);
-                            }}
-                        />
-                        <Select
-                            items={genders.data}
-                            checked={data.gender}
-                            title={t('Gender')}
-                            required
-                            name="gender"
-                            onChange={(id) => {
-                                setData('gender', id);
-                            }}
-                        />
-                        <Select
-                            items={maritalStatus.data}
-                            checked={data.marital_status}
-                            title={t('Marital Status')}
-                            name="marital_status"
-                            onChange={(id) => {
-                                setData('marital_status', id);
-                            }}
-                        />
+                        <div>
+                            <Select
+                                items={countries.data}
+                                checked={data.nationality}
+                                title={t('Nationality')}
+                                required
+                                name="nationality"
+                                onChange={(id) => {
+                                    setData('nationality', id);
+                                }}
+                            />
+                            <div>
+                                {errors.nationality && (
+                                    <span className="text-danger-500">
+                                        {errors.nationality}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                        <div>
+                            <Select
+                                items={genders.data}
+                                checked={data.gender}
+                                title={t('Gender')}
+                                required
+                                name="gender"
+                                onChange={(id) => {
+                                    setData('gender', id);
+                                }}
+                            />
+                            <div>
+                                {errors.gender && (
+                                    <span className="text-danger-500">
+                                        {errors.gender}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                        <div>
+                            <Select
+                                items={maritalStatus.data}
+                                checked={data.marital_status}
+                                required
+                                title={t('Marital Status')}
+                                name="marital_status"
+                                onChange={(id) => {
+                                    setData('marital_status', id);
+                                }}
+                            />
+                            <div>
+                                {errors.marital_status && (
+                                    <span className="text-danger-500">
+                                        {errors.marital_status}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -211,6 +251,7 @@ const BasicInfoEdit = ({
                             label={t('Email')}
                             name="email"
                             required
+                            error={errors.email}
                             value={data.email}
                             onChange={(e) => {
                                 setData('email', e.target.value);
@@ -221,6 +262,7 @@ const BasicInfoEdit = ({
                             label={t('Mobile')}
                             name="mobile"
                             required
+                            error={errors.mobile}
                             value={data.mobile}
                             onChange={(e) => {
                                 setData('mobile', e.target.value);
@@ -231,6 +273,7 @@ const BasicInfoEdit = ({
                             label={t('Official Email')}
                             name="official_email"
                             required
+                            error={errors.official_email}
                             value={data.official_email}
                             onChange={(e) => {
                                 setData('official_email', e.target.value);

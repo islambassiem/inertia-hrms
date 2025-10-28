@@ -198,6 +198,23 @@ return [
 
     'attributes' => [
         'empid' => 'Employee ID',
+        'password' => 'Password',
+        'first_name_ar' => 'First Name Arabic',
+        'first_name_en' => 'First Name English',
+        'middle_name_ar' => 'Middle Name Arabic',
+        'middle_name_en' => 'Middle Name English',
+        'third_name_ar' => 'Third Name Arabic',
+        'third_name_en' => 'Third Name English',
+        'family_name_ar' => 'Family Name Arabic',
+        'family_name_en' => 'Family Name English',
+        'date_of_birth' => 'Date of Birth',
+        'nationality' => 'Nationality',
+        'gender' => 'Gender',
+        'marital_status' => 'Marital Status',
+        'mobile' => 'Mobile',
+        'phone' => 'Phone',
+        'email' => 'Email',
+        'official_email' => 'Official Email',
     ],
 
 ];
