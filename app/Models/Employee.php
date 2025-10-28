@@ -13,6 +13,7 @@ use App\Enums\Religion;
 use App\Enums\SpecialNeeds;
 use App\Enums\VacationClass;
 use App\Traits\TracksUser;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -71,7 +72,6 @@ final class Employee extends Model
             'gender' => Gender::class,
             'marital_status' => MaritalStatus::class,
             'religion' => Religion::class,
-            'date_of_birth' => 'datetime',
             'is_active' => 'boolean',
             'has_salary' => 'boolean',
             'has_biometric' => 'boolean',
@@ -284,29 +284,29 @@ final class Employee extends Model
     }
 
     /**
-     * @return HasMany<Contact, $this>
+     * @return HasOne<Contact, $this>
      */
-    public function mobile(): HasMany
+    public function mobile(): HasOne
     {
-        return $this->hasMany(Contact::class)
+        return $this->hasOne(Contact::class)
             ->where('type', ContactType::MOBILE->value);
     }
 
     /**
-     * @return HasMany<Contact, $this>
+     * @return HasOne<Contact, $this>
      */
-    public function email(): HasMany
+    public function email(): HasOne
     {
-        return $this->hasMany(Contact::class)
+        return $this->hasOne(Contact::class)
             ->where('type', ContactType::EMAIL->value);
     }
 
     /**
-     * @return HasMany<Contact, $this>
+     * @return HasOne<Contact, $this>
      */
-    public function phone(): HasMany
+    public function phone(): HasOne
     {
-        return $this->hasMany(Contact::class)
+        return $this->hasOne(Contact::class)
             ->where('type', ContactType::PHONE->value);
     }
 
@@ -383,6 +383,17 @@ final class Employee extends Model
     {
         return $this->hasMany(Course::class);
 
+    }
+
+    /**
+     * @return Attribute<string, CarbonImmutable>
+     */
+    protected function dateOfBirth(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => CarbonImmutable::parse($value),
+            set: fn (CarbonImmutable $value) => $value
+        );
     }
 
     /**

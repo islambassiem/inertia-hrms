@@ -74,12 +74,12 @@ enum InsuranceClass: int
             self::A_PLUS_SINGLE_FEMALE_WITH_PARENTS => app()->getLocale() === 'en' ? 'A+ Single Female Employee with Parents' : 'A+ موظفة عزباء مع والديها',
             self::VIP => 'VIP',
             self::A => 'A',
-            self::B =>  'B',
-            self::VVIP_SINGLE_FEMALE_WITHOUT_MATERNITY =>  app()->getLocale() === 'en' ? 'VVIP Single Female Employee without Maternity' : 'VVIP موظفة عزباء بدون أمومة',
-            self::VIP_PLUS_SINGLE_FEMALE_WITHOUT_MATERNITY =>  app()->getLocale() === 'en' ? 'VIP+ Single Female Employee without Maternity' : 'VIP+ موظفة عزباء بدون أمومة',
-            self::VIP_SINGLE_FEMALE_WITHOUT_MATERNITY =>  app()->getLocale() === 'en' ? 'VIP Single Female Employee without Maternity' : 'VIP موظفة عزباء بدون أمومة',
-            self::A_SINGLE_FEMALE_WITHOUT_MATERNITY =>  app()->getLocale() === 'en' ? 'A Single Female Employee without Maternity' : 'A موظفة عزباء بدون أمومة',
-            self::B_SINGLE_FEMALE_WITHOUT_MATERNITY =>  app()->getLocale() === 'en' ? 'B Single Female Employee without Maternity' : 'B موظفة عزباء بدون أمومة',
+            self::B => 'B',
+            self::VVIP_SINGLE_FEMALE_WITHOUT_MATERNITY => app()->getLocale() === 'en' ? 'VVIP Single Female Employee without Maternity' : 'VVIP موظفة عزباء بدون أمومة',
+            self::VIP_PLUS_SINGLE_FEMALE_WITHOUT_MATERNITY => app()->getLocale() === 'en' ? 'VIP+ Single Female Employee without Maternity' : 'VIP+ موظفة عزباء بدون أمومة',
+            self::VIP_SINGLE_FEMALE_WITHOUT_MATERNITY => app()->getLocale() === 'en' ? 'VIP Single Female Employee without Maternity' : 'VIP موظفة عزباء بدون أمومة',
+            self::A_SINGLE_FEMALE_WITHOUT_MATERNITY => app()->getLocale() === 'en' ? 'A Single Female Employee without Maternity' : 'A موظفة عزباء بدون أمومة',
+            self::B_SINGLE_FEMALE_WITHOUT_MATERNITY => app()->getLocale() === 'en' ? 'B Single Female Employee without Maternity' : 'B موظفة عزباء بدون أمومة',
         };
     }
 }

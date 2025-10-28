@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Dtos\BasicInfoDto;
+use App\Actions\Hr\UpdateBasicInfoAction;
+use App\Data\BasicInfoData;
 use App\Enums\Gender;
 use App\Enums\MaritalStatus;
 use App\Http\Requests\Hr\BasicInfoRequest;
@@ -14,7 +15,7 @@ use App\Http\Resources\GenderResource;
 use App\Http\Resources\MaritalStatusResource;
 use App\Models\Country;
 use App\Models\Employee;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 
 final class BasicInfoController extends Controller
@@ -24,6 +25,7 @@ final class BasicInfoController extends Controller
         $employee->load([
             'positions',
             'departments',
+            'nationality',
             'email',
             'mobile',
             'phone',
@@ -53,8 +55,13 @@ final class BasicInfoController extends Controller
         ]);
     }
 
-    public function update(BasicInfoRequest $request): mixed
+    public function update(BasicInfoRequest $request, UpdateBasicInfoAction $action): RedirectResponse
     {
-        return '';
+        $dto = BasicInfoData::fromArray($request->validated());
+        $action->handle(Employee::find($dto->employee_id), $dto);
+
+        return redirect()->route('hr.employees.info.basic.index', [
+            'employee' => new EmployeeResource(Employee::find($dto->employee_id)),
+        ]);
     }
 }

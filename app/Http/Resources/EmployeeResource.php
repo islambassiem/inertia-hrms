@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Resources;
 
+use App\Enums\MaritalStatus;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,8 +23,8 @@ final class EmployeeResource extends JsonResource
         /** @var \App\Enums\Gender $gender */
         $gender = $this->gender;
 
-        /** @var \App\Enums\MaritalStatus $marital_status */
-        $marital_status = $this->marital_status;
+        /** @var MaritalStatus $marital_status */
+        $marital_status = $this->marital_status ?? MaritalStatus::OTHER;
 
         /** @var \App\Enums\InsuranceClass $insurance_class */
         $insurance_class = $this->insurance_class;
@@ -43,19 +44,12 @@ final class EmployeeResource extends JsonResource
             'name_ar' => $this->resource->arabic_name,
             'name_en' => $this->resource->english_name,
             'official_email' => $this->whenLoaded('user', $this->user->email),
-            'email' => $this->whenLoaded('email', $this->email->first()?->value),
-            'phone' => $this->whenLoaded('phone', function () {
-                return $this->phone->first()?->value;
-            }, null),
-            'mobile' => $this->whenLoaded('mobile', function () {
-                return $this->mobile->first()?->value;
-            }, null),
-            'personal_email' => $this->whenLoaded('email', function () {
-                return $this->email->first()?->value;
-            }, null),
+            'email' => $this->whenLoaded('email', $this->email?->value),
+            'phone' => $this->whenLoaded('phone', $this->phone?->value),
+            'mobile' => $this->whenLoaded('mobile', $this->mobile?->value),
+            'personal_email' => $this->whenLoaded('email', $this->email?->value),
             'gender' => $gender->label(),
-            // @phpstan-ignore nullsafe.neverNull
-            'marital_status' => $marital_status?->label(),
+            'marital_status' => $marital_status->label(),
             'vacation_class' => $this->vacation_class,
             'date_of_birth' => $this->date_of_birth,
             'identification' => new IdentificationResource($this->whenLoaded('nationalId')),

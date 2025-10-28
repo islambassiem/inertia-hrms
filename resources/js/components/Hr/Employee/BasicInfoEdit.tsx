@@ -43,6 +43,7 @@ const BasicInfoEdit = ({
         official_email: employee.data.official_email,
         date_of_birth: employee.data.date_of_birth,
     });
+    console.log(employee.data.email);
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

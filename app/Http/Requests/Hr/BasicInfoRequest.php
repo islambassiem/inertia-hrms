@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Hr;
 
 use App\Enums\Gender;
@@ -8,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Enum;
 
-class BasicInfoRequest extends FormRequest
+final class BasicInfoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

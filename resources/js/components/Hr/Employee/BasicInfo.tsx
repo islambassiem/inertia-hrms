@@ -18,6 +18,8 @@ import { SiUnitednations } from 'react-icons/si';
 
 const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
     const { language } = useLanguage();
+    console.log(employee);
+
     return (
         <Section
             title={t('Basic Information')}
@@ -43,7 +45,7 @@ const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
                 <InfoField
                     icon={SiUnitednations}
                     label={t('Nationality')}
-                    value={employee.data.nationality}
+                    value={employee.data.nationality.name}
                 />
                 <InfoField
                     icon={Calendar}
@@ -64,6 +66,16 @@ const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
                     icon={PhoneCall}
                     label={t('Mobile Number')}
                     value={employee.data.mobile}
+                />
+                <InfoField
+                    icon={Mail}
+                    label={t('Official Email')}
+                    value={employee.data.official_email}
+                />
+                <InfoField
+                    icon={PhoneCall}
+                    label={t('Phone Number')}
+                    value={employee.data.phone}
                 />
             </div>
         </Section>
