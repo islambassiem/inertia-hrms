@@ -6,7 +6,7 @@ import { GrInfo } from 'react-icons/gr';
 import { LiaPassportSolid } from 'react-icons/lia';
 import { MdOutlineContactEmergency } from 'react-icons/md';
 import { index as info } from '@/actions/App/Http/Controllers/BasicInfoController';
-import { index as nationalId } from '@/actions/App/Http/Controllers/IdentificationController';
+import { index as identification } from '@/actions/App/Http/Controllers/IdentificationController';
 import { index as passport } from '@/actions/App/Http/Controllers/PassportController';
 import { index as bank } from '@/actions/App/Http/Controllers/BankController';
 import { index as nationalAddress } from '@/actions/App/Http/Controllers/NationalddressController';
@@ -31,11 +31,11 @@ const InfoLayout = ({ children }: { children: React.ReactNode }) => {
             active: isEmployeeInfoSection(url, 'basic'),
         },
         {
-            id: 'national-id',
+            id: 'identification',
             label: t('National ID'),
             icon: IdCard,
-            href: nationalId(employee.data.id).url,
-            active: isEmployeeInfoSection(url, 'nationalId'),
+            href: identification(employee.data.id).url,
+            active: isEmployeeInfoSection(url, 'identification'),
         },
         {
             id: 'passport',

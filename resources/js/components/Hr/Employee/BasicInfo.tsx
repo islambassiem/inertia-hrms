@@ -18,7 +18,6 @@ import { SiUnitednations } from 'react-icons/si';
 
 const BasicInfo = ({ employee }: { employee: EmployeeData }) => {
     const { language } = useLanguage();
-    console.log(employee);
 
     return (
         <Section

@@ -15,17 +15,13 @@ const Dashboard = () => {
                     setOpen(false);
                 }}
                 onAction={() => {
-                    console.log('action');
                     setOpen(false);
                 }}
                 open={open}
                 title={t('Employees Filter')}
                 width={500}
             >
-                <button
-                    className="p-2 border"
-                    onClick={() => console.log('cliked')}
-                >
+                <button className="p-2 border" onClick={() => alert('')}>
                     Click me
                 </button>
             </Drawer>

@@ -1,23 +1,26 @@
 import AppLayout from '@/Layouts/AppLayout';
 import EmployeeLayout from '@/Layouts/Hr/EmployeeLayout';
-import { Bank as BankType, EmployeeData } from '@/types/hr';
 import EmployeeContext from '@/contexts/EmployeeContext';
 import InfoLayout from '@/Layouts/Hr/InfoLayout';
-import EmployeeBank from '@/components/Hr/Employee/EmployeeBank';
+import { EmployeeData, Idnetification } from '@/types/hr';
+import IdentificationEdit from '@/components/Hr/Employee/IdentificationEdit';
 
-const Bank = ({
+const Info = ({
     employee,
-    bank,
+    identification,
 }: {
     employee: EmployeeData;
-    bank: BankType;
+    identification: { data: Idnetification };
 }) => {
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>
                 <EmployeeLayout>
                     <InfoLayout>
-                        <EmployeeBank bank={bank || null} />
+                        <IdentificationEdit
+                            employee={employee}
+                            identification={identification}
+                        />
                     </InfoLayout>
                 </EmployeeLayout>
             </EmployeeContext.Provider>
@@ -25,4 +28,4 @@ const Bank = ({
     );
 };
 
-export default Bank;
+export default Info;

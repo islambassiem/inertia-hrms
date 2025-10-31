@@ -10,8 +10,6 @@ const EmployeeEmergencyContacts = ({
 }: {
     contacts: EmergencyContacts;
 }) => {
-    console.log(contacts);
-
     return (
         <Section
             title={t('Emergency Contacts')}

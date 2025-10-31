@@ -10,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Enum;
 
-final class BasicInfoRequest extends FormRequest
+final class UpdateBasicInfoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

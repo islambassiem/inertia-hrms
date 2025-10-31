@@ -215,6 +215,9 @@ return [
         'phone' => 'Phone',
         'email' => 'Email',
         'official_email' => 'Official Email',
+        'id_number' => 'National ID Number',
+        'date_of_issue' => 'Date of Issue',
+        'date_of_expiry' => 'Date of Expiry',
     ],
 
 ];

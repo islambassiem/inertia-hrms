@@ -47,7 +47,10 @@ export interface Employee {
 }
 
 export interface Idnetification {
+    id: number;
+    employee_id: number;
     id_number: string;
+    type: string;
     place_of_issue: string | null;
     date_of_issue: string | null;
     date_of_expiry: string | null;

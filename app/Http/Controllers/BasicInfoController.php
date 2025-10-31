@@ -8,7 +8,7 @@ use App\Actions\Hr\UpdateBasicInfoAction;
 use App\Data\BasicInfoData;
 use App\Enums\Gender;
 use App\Enums\MaritalStatus;
-use App\Http\Requests\Hr\BasicInfoRequest;
+use App\Http\Requests\Hr\UpdateBasicInfoRequest;
 use App\Http\Resources\CountryResource;
 use App\Http\Resources\EmployeeResource;
 use App\Http\Resources\GenderResource;
@@ -55,7 +55,7 @@ final class BasicInfoController extends Controller
         ]);
     }
 
-    public function update(BasicInfoRequest $request, UpdateBasicInfoAction $action): RedirectResponse
+    public function update(UpdateBasicInfoRequest $request, UpdateBasicInfoAction $action): RedirectResponse
     {
         $dto = BasicInfoData::fromArray($request->validated());
         $action->handle(Employee::find($dto->employee_id), $dto);

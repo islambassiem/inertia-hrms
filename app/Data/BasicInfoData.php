@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Data;
 
 use App\Enums\Gender;
-use App\Http\Requests\Hr\BasicInfoRequest;
+use App\Http\Requests\Hr\UpdateBasicInfoRequest;
 use Carbon\CarbonImmutable;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Support\Validation\ValidationContext;
@@ -33,8 +33,6 @@ final class BasicInfoData extends Data
     ) {}
 
     /**
-     * Summary of fromArray
-     *
      * @param  array<string, mixed>  $data
      */
     public static function fromArray(array $data): self
@@ -65,6 +63,6 @@ final class BasicInfoData extends Data
      */
     public static function rules(?ValidationContext $context = null): array
     {
-        return (new BasicInfoRequest())->rules();
+        return (new UpdateBasicInfoRequest())->rules();
     }
 }

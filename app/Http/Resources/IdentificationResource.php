@@ -20,6 +20,8 @@ final class IdentificationResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
+            'employee_id' => $this->employee_id,
             'id_number' => $this->id_number,
             'place_of_issue' => $this->place_of_issue,
             'date_of_issue' => $this->date_of_issue,

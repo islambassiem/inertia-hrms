@@ -4,21 +4,25 @@ import InfoField from './InfoField';
 import { Calendar, Globe, Hash } from 'lucide-react';
 import { dateFormatter } from '@/lib/utils';
 import { useLanguage } from '@/hooks/useLanguage';
-import { Idnetification } from '@/types/hr';
+import { EmployeeData, Idnetification } from '@/types/hr';
 import NoRecords from '@/components/ui/NoRecords';
+import { router } from '@inertiajs/react';
+import { edit } from '@/actions/App/Http/Controllers/IdentificationController';
 
-const NationalID = ({
+const Identification = ({
+    employee,
     identification,
 }: {
+    employee: EmployeeData;
     identification: { data: Idnetification };
 }) => {
     const { language } = useLanguage();
-    console.log(identification);
 
     return (
         <Section
             title={t('Identification')}
             body={t('National ID Information')}
+            onButtonClick={() => router.get(edit(employee.data.id).url)}
         >
             {identification === null ? (
                 <NoRecords
@@ -60,4 +64,4 @@ const NationalID = ({
     );
 };
 
-export default NationalID;
+export default Identification;

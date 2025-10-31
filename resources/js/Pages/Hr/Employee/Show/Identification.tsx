@@ -3,21 +3,24 @@ import EmployeeLayout from '@/Layouts/Hr/EmployeeLayout';
 import { EmployeeData, Idnetification } from '@/types/hr';
 import EmployeeContext from '@/contexts/EmployeeContext';
 import InfoLayout from '@/Layouts/Hr/InfoLayout';
-import NationalID from '@/components/Hr/Employee/NationalID';
+import NationalID from '@/components/Hr/Employee/Identification';
 
 const Identification = ({
     employee,
     identification,
 }: {
     employee: EmployeeData;
-    identification: Idnetification;
+    identification: { data: Idnetification };
 }) => {
     return (
         <AppLayout>
             <EmployeeContext.Provider value={employee}>
                 <EmployeeLayout>
                     <InfoLayout>
-                        <NationalID identification={identification || null} />
+                        <NationalID
+                            identification={identification || null}
+                            employee={employee}
+                        />
                     </InfoLayout>
                 </EmployeeLayout>
             </EmployeeContext.Provider>
