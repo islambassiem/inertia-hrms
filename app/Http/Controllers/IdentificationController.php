@@ -39,28 +39,28 @@ final class IdentificationController extends Controller
     }
 
     public function update(
-        UpdateIdentificationRequest $request,
         Employee $employee,
         Identification $identification,
+        UpdateIdentificationRequest $request,
         UpdateIdentificatonAction $action
     ): RedirectResponse {
         $data = IdentificationData::from($request->validated());
         $action->handle($identification, $data);
 
-        return redirect()->route('hr.employees.info.basic.identification', [
+        return redirect()->route('hr.employees.identification.index', [
             'employee' => new EmployeeResource($employee),
         ]);
     }
 
     public function store(
-        StoreIdentificationRequest $request,
         Employee $employee,
+        StoreIdentificationRequest $request,
         StoreIdentificationAction $action
     ): RedirectResponse {
         $data = IdentificationData::from($request->validated());
         $action->handle($data);
 
-        return redirect()->route('hr.employees.info.basic.identification', [
+        return redirect()->route('hr.employees.identification.index', [
             'employee' => new EmployeeResource($employee),
         ]);
     }

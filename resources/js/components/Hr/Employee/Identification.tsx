@@ -22,7 +22,14 @@ const Identification = ({
         <Section
             title={t('Identification')}
             body={t('National ID Information')}
-            onButtonClick={() => router.get(edit(employee.data.id).url)}
+            onButtonClick={() =>
+                router.get(
+                    edit({
+                        employee: employee.data.id,
+                        identification: identification.data.id,
+                    }).url
+                )
+            }
         >
             {identification === null ? (
                 <NoRecords

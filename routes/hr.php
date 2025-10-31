@@ -54,20 +54,8 @@ Route::group([
         Route::post('/{employee}/info/basic/update', [BasicInfoController::class, 'update'])
             ->name('info.basic.update');
 
-        Route::get('/{employee}/info/identification', [IdentificationController::class, 'index'])
-            ->name('info.basic.identification');
-
-        Route::get('/{employee}/info/identification/edit', [IdentificationController::class, 'edit'])
-            ->name('info.basic.identification.edit');
-
-        Route::put('/{employee}/info/identification/{identification}', [IdentificationController::class, 'update'])
-            ->name('info.basic.identification.update');
-
-        Route::post('/{employee}/info/identification/', [IdentificationController::class, 'store'])
-            ->name('info.basic.identification.update');
-
-        // Route::resource('{employee}/info/identification', IdentificationController::class)
-        //     ->except('index', 'destroy');
+        Route::resource('{employee}/info/identification', IdentificationController::class)
+            ->only('index', 'edit', 'update', 'store');
 
         Route::get('/{employee}/info/passport', [PassportController::class, 'index'])
             ->name('info.basic.passport');
